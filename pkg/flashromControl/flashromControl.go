@@ -9,7 +9,7 @@ import (
 	"regexp"
 )
 
-type FlashromControl struct {
+type Flashrom struct {
 	flashromBin string
 	config      Config
 	cmd         *exec.Cmd
@@ -24,7 +24,7 @@ var conf = Config{
 	Speed: 16000,
 }
 
-var ctrl = FlashromControl{
+var ctrl = Flashrom{
 	flashromBin: "flashrom",
 	cmd:         nil,
 	config:      conf,
@@ -71,10 +71,10 @@ func (s State) String() string {
 
 const programmerArg = "linux_spi:dev=/dev/spidev1.0,spispeed="
 
-var errFlashFileDoesNotExist = errors.New("rom file doesn't exist")
-var errProcessAlreadyStarted = errors.New("process already started")
+var ErrFlashFileDoesNotExist = errors.New("rom file doesn't exist")
+var ErrProcessAlreadyStarted = errors.New("process already started")
 
-func New(flashromPath string) (*FlashromControl, error) {
+func New(flashromPath string) (*Flashrom, error) {
 	if flashromPath != "" {
 		ctrl.flashromBin = flashromPath
 	}
@@ -89,21 +89,22 @@ func New(flashromPath string) (*FlashromControl, error) {
 	return &ctrl, nil
 }
 
-func (*FlashromControl) Start(upgradeFile string, force bool) error {
+func (*Flashrom) Start(upgradeFile string) error {
 	var err error
 
 	programmer := fmt.Sprintf("%s%d", programmerArg, ctrl.config.Speed)
 
 	_, err = os.Stat(upgradeFile)
 	if os.IsNotExist(err) {
-		return errFlashFileDoesNotExist
+		return ErrFlashFileDoesNotExist
 	}
 
 	if ctrl.cmd != nil && ctrl.cmd.ProcessState == nil {
-		return errProcessAlreadyStarted
+		return ErrProcessAlreadyStarted
 	}
 
 	ctrl.cmd = exec.Command(ctrl.flashromBin, "-w", upgradeFile, "-p", programmer)
+	ctrl.out.Reset()
 	ctrl.cmd.Stdout = &ctrl.out
 
 	err = ctrl.cmd.Start()
@@ -113,13 +114,12 @@ func (*FlashromControl) Start(upgradeFile string, force bool) error {
 
 	go func() {
 		ctrl.cmd.Wait()
-		fmt.Println(ctrl.out.String())
 	}()
 
 	return nil
 }
 
-func (*FlashromControl) GetState() State {
+func (*Flashrom) GetState() State {
 
 	s := StateIdle
 
@@ -155,10 +155,10 @@ func (*FlashromControl) GetState() State {
 	return s
 }
 
-func (*FlashromControl) SetConfig(newConf Config) {
+func (*Flashrom) SetConfig(newConf Config) {
 	ctrl.config = newConf
 }
 
-func (*FlashromControl) GetConfig() Config {
+func (*Flashrom) GetConfig() Config {
 	return ctrl.config
 }
