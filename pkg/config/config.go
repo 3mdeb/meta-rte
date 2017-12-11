@@ -14,9 +14,10 @@ type PinConfig struct {
 }
 
 type Config struct {
-	FlashromBin string      `json:"flashrom_bin"`
-	SysGpioPath string      `json:"sys_gpio_path"`
-	Gpios       []PinConfig `json:"gpios"`
+	ServerAddress string      `json:"server_address"`
+	FlashromBin   string      `json:"flashrom_bin"`
+	SysGpioPath   string      `json:"sys_gpio_path"`
+	Gpios         []PinConfig `json:"gpios"`
 }
 
 var cfg Config

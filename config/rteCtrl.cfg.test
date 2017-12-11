@@ -1,4 +1,5 @@
 {
+    "server_address" : ":8000",
     "flashrom_bin" : "test/flashrom",
     "sys_gpio_path" : "test/gpio",
     "gpios" : [
