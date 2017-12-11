@@ -1,5 +1,5 @@
 {
-    "flashrom_bin" : "/usr/local/sbin/flashrom",
+    "flashrom_bin" : "test/flashrom",
     "sys_gpio_path" : "test/gpio",
     "gpios" : [
         {
