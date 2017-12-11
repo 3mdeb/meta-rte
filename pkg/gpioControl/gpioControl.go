@@ -38,7 +38,9 @@ func checkGpio(sysGpio uint) bool {
 }
 
 func New(gpioPath string, cfg []config.PinConfig) (*GpioControl, error) {
-	ctrl.sysGpioPath = gpioPath
+	if gpioPath != "" {
+		ctrl.sysGpioPath = gpioPath
+	}
 	var err error
 
 	ctrl.gpios = make(map[int]pin)
