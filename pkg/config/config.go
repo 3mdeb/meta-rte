@@ -15,6 +15,7 @@ type PinConfig struct {
 
 type Config struct {
 	ServerAddress string      `json:"server_address"`
+	WebDir        string      `json:"web_directory"`
 	FlashromBin   string      `json:"flashrom_bin"`
 	SysGpioPath   string      `json:"sys_gpio_path"`
 	Gpios         []PinConfig `json:"gpios"`

@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -388,14 +389,26 @@ func logFunc(f func(http.ResponseWriter, *http.Request)) func(http.ResponseWrite
 	}
 }
 
-func Start(address string, g *gpioControl.Gpio, f *flashromControl.Flashrom) {
+func Start(address, webDir string, g *gpioControl.Gpio, f *flashromControl.Flashrom) {
 
 	gpio = g
 	flash = f
 
 	tempRomFile = fmt.Sprintf("%s/%s", os.TempDir(), romFilename)
 
+	fs := http.FileServer(http.Dir("web"))
+
+	files, err := ioutil.ReadDir("web")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	router := mux.NewRouter()
+	router.Handle("/", fs).Methods("GET")
+	for _, file := range files {
+		router.Handle("/"+file.Name(), fs).Methods("GET")
+	}
+
 	router.HandleFunc(restPrefix+"/gpio", logFunc(listAllGpios)).Methods("GET")
 	router.HandleFunc(restPrefix+"/gpio/{id}", logFunc(getGpioState)).Methods("GET")
 	router.HandleFunc(restPrefix+"/gpio/{id}", logFunc(setGpioState)).Methods("PATCH")

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<script src="md5.js"></script>
+<script type="text/javascript">
+var gpioStates
+var myVar = setInterval(ticker, 3000);
+var relay
+var fileMd5
+
+function ticker() {
+	getStates();
+	getFlashState();
+}
+
+function setColor(color, id) {
+	document.getElementById(id).style.color = color;
+}
+
+function setState(id, state) {
+	if (state == 1) {
+		setColor("green", id);
+	} else {
+		setColor("red", id);
+	}
+}
+
+function updateStatus() {
+	setState("pwr_led", gpioStates[17].state);
+	setState("relay_state", gpioStates[0].state);
+	relay = gpioStates[0].state
+}
+
+function setGpio(gpio, state, time) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+		document.getElementById("out").innerHTML =
+		this.responseText;
+		}
+	};
+	xhttp.open("PATCH", "/api/v1/gpio/" + gpio, true);
+	var out = JSON.stringify({"state" : state, "direction" : "out", "time" : time})
+	xhttp.send(out);
+	getStates();
+}
+
+function getStates() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+		gpioStates = JSON.parse(this.responseText);
+		updateStatus();
+		}
+	};
+	xhttp.open("GET", "/api/v1/gpio", true);
+	xhttp.send();
+}
+
+function powerOn() {
+	if (gpioStates[17].state == 0) {
+		setGpio(9, 1, 1);
+	}
+}
+
+function powerOff() {
+	if (gpioStates[17].state == 1) {
+		setGpio(9, 1, 5);
+	}
+}
+
+function reset() {
+	setGpio(8, 1, 1);
+}
+
+function relayToggle() {
+	if (relay == 1) {
+		setGpio(0, 0, 0);
+	} else {
+		setGpio(0, 1, 0);
+	}
+}
+
+function getFileChecksum() {
+	var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
+	file = document.getElementById("file").files[0],
+	chunkSize = 2097152,
+	chunks = Math.ceil(file.size / chunkSize),
+	currentChunk = 0,
+	spark = new SparkMD5.ArrayBuffer(),
+	fileReader = new FileReader();
+
+	fileReader.onload = function (e) {
+		spark.append(e.target.result);
+		currentChunk++;
+
+		if (currentChunk < chunks) {
+			loadNext();
+		} else {
+
+		fileMd5 = spark.end();
+		}
+	};
+
+	fileReader.onerror = function () {
+		console.warn('oops, something went wrong.');
+	};
+
+	function loadNext() {
+		var start = currentChunk * chunkSize,
+		end = ((start + chunkSize) >= file.size) ? file.size : start + chunkSize;
+
+		fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
+	}
+
+	loadNext();
+}
+
+function updateFlashProgress(msg) {
+	var status = document.getElementById("flash_status");
+		var progress = document.getElementById("flash_progress");
+		state = JSON.parse(msg);
+		if (state.error) {
+			status.textContent = state.error;
+			status.style.color = "red"
+			progress.value = 0;
+		} else {
+			if (state.status == "done") {
+				status.style.color = "green"
+			} else {
+				status.style.color = "black"
+			}
+			status.textContent = state.status;
+			progress.value = state.percent;
+		}
+}
+
+function getFlashState() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+			updateFlashProgress(this.responseText);
+		}
+	};
+	xhttp.open("GET", "/api/v1/flash", true);
+	xhttp.send();
+}
+
+function flash() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+		updateFlashProgress(this.responseText);
+		}
+	};
+	xhttp.open("PUT", "/api/v1/flash", true);
+	var out = JSON.stringify({"file_md5" : fileMd5})
+	xhttp.send(out);
+}
+
+</script>
+<head>
+	<title>Remote Testing Environment</title>
+</head>
+<body onload="ticker()">
+	<h1>Remote Testing Environment control</h1>
+
+	<hr/>
+	<div class="states">
+			<label id="pwr_led">PWR</label>
+			<label id="relay_state">RELAY</label>
+		</div>
+	<hr/>
+	<div class="control">
+		<button type="button" onclick="powerOn()">Power ON</button>
+		<button type="button" onclick="powerOff()">Power OFF</button>
+		<button type="button" onclick="reset()">Reset</button>
+		<button type="button" onclick="relayToggle()">Relay</button>
+	</div>
+	<hr/>
+
+
+	<div class="upload">
+		<form action="/api/v1/flash/file" method="post" target="upload_status" enctype="multipart/form-data" onsubmit="getFileChecksum()">
+			<label for="file">File to flash:</label>
+			<input type="file" name="file" id="file">
+			<input type="submit" value="Upload">
+		</form>
+		<iframe name="upload_status"></iframe>
+		<br/>
+		<button type="button" onclick="flash()">Flash</button>
+		<progress id="flash_progress" value="0" max="100"></progress>
+		<label id="flash_status"></label>
+	</div>
+
+	<hr/>
+
+	<div class="debug">
+		<div id="out"></div>
+	</div>
+</body>
+</html>

@@ -30,6 +30,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Println("starting server")
-	restServer.Start(cfg.ServerAddress, gpio, flash)
+	log.Println("starting server on", cfg.ServerAddress)
+	restServer.Start(cfg.ServerAddress, cfg.WebDir, gpio, flash)
 }
