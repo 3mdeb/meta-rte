@@ -413,7 +413,7 @@ func Start(address, webDir string, g *gpioControl.Gpio, f *flashromControl.Flash
 	router.HandleFunc(restPrefix+"/gpio/{id}", logFunc(getGpioState)).Methods("GET")
 	router.HandleFunc(restPrefix+"/gpio/{id}", logFunc(setGpioState)).Methods("PATCH")
 
-	router.HandleFunc(restPrefix+"/flash/file", logFunc(uploadFile)).Methods("PUT")
+	router.HandleFunc(restPrefix+"/flash/file", logFunc(uploadFile)).Methods("POST")
 	router.HandleFunc(restPrefix+"/flash/file", logFunc(getFileDetails)).Methods("GET")
 	router.HandleFunc(restPrefix+"/flash/file", logFunc(removeFile)).Methods("DELETE")
 
