@@ -33,6 +33,14 @@ RTE controller
            +------+     +-----------+      +-------+
 ```
 
+## Dependencies
+
+* gorilla mux
+
+```
+go get github.com/gorilla/mux
+```
+
 ## Building
 
 For host system:
