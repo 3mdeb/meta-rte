@@ -105,7 +105,7 @@ func listAllGpios(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errCantReadGpioStates})
 		return
 	}
@@ -123,7 +123,7 @@ func getGpioState(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errGpioIDNotFound})
 		return
 	}
@@ -135,14 +135,14 @@ func getGpioState(w http.ResponseWriter, r *http.Request) {
 	g.Direction, err = gpio.GetDirection(id)
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errCantReadGpioStates})
 		return
 	}
 	g.State, err = gpio.GetState(id)
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errCantReadGpioStates})
 		return
 	}
@@ -159,7 +159,7 @@ func setGpioState(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errGpioIDNotFound})
 		return
 	}
@@ -170,7 +170,7 @@ func setGpioState(w http.ResponseWriter, r *http.Request) {
 	err = in.Decode(&g)
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(403)
+		w.WriteHeader(http.StatusForbidden)
 		out.Encode(errorStatus{Error: errBadParams})
 		return
 	}
@@ -179,7 +179,7 @@ func setGpioState(w http.ResponseWriter, r *http.Request) {
 		err = gpio.SetDirection(id, g.Direction)
 		if err != nil {
 			log.Println(err)
-			w.WriteHeader(404)
+			w.WriteHeader(http.StatusNotFound)
 			out.Encode(errorStatus{Error: errCantReadGpioStates})
 			return
 		}
@@ -188,7 +188,7 @@ func setGpioState(w http.ResponseWriter, r *http.Request) {
 	err = gpio.SetState(id, g.State)
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errCantReadGpioStates})
 		return
 	}
@@ -214,7 +214,7 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 	rf, _, err := r.FormFile("file")
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errCantUploadFile})
 		return
 	}
@@ -223,7 +223,7 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 	f, err := os.OpenFile(tempRomFile, os.O_CREATE|os.O_RDWR, 0666)
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errCantUploadFile})
 		return
 	}
@@ -235,7 +235,7 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 	written, err := io.Copy(mw, rf)
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errCantUploadFile})
 		return
 	}
@@ -251,7 +251,7 @@ func getFileDetails(w http.ResponseWriter, r *http.Request) {
 
 	if currentFileDetails.Checksum == "" {
 		log.Println("no file uploaded")
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errNoFileUploaded})
 		return
 	}
@@ -264,7 +264,7 @@ func removeFile(w http.ResponseWriter, r *http.Request) {
 
 	if currentFileDetails.Checksum == "" {
 		log.Println("no file uploaded")
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errNoFileUploaded})
 		return
 	}
@@ -291,7 +291,7 @@ func setFlasherConfig(w http.ResponseWriter, r *http.Request) {
 	err := in.Decode(&cfg)
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(403)
+		w.WriteHeader(http.StatusForbidden)
 		out.Encode(errorStatus{Error: errBadParams})
 		return
 	}
@@ -307,7 +307,7 @@ func startFlashing(w http.ResponseWriter, r *http.Request) {
 
 	if currentFileDetails.Checksum == "" {
 		log.Println("no file uploaded")
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		out.Encode(errorStatus{Error: errNoFileUploaded})
 		return
 	}
@@ -316,14 +316,14 @@ func startFlashing(w http.ResponseWriter, r *http.Request) {
 	err := in.Decode(&fDetails)
 	if err != nil || fDetails.Checksum == "" {
 		log.Println(err)
-		w.WriteHeader(403)
+		w.WriteHeader(http.StatusForbidden)
 		out.Encode(errorStatus{Error: errBadParams})
 		return
 	}
 
 	if fDetails.Checksum != currentFileDetails.Checksum {
 		log.Println(err)
-		w.WriteHeader(403)
+		w.WriteHeader(http.StatusForbidden)
 		out.Encode(errorStatus{Error: errChecksumMismatch})
 		return
 	}
@@ -334,7 +334,7 @@ func startFlashing(w http.ResponseWriter, r *http.Request) {
 		return
 	} else if err != nil {
 		log.Println(err)
-		w.WriteHeader(500)
+		w.WriteHeader(http.StatusInternalServerError)
 		out.Encode(errorStatus{Error: errInternalError})
 		return
 	}
