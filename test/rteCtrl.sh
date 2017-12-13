@@ -15,8 +15,8 @@ put() {
     curl -X PUT $HOST/$PFX/$1 -d "$2"
 }
 
-put_file() {
-    curl -X PUT $HOST/$PFX/$1 -F "file=@$2"
+post_file() {
+    curl -X POST $HOST/$PFX/$1 -F "file=@$2"
 }
 
 delete() {
@@ -34,7 +34,7 @@ set_gpio)
     patch "gpio/$2" "{\"state\": $3}"
     ;;
 upload)
-    put_file "flash/file" "$2"
+    post_file "flash/file" "$2"
     ;;
 get_file)
     get "flash/file"
