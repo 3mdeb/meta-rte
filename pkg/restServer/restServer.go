@@ -3,6 +3,7 @@ package restServer
 import (
 	"3mdeb/RteCtrl/pkg/flashromControl"
 	"3mdeb/RteCtrl/pkg/gpioControl"
+	"compress/gzip"
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
@@ -221,6 +222,17 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 	}
 	defer rf.Close()
 
+	h := md5.New()
+
+	tee := io.TeeReader(rf, h)
+
+	zr, err := gzip.NewReader(tee)
+	if err != nil {
+		log.Println("not gzip", err)
+		rf.Seek(0, 0)
+		h.Reset()
+	}
+
 	f, err := os.OpenFile(tempRomFile, os.O_CREATE|os.O_RDWR, 0666)
 	if err != nil {
 		log.Println(err)
@@ -230,10 +242,12 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 	}
 	defer f.Close()
 
-	h := md5.New()
-	mw := io.MultiWriter(f, h)
-
-	written, err := io.Copy(mw, rf)
+	var written int64
+	if zr != nil {
+		written, err = io.Copy(f, zr)
+	} else {
+		written, err = io.Copy(f, tee)
+	}
 	if err != nil {
 		log.Println(err)
 		w.WriteHeader(http.StatusNotFound)
@@ -243,6 +257,11 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 
 	currentFileDetails.Size = written
 	currentFileDetails.Checksum = fmt.Sprintf("%x", h.Sum(nil))
+
+	log.Print("file uploaded, size: ",
+		currentFileDetails.Size,
+		" ,md5: ",
+		currentFileDetails.Checksum)
 
 	out.Encode(currentFileDetails)
 }
