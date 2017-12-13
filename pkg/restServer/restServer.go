@@ -339,7 +339,7 @@ func startFlashing(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	out.Encode(status{Status: statStarting, Percent: 0})
+	out.Encode(status{Status: statStarting, Percent: 1})
 }
 
 func getFlashingState(w http.ResponseWriter, r *http.Request) {
@@ -370,6 +370,7 @@ func getFlashingState(w http.ResponseWriter, r *http.Request) {
 		s.Percent = 100
 	case flashromControl.StateError:
 		out.Encode(errorStatus{Error: errFlashVerificationFailed})
+		return
 	default:
 		out.Encode(errorStatus{Error: errBadParams})
 		return
