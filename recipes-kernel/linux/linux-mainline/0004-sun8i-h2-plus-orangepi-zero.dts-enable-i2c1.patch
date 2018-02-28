@@ -1,0 +1,35 @@
+From 380c62e70ce28c8fa60a634641bba03b029efdae Mon Sep 17 00:00:00 2001
+From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+Date: Wed, 28 Feb 2018 08:30:40 +0100
+Subject: [PATCH 4/4] sun8i-h2-plus-orangepi-zero.dts: enable i2c1
+
+Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+---
+ arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+index f3f142678e03..e957950431ad 100644
+--- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+@@ -121,7 +121,7 @@
+ 
+ &i2c1 {
+ 	status = "okay";
+-}
++};
+ 
+ &mmc0 {
+ 	pinctrl-names = "default";
+@@ -203,7 +203,7 @@
+ &uart2 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart2_pins>;
+-	status = "disabled";
++	status = "enabled";
+ };
+ 
+ &usb_otg {
+-- 
+2.7.4
+

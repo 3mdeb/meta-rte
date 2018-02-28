@@ -1,0 +1,28 @@
+From 71d07e53e62ffdfa03ab9f2c15d7656d7eb57cec Mon Sep 17 00:00:00 2001
+From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+Date: Wed, 28 Feb 2018 08:30:27 +0100
+Subject: [PATCH 3/4] sun8i-h2-plus-orangepi-zero.dts: enable uart2
+
+Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+---
+ arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+index 09a4e6567e01..f3f142678e03 100644
+--- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+@@ -119,6 +119,10 @@
+ 	status = "okay";
+ };
+ 
++&i2c1 {
++	status = "okay";
++}
++
+ &mmc0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&mmc0_pins_a>;
+-- 
+2.7.4
+
