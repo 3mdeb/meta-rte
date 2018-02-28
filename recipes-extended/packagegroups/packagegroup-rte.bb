@@ -10,6 +10,7 @@ PACKAGES = " \
     "
 
 RDEPENDS_packagegroup-core-rte = " \
+    bash \
     ser2net \
     flashrom \
     minicom \
