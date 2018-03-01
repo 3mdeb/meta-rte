@@ -18,4 +18,5 @@ RDEPENDS_packagegroup-core-rte = " \
     udev \
     usbutils \
     inetutils-telnet \
+    avahi-daemon \
     "
