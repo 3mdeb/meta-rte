@@ -1,7 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 #
 # 4.15.7
-PV = "4.16-rc3+git${SRCPV}"
+PV = "4.15.7+git${SRCPV}"
 SRCREV_pn-${PN} = "cb4a115a42867def71fdcbf0d7b714f268ff37fd"
 
 KBRANCH = "linux-4.15.y"
