@@ -71,4 +71,16 @@ RTE controller
 
 * Install `config/RteCtrl.cfg` to `/etc/RteCtrl/RteCtrl.cfg`
 
+* Install `web` directory to path pointed in `RteCtrl.cfg`:
+
+  ```
+  "web_directory" : "web",
+  ```
+
+* Adjust path to `flashrom` in `RteCtrl.cfg` if necessary:
+
+  ```
+  "flashrom_bin" : "/usr/local/sbin/flashrom",
+  ```
+
 ## Usage
