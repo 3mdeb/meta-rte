@@ -19,4 +19,5 @@ RDEPENDS_packagegroup-core-rte = " \
     usbutils \
     inetutils-telnet \
     avahi-daemon \
+    3mdeb-rtectrl \
     "
