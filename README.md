@@ -37,30 +37,38 @@ RTE controller
 
 * gorilla mux
 
-```
-go get github.com/gorilla/mux
-```
+  ```
+  go get github.com/gorilla/mux
+  ```
 
 ## Building
 
-```
-mkdir -p ~/go/src/3mdeb && cd ~/go/src/3mdeb
-git clone git@gitlab.com:3mdeb_rte/RteCtrl.git
-cd RteCtrl
-```
+* Clone:
+
+  ```
+  mkdir -p ~/go/src/3mdeb && cd ~/go/src/3mdeb
+  git clone git@gitlab.com:3mdeb_rte/RteCtrl.git
+  cd RteCtrl
+  ```
 
 > if $GOPATH is set, change `~/go` to `$GOPATH`
 
-For host system:
+* For host system:
 
-```
-go build
-```
+  ```
+  go build
+  ```
 
-For arm system:
+* For arm system:
 
-```
-GOARCH=arm go build
-```
+  ```
+  GOARCH=arm go build
+  ```
+
+## Installation
+
+* Install `RteCtrl` binary to `$PATH`
+
+* Install `config/RteCtrl.cfg` to `/etc/RteCtrl/RteCtrl.cfg`
 
 ## Usage
