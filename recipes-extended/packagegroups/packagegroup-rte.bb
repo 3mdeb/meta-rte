@@ -21,4 +21,5 @@ RDEPENDS_packagegroup-core-rte = " \
     avahi-daemon \
     3mdeb-rtectrl \
     can-utils \
+    i2c-tools \
     "
