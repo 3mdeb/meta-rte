@@ -20,4 +20,5 @@ RDEPENDS_packagegroup-core-rte = " \
     inetutils-telnet \
     avahi-daemon \
     3mdeb-rtectrl \
+    can-utils \
     "
