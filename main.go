@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	configFilePath := flag.String("c", "/etc/rteCtrl/rteCtrl.cfg", "path to config file")
+	configFilePath := flag.String("c", "/etc/RteCtrl/RteCtrl.cfg", "path to config file")
 	flag.Parse()
 
 	log.Println("reading", *configFilePath)
