@@ -1,0 +1,31 @@
+From fa9e4286d705627f09f8082bb3d8d2d7b3e47e87 Mon Sep 17 00:00:00 2001
+From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+Date: Thu, 8 Mar 2018 12:42:16 +0100
+Subject: [PATCH 2/5] sun8i-h2-plus-orangepi-zero.dts: add mcp23017 node
+
+Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+---
+ arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+index 8dbbb3127697..28ea7b214b68 100644
+--- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+@@ -113,6 +113,13 @@
+ 
+ &i2c1 {
+ 	status = "okay";
++
++	gpio21: gpio@21 {
++		compatible = "microchip,mcp23017";
++		gpio-controller;
++		#gpio-cells = <2>;
++		reg = <0x21>;
++	};
+ };
+ 
+ &mmc0 {
+-- 
+2.7.4
+
