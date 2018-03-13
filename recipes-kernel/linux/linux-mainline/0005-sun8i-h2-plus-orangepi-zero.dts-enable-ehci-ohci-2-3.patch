@@ -1,7 +1,7 @@
-From 5fbc7732553b95351aef9e2537c5629bff6755ed Mon Sep 17 00:00:00 2001
+From 0b866741ed6152495e1b0d056d67efaeeeefceef Mon Sep 17 00:00:00 2001
 From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 Date: Thu, 8 Mar 2018 13:50:58 +0100
-Subject: [PATCH 5/5] sun8i-h2-plus-orangepi-zero.dts: enable ehci/ohci[2,3]
+Subject: [PATCH 5/7] sun8i-h2-plus-orangepi-zero.dts: enable ehci/ohci[2,3]
 
 Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
  1 file changed, 16 insertions(+)
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 40c521efd13d..5d2c0b1784b2 100644
+index b51a998..0dde890 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 @@ -104,6 +104,14 @@

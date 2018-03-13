@@ -14,6 +14,8 @@ SRC_URI = " \
     file://0003-sun8i-h2-plus-orangepi-zero.dts-enable-uart2.patch \
     file://0004-sun8i-h2-plus-orangepi-zero.dts-enable-spi1.patch \
     file://0005-sun8i-h2-plus-orangepi-zero.dts-enable-ehci-ohci-2-3.patch \
+    file://0006-drivers-spi-spidev.c-add-spidev-to-compatible-list.patch \
+    file://0007-sun8i-h2-plus-orangepi-zero.dts-enable-spidev.patch \
     "
 
 SRC_URI += " \
