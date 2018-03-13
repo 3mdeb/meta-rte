@@ -415,9 +415,9 @@ func Start(address, webDir string, g *gpioControl.Gpio, f *flashromControl.Flash
 
 	tempRomFile = fmt.Sprintf("%s/%s", os.TempDir(), romFilename)
 
-	fs := http.FileServer(http.Dir("web"))
+	fs := http.FileServer(http.Dir(webDir))
 
-	files, err := ioutil.ReadDir("web")
+	files, err := ioutil.ReadDir(webDir)
 	if err != nil {
 		log.Fatal(err)
 	}
