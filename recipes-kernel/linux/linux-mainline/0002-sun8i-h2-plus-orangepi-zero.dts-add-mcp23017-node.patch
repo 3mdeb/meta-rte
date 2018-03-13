@@ -17,11 +17,11 @@ index 8dbbb3127697..28ea7b214b68 100644
  &i2c1 {
  	status = "okay";
 +
-+	gpio21: gpio@21 {
++	gpio20: gpio@20 {
 +		compatible = "microchip,mcp23017";
 +		gpio-controller;
 +		#gpio-cells = <2>;
-+		reg = <0x21>;
++		reg = <0x20>;
 +	};
  };
  
