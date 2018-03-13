@@ -14,6 +14,7 @@ RDEPENDS_packagegroup-core-rte = " \
     ser2net \
     flashrom \
     minicom \
+    tmux \
     systemd \
     udev \
     usbutils \
