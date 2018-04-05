@@ -13,11 +13,18 @@ type PinConfig struct {
 	SysGpio     uint   `json:"sys_gpio"`
 }
 
+type CmdIds struct {
+	Power int `json:"power"`
+	Reset int `json:"reset"`
+	Relay int `json:"relay"`
+}
+
 type Config struct {
 	ServerAddress string      `json:"server_address"`
 	WebDir        string      `json:"web_directory"`
 	FlashromBin   string      `json:"flashrom_bin"`
 	SysGpioPath   string      `json:"sys_gpio_path"`
+	CommandIDs    CmdIds      `json:"cmd_id"`
 	Gpios         []PinConfig `json:"gpios"`
 }
 

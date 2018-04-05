@@ -3,6 +3,11 @@
     "web_directory" : "web",
     "flashrom_bin" : "test/flashrom",
     "sys_gpio_path" : "test/gpio",
+    "cmd_id" : {
+        "power" : 9,
+        "reset" : 8,
+        "relay" : 0
+    },
     "gpios" : [
         {
             "id" : 0,
