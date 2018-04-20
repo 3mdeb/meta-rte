@@ -1,0 +1,54 @@
+From c3e974be548a4451b1354e8771daf249ba3cfbd5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20=C5=BBygowski?= <michal.zygowski@3mdeb.com>
+Date: Thu, 12 Apr 2018 09:56:44 +0200
+Subject: [PATCH 7/7] sun8i-h2-plus-orangepi-zero.dts: enable spidev
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Michał Żygowski <michal.zygowski@3mdeb.com>
+---
+ arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+index 0dde890..bd51ee6 100644
+--- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+@@ -180,7 +180,7 @@
+ 
+ &spi0 {
+ 	/* Disable SPI NOR by default: it optional on Orange Pi Zero boards */
+-	status = "disabled";
++	status = "okay";
+ 
+ 	flash@0 {
+ 		#address-cells = <1>;
+@@ -188,11 +188,24 @@
+ 		compatible = "mxicy,mx25l1606e", "winbond,w25q128";
+ 		reg = <0>;
+ 		spi-max-frequency = <40000000>;
++		status = "disabled";
++	};
++
++	spidev@0 {
++		compatible = "spidev";
++		reg = <0>;
++		spi-max-frequency = <40000000>;
+ 	};
+ };
+ 
+ &spi1 {
+ 	status = "okay";
++
++	spidev@0 {
++		compatible = "spidev";
++		reg = <0>;
++		spi-max-frequency = <40000000>;
++	};
+ };
+ 
+ &uart0 {
+-- 
+2.7.4
+
