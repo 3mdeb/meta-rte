@@ -1,7 +1,7 @@
-From f43f41084853df03b03b01eecd91b068b71b05a6 Mon Sep 17 00:00:00 2001
+From 162d7b2fab1cd44015d388841e9e7a6e7caff5ec Mon Sep 17 00:00:00 2001
 From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 Date: Thu, 8 Mar 2018 13:48:55 +0100
-Subject: [PATCH 3/5] sun8i-h2-plus-orangepi-zero.dts: enable uart2
+Subject: [PATCH 3/7] sun8i-h2-plus-orangepi-zero.dts: enable uart2
 
 Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 28ea7b214b68..cc9148652127 100644
+index 9409249..8a06246 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 @@ -190,7 +190,7 @@

@@ -1,7 +1,7 @@
-From c5605668118208990354331fba4d07744933958e Mon Sep 17 00:00:00 2001
+From 02b6de4a0b947e586d6958272d673509fe0406d2 Mon Sep 17 00:00:00 2001
 From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 Date: Thu, 8 Mar 2018 12:40:30 +0100
-Subject: [PATCH 1/5] sun8i-h2-plus-orangepi-zero.dts: enable i2c1
+Subject: [PATCH 1/7] sun8i-h2-plus-orangepi-zero.dts: enable i2c1
 
 Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 6713d0f2b3f4..8dbbb3127697 100644
+index 6713d0f..8dbbb31 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 @@ -111,6 +111,10 @@
