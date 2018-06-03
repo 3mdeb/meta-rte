@@ -15,6 +15,11 @@ PV = "0.1+${SRCREV}"
 # this indicates the folder to run do_compile from.
 S="${WORKDIR}/git"
 
+PACKAGES =+ "cbfstool ifdtool"
+
+FILES_cbfstool = "${bindir}/cbfstool"
+FILES_ifdtool = "${bindir}/ifdtool"
+
 # this command will be run to compile your source code. it assumes you are in the
 # directory indicated by S. i'm just going to use make and rely on my Makefile
 do_compile () {
