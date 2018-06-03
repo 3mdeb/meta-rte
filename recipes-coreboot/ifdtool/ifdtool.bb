@@ -2,14 +2,14 @@ DESCRIPTION = "ifdtool - dump Intel Firmware Descriptor information"
 SECTION = "coreboot"
 HOMEPAGE = "https://github.com/coreboot/coreboot/README.md"
 
-LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
-DEPENDS = ""
-
+LICENSE = "GPLv2"
+LIC_FILES_CHKSUM = "https://github.com/coreboot/coreboot/COPYING;md5=751419260aa954499f7abaabaa882bbe"
 
 SRC_URI = "git://git@github.com/coreboot/coreboot.git;protocol=https;branch=master"
+SRC_URI += "gitsm://git@github.com/coreboot/coreboot.git;protocol=https;branch=master"
 
-SRCREV = "${AUTOREV}"
+# checkout 4.8.1 tag
+SRCREV = "6794ce02d45273427c1c6675950c8468380c040a"
 
 PV = "0.1+${SRCREV}"
 
@@ -19,8 +19,7 @@ S="${WORKDIR}/git"
 # this command will be run to compile your source code. it assumes you are in the
 # directory indicated by S. i'm just going to use make and rely on my Makefile
 do_compile () {
-    git submodule update --init --checkout
-    make -C util/ifdtool
+    oe_runmake -C util/ifdtool
 }
  
 # this will copy the compiled file and place it in ${bindir}, which is /usr/bin
