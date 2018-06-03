@@ -5,8 +5,7 @@ HOMEPAGE = "https://github.com/coreboot/coreboot/README.md"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "https://github.com/coreboot/coreboot/COPYING;md5=751419260aa954499f7abaabaa882bbe"
 
-SRC_URI = "git://git@github.com/coreboot/coreboot.git;protocol=https;branch=master"
-SRC_URI += "gitsm://git@github.com/coreboot/coreboot.git;protocol=https;branch=master"
+SRC_URI = "gitsm://git@github.com/coreboot/coreboot.git;protocol=https;branch=master"
 
 # checkout 4.8.1 tag
 SRCREV = "6794ce02d45273427c1c6675950c8468380c040a"
