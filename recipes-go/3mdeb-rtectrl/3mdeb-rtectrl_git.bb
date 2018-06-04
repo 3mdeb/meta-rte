@@ -17,15 +17,10 @@ GO_INSTALL = "${GO_IMPORT}"
 inherit go
 
 FILES_${PN} += "\
-    ${sysconfdir}/RteCtrl/RteCtrl.cfg \
     ${datadir}/RteWeb/* \
     "
 
 do_install_append() {
-    # configuration file
-    install -d ${D}${sysconfdir}/RteCtrl
-    install -m 0644 ${S}/src/${GO_IMPORT}/config/RteCtrl.cfg ${D}${sysconfdir}/RteCtrl/
-
     # webserver files
     install -d ${D}${datadir}/RteWeb
     install -m 0644 ${S}/src/${GO_IMPORT}/web/index.html ${D}${datadir}/RteWeb
