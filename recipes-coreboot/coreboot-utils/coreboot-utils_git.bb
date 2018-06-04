@@ -20,6 +20,9 @@ PACKAGES =+ "cbfstool ifdtool"
 FILES_cbfstool = "${bindir}/cbfstool"
 FILES_ifdtool = "${bindir}/ifdtool"
 
+INSANE_SKIP_cbfstool = "ldflags"
+INSANE_SKIP_ifdtool = "ldflags"
+
 # this command will be run to compile your source code. it assumes you are in the
 # directory indicated by S. i'm just going to use make and rely on my Makefile
 do_compile () {
