@@ -23,4 +23,6 @@ RDEPENDS_packagegroup-core-rte = " \
     3mdeb-rtectrl \
     can-utils \
     i2c-tools \
+    ifdtool \
+    cbfstool \
     "

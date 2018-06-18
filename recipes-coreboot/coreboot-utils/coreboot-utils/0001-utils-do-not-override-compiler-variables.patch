@@ -1,0 +1,50 @@
+From 8f8e70702ff375ef4b4e583011d233fae69db3bd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20=C5=BBygowski?= <michal.zygowski@3mdeb.com>
+Date: Mon, 4 Jun 2018 08:51:42 +0200
+Subject: [PATCH] utils: do not override compiler variables
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Michał Żygowski <michal.zygowski@3mdeb.com>
+---
+ util/cbfstool/Makefile |  1 +
+ util/ifdtool/Makefile  | 10 +++++-----
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/util/cbfstool/Makefile b/util/cbfstool/Makefile
+index ba8fdffb89..ae9f6dfada 100644
+--- a/util/cbfstool/Makefile
++++ b/util/cbfstool/Makefile
+@@ -8,6 +8,7 @@ PREFIX ?= /usr/local
+ BINDIR ?= $(PREFIX)/bin
+ INSTALL ?= /usr/bin/install
+ OBJCOPY ?= objcopy
++LDFLAGS ?= $(LDFLAGS) --hash-style=gnu
+ 
+ VBOOT_SOURCE ?= $(top)/3rdparty/vboot
+ 
+diff --git a/util/ifdtool/Makefile b/util/ifdtool/Makefile
+index 936aa50f90..74fd4dcef8 100644
+--- a/util/ifdtool/Makefile
++++ b/util/ifdtool/Makefile
+@@ -15,11 +15,11 @@
+ 
+ PROGRAM = ifdtool
+ 
+-CC      = gcc
+-INSTALL = /usr/bin/install
+-PREFIX  = /usr/local
+-CFLAGS  = -O2 -g -Wall -W -Werror -I../../src/commonlib/include
+-LDFLAGS =
++CC      ?= $(CC)
++INSTALL ?= /usr/bin/install
++PREFIX  ?= /usr/local
++CFLAGS  += -O2 -g -Wall -W -Werror -I../../src/commonlib/include
++LDFLAGS ?= $(LDFLAGS)
+ 
+ OBJS = ifdtool.o
+ 
+-- 
+2.17.0
+
