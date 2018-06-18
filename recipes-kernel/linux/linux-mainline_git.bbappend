@@ -24,4 +24,5 @@ SRC_URI = " \
 SRC_URI += " \
     file://mcp23017.cfg \
     file://can-serial.cfg \
+    file://usb-serial.cfg \
     "
