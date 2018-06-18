@@ -1,0 +1,11 @@
+[Unit]
+Description=RTE REST API server
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/RteCtrl
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
