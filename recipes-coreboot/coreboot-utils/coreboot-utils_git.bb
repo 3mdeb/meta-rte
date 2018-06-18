@@ -30,7 +30,7 @@ INSANE_SKIP_ifdtool = "ldflags"
 # directory indicated by S. i'm just going to use make and rely on my Makefile
 do_compile () {
     oe_runmake -C util/cbfstool
-    oe_runmake -C util/ifdtool	
+    oe_runmake -C util/ifdtool
 }
  
 # this will copy the compiled file and place it in ${bindir}, which is /usr/bin
