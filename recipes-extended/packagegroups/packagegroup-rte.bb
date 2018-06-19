@@ -1,18 +1,20 @@
 SUMMARY = "RTE support packagegroup"
-DESCRIPTION = "Support packagegroup which allows to take advantage of Remote \
-               Testing Environment board features"
+DESCRIPTION = "Support packagegroups which allow to take advantage of the \
+Remote Testing Environment board features"
 PR = "r1"
 
 inherit packagegroup
 
 PACKAGES = " \
-    packagegroup-core-rte \
+    packagegroup-rte-core \
+    packagegroup-rte-imx \
+    packagegroup-rte-coreboot \
     "
 
-RDEPENDS_packagegroup-core-rte = " \
+# core system components
+RDEPENDS_packagegroup-rte-core = " \
     bash \
     ser2net \
-    flashrom \
     minicom \
     tmux \
     systemd \
@@ -21,8 +23,19 @@ RDEPENDS_packagegroup-core-rte = " \
     inetutils-telnet \
     avahi-daemon \
     3mdeb-rtectrl \
-    can-utils \
     i2c-tools \
+    "
+
+# packages useful for i.MX platforms testing
+RDEPENDS_packagegroup-rte-imx = " \
+    can-utils \
+    android-tools \
+    imx-usb-loader \
+    "
+
+# packages useful for testing coreboot on various platforms
+RDEPENDS_packagegroup-rte-coreboot = " \
+    flashrom \
     ifdtool \
     cbfstool \
     "
