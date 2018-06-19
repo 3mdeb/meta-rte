@@ -3,7 +3,7 @@ Description=RTE REST API server
 After=syslog.target
 
 [Service]
-Type=forking
+Type=simple
 ExecStart=/usr/bin/RteCtrl
 Restart=on-failure
 
