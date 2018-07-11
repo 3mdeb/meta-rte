@@ -9,6 +9,7 @@ PACKAGES = " \
     packagegroup-rte-core \
     packagegroup-rte-utils \
     packagegroup-rte-imx \
+    packagegroup-rte-stm \
     packagegroup-rte-coreboot \
     "
 
@@ -39,6 +40,11 @@ RDEPENDS_packagegroup-rte-imx = " \
     can-utils \
     android-tools \
     imx-usb-loader \
+    "
+
+# packages useful for STM32 MCUs testing
+RDEPENDS_packagegroup-rte-stm = " \
+    stlink \
     "
 
 # packages useful for testing coreboot on various platforms
