@@ -1,0 +1,42 @@
+From 6a11bf7905a64ee2ac442f44866c31a01e37e388 Mon Sep 17 00:00:00 2001
+From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+Date: Wed, 11 Jul 2018 23:26:30 +0200
+Subject: [PATCH] remove CMAKE_LIBRARY_PATH from CMakeLists path
+
+Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+---
+ CMakeLists.txt         | 2 +-
+ include/CMakeLists.txt | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d2be523bfad3..7b8bddb81458 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@ set(PROJECT_DESCRIPTION "Open source version of the STMicroelectronics Stlink To
+ set(STLINK_UDEV_RULES_DIR "/etc/udev/rules.d" CACHE PATH "Udev rules directory")
+ set(STLINK_MODPROBED_DIR "/etc/modprobe.d" CACHE PATH "modprobe.d directory")
+ set(LIB_INSTALL_DIR "lib" CACHE PATH "Main library directory")
+-set(STLINK_LIBRARY_PATH "${LIB_INSTALL_DIR}/${CMAKE_LIBRARY_PATH}" CACHE PATH "Target lib directory")
++set(STLINK_LIBRARY_PATH "${LIB_INSTALL_DIR}" CACHE PATH "Target lib directory")
+ 
+ option(STLINK_GENERATE_MANPAGES "Generate manpages with pandoc" OFF)
+ 
+diff --git a/include/CMakeLists.txt b/include/CMakeLists.txt
+index 0b5a443c0be2..b7329883b58d 100644
+--- a/include/CMakeLists.txt
++++ b/include/CMakeLists.txt
+@@ -7,8 +7,8 @@ file(GLOB STLINK_HEADERS
+ 	"${CMAKE_BINARY_DIR}/include/stlink/*.h"
+ )
+ install(FILES ${CMAKE_SOURCE_DIR}/include/stlink.h
+-	DESTINATION include/${CMAKE_LIBRARY_PATH}
++	DESTINATION include
+ )
+ install(FILES ${STLINK_HEADERS}
+-	DESTINATION include/${CMAKE_LIBRARY_PATH}/stlink
++	DESTINATION include/stlink
+ )
+-- 
+2.17.1
+
