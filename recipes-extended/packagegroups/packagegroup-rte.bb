@@ -7,6 +7,7 @@ inherit packagegroup
 
 PACKAGES = " \
     packagegroup-rte-core \
+    packagegroup-rte-utils \
     packagegroup-rte-imx \
     packagegroup-rte-coreboot \
     "
@@ -24,6 +25,13 @@ RDEPENDS_packagegroup-rte-core = " \
     avahi-daemon \
     3mdeb-rtectrl \
     i2c-tools \
+    "
+
+RDEPENDS_packagegroup-rte-utils = " \
+    e2fsprogs-e2fsck \
+    e2fsprogs-mke2fs \
+    e2fsprogs-badblocks \
+    e2fsprogs-resize2fs \
     "
 
 # packages useful for i.MX platforms testing
