@@ -4,6 +4,7 @@ IMAGE_INSTALL_append = " \
    packagegroup-rte-core \
    packagegroup-rte-utils \
    packagegroup-rte-imx \
+   packagegroup-rte-stm \
    packagegroup-rte-coreboot \
    "
 
