@@ -33,6 +33,8 @@ RDEPENDS_packagegroup-rte-utils = " \
     e2fsprogs-mke2fs \
     e2fsprogs-badblocks \
     e2fsprogs-resize2fs \
+    wget \
+    ca-certificates \
     "
 
 # packages useful for i.MX platforms testing
