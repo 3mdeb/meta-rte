@@ -40,6 +40,7 @@ RDEPENDS_packagegroup-rte-imx = " \
     can-utils \
     android-tools \
     imx-usb-loader \
+    udev-rules-rte \
     "
 
 # packages useful for STM32 MCUs testing
