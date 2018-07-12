@@ -33,6 +33,8 @@ RDEPENDS_packagegroup-rte-utils = " \
     e2fsprogs-mke2fs \
     e2fsprogs-badblocks \
     e2fsprogs-resize2fs \
+    wget \
+    ca-certificates \
     "
 
 # packages useful for i.MX platforms testing
@@ -40,6 +42,7 @@ RDEPENDS_packagegroup-rte-imx = " \
     can-utils \
     android-tools \
     imx-usb-loader \
+    udev-rules-rte \
     "
 
 # packages useful for STM32 MCUs testing
