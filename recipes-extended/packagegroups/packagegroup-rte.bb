@@ -35,6 +35,17 @@ RDEPENDS_packagegroup-rte-utils = " \
     e2fsprogs-resize2fs \
     wget \
     ca-certificates \
+    coreutils \
+    bzip2 \
+    gzip \
+    zlib \
+    tar \
+    util-linux \
+    tzdata \
+    sysfsutils \
+    grep \
+    gawk \
+    sed \
     "
 
 # packages useful for i.MX platforms testing
