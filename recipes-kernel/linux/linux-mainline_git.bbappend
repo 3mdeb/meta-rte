@@ -2,10 +2,10 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 
-PV = "4.17.10+git${SRCPV}"
-SRCREV_pn-${PN} = "50f9e029a6f9f440b8da4259fb7f9b879361368a"
+PV = "4.18.6+git${SRCPV}"
+SRCREV_pn-${PN} = "3a2c23838bc57431265ff0c3682e826f3315bfa8"
 
-KBRANCH = "linux-4.17.y"
+KBRANCH = "linux-4.18.y"
 
 SRC_URI = " \
     git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=git;branch=${KBRANCH} \
