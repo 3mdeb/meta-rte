@@ -26,6 +26,7 @@ RDEPENDS_packagegroup-rte-core = " \
     avahi-daemon \
     3mdeb-rtectrl \
     i2c-tools \
+    openssh-sftp-server \
     "
 
 RDEPENDS_packagegroup-rte-utils = " \
