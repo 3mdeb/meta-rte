@@ -46,6 +46,12 @@ RDEPENDS_packagegroup-rte-utils = " \
     grep \
     gawk \
     sed \
+    procps \
+    psmisc \
+    iproute2 \
+    iputils \
+    less \
+    nfs-utils \
     "
 
 # packages useful for i.MX platforms testing
