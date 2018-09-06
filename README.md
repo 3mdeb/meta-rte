@@ -26,6 +26,9 @@ for usage information.
 
 * Update change log:
 
+> [auto-changelog](https://github.com/CookPete/auto-changelog) tool is used
+> there
+
 ```.bash
 generate-changelog.sh
 ```
