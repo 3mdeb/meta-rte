@@ -24,3 +24,9 @@ SRC_URI += " \
     file://can-serial.cfg \
     file://usb-serial.cfg \
     "
+
+# mandatory when providing defocnfig file from "make savedefconfig"
+KCONFIG_MODE = "--alldefconfig"
+
+KERNEL_IMAGETYPE_orange-pi-zero = "zImage"
+DEFAULT_PREFERENCE_orange-pi-zero = "1"
