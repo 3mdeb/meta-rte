@@ -15,6 +15,7 @@ PACKAGES = " \
 
 # core system components
 RDEPENDS_packagegroup-rte-core = " \
+    kernel-modules \
     bash \
     ser2net \
     minicom \
