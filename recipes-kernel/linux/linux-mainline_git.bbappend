@@ -23,6 +23,7 @@ SRC_URI += " \
     file://mcp23017.cfg \
     file://can-serial.cfg \
     file://usb-serial.cfg \
+    file://magic-sysrq.cfg \
     "
 
 # mandatory when providing defocnfig file from "make savedefconfig"
