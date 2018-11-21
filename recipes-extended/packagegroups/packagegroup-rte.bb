@@ -54,6 +54,9 @@ RDEPENDS_packagegroup-rte-utils = " \
     iputils \
     less \
     nfs-utils \
+    bc \
+    python3 \
+    python3-modules \
     "
 
 # packages useful for i.MX platforms testing
@@ -67,6 +70,7 @@ RDEPENDS_packagegroup-rte-imx = " \
 # packages useful for STM32 MCUs testing
 RDEPENDS_packagegroup-rte-stm = " \
     stlink \
+    openocd \
     "
 
 # packages useful for testing coreboot on various platforms
