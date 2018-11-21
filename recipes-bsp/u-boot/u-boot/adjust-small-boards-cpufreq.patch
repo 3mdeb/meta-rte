@@ -1,0 +1,20 @@
+From 623748f88db0d5b0c8db4d895455b52e0ec2648d Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Wed, 21 Nov 2018 10:49:32 +0000
+
+---
+ configs/orangepi_zero_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
+index c0d501e2c33a..1ef311b2537c 100644
+--- a/configs/orangepi_zero_defconfig
++++ b/configs/orangepi_zero_defconfig
+@@ -10,6 +10,7 @@ CONFIG_SPL_SPI_SUNXI=y
+ CONFIG_NR_DRAM_BANKS=1
+ # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
+ CONFIG_CONSOLE_MUX=y
++CONFIG_SYS_CLK_FREQ=480000000
+ # CONFIG_CMD_FLASH is not set
+ CONFIG_DEFAULT_DEVICE_TREE="sun8i-h2-plus-orangepi-zero"
+ CONFIG_SUN8I_EMAC=y
