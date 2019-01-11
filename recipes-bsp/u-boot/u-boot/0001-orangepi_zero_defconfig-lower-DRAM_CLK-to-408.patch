@@ -1,21 +1,26 @@
-From 4e1641880d015c13f206184ab5e4952ce62257e3 Mon Sep 17 00:00:00 2001
-From: OpenEmbedded <oe.patch@oe>
-Date: Wed, 21 Nov 2018 10:49:32 +0000
+From 51d733bf6730cd1504d6d88b529bdf6e881be721 Mon Sep 17 00:00:00 2001
+From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+Date: Fri, 11 Jan 2019 12:21:58 +0100
+Subject: [PATCH 1/2] orangepi_zero_defconfig: lower DRAM_CLK to 408
 
+Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
  configs/orangepi_zero_defconfig | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
-index 0da9c65093f8..c0d501e2c33a 100644
+index 8263803ee46a..ce2ffd80fe4c 100644
 --- a/configs/orangepi_zero_defconfig
 +++ b/configs/orangepi_zero_defconfig
 @@ -2,7 +2,7 @@ CONFIG_ARM=y
  CONFIG_ARCH_SUNXI=y
- CONFIG_SPL=y
+ CONFIG_SYS_TEXT_BASE=0x4a000000
  CONFIG_MACH_SUN8I_H3=y
 -CONFIG_DRAM_CLK=624
 +CONFIG_DRAM_CLK=408
  CONFIG_DRAM_ZQ=3881979
  CONFIG_DRAM_ODT_EN=y
  # CONFIG_VIDEO_DE2 is not set
+-- 
+2.7.4
+
