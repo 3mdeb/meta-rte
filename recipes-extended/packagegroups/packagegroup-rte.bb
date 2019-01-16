@@ -28,6 +28,7 @@ RDEPENDS_packagegroup-rte-core = " \
     3mdeb-rtectrl \
     i2c-tools \
     openssh-sftp-server \
+    swupdate \
     "
 
 RDEPENDS_packagegroup-rte-utils = " \
