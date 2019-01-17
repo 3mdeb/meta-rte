@@ -1,0 +1,50 @@
+software =
+{
+        version = "DISTRO_VERSION";
+
+        stable:
+        {
+                mmcblk0p2:
+                {
+                        images: (
+                        {
+                                filename = "core-image-minimal-orange-pi-zero.direct.p2.gz";
+                                device = "/dev/mmcblk0p2";
+                                installed-directly = TRUE;
+                                compressed = TRUE;
+                        }
+                        );
+                        bootenv: (
+                        {
+                                name = "next_entry";
+                                value = "2";
+                        },
+                        {
+                                name = "fback";
+                                value = "3";
+                        }
+                        );
+                };
+                mmcblk0p3:
+                {
+                        images: (
+                        {
+                                filename = "core-image-minimal-orange-pi-zero.direct.p2.gz";
+                                device = "/dev/mmcblk0p3";
+                                installed-directly = TRUE;
+                                compressed = TRUE;
+                        }
+                        );
+                        bootenv: (
+                        {
+                                name = "next_entry";
+                                value = "3";
+                        },
+                        {
+                                name = "fback";
+                                value = "2";
+                        }
+                        );
+                };
+        };
+}
