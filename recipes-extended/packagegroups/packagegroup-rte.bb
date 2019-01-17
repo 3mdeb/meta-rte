@@ -29,6 +29,7 @@ RDEPENDS_packagegroup-rte-core = " \
     i2c-tools \
     openssh-sftp-server \
     swupdate \
+    u-boot \
     "
 
 RDEPENDS_packagegroup-rte-utils = " \
