@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
-    file://adjust-default-dram-clockspeeds.patch\
-    file://adjust-small-boards-cpufreq.patch \
+    file://0001-orangepi_zero_defconfig-lower-DRAM_CLK-to-408.patch \
+    file://0002-orangepi_zero_defconfig-configure-CLK_FREQ.patch \
 "
