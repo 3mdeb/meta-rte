@@ -20,7 +20,8 @@ inside container, via the
 * [kas-docker] installation:
 
 ```
-wget -O ~/bin/kas-docker https://github.com/siemens/kas/blob/master/kas-docker
+wget -O ~/bin/kas-docker https://raw.githubusercontent.com/siemens/kas/master/kas-docker
+chmod +x ~/bin/kas-docker
 ```
 
 ### ssh configuration
@@ -34,7 +35,7 @@ private repositories:
 It is advised not to use your main SSH key for this purpose. Rather create a
 new one with limited access.
 
-* Create `~/ssh-dir` with following content:
+* Create `~/ssh-keys` directory with following content:
 
 ```
 config
@@ -42,7 +43,7 @@ gitlab_key_ro
 gitlab_key_ro.pub
 ```
 
-`~/ssh-key/config` file content:
+`~/ssh-keys/config` file content:
 
 ```
 Host gitlab.com
