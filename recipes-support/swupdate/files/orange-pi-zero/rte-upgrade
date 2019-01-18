@@ -28,8 +28,8 @@ if [ $# -eq 0 -o $# -gt 2 ]; then
 fi
 
 function errorCheck {
-    local error_msg="$1"
     local error_code="$?"
+    local error_msg="$1"
     if [ "$error_code" -ne 0  ]; then
         echo "$error_msg : $error_code"
         exit 1
