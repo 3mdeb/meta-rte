@@ -1,5 +1,7 @@
 software =
 {
+        version = "0.0.1";
+
         confirm:
         {
                 mmcblk0p2:
