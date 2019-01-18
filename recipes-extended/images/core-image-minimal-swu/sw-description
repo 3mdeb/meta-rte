@@ -2,7 +2,7 @@ software =
 {
         version = "@@DISTRO_VERSION@@";
 
-        stable:
+        rte:
         {
                 mmcblk0p2:
                 {
