@@ -30,7 +30,7 @@ repos:
 
   meta-swupdate:
     url: https://github.com/sbabic/meta-swupdate
-    refspec: f2d65d87485ada5a2d3a744fd7b9e46ec7e6b9f2
+    refspec: f2b44eb89dd1145444bbb976c693ad0f9382a2da
 
 
 bblayers_conf_header:
