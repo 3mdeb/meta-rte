@@ -1,0 +1,10 @@
+[Unit]
+Description=confirm upgraded software
+ConditionPathExists=/usr/share/swu-confirm.swu
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/rte-upgrade confirm
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+software =
+{
+        confirm:
+        {
+                mmcblk0p2:
+                {
+                        bootenv: (
+                        {
+                                name = "fback";
+                                value = "2";
+                        }
+                        );
+                };
+                mmcblk0p3:
+                {
+                        bootenv: (
+                        {
+                                name = "fback";
+                                value = "3";
+                        }
+                        );
+                };
+        };
+}
