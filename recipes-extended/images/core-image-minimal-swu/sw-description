@@ -26,7 +26,7 @@ software =
                         );
                         files: (
                         {
-                                filename = "zImage";
+                                filename = "zImage-orange-pi-zero.bin";
                                 path = "/2-zImage";
                                 device = "/dev/mmcblk0p1";
                                 filesystem = "vfat"
@@ -61,7 +61,7 @@ software =
                         );
                         files: (
                         {
-                                filename = "zImage";
+                                filename = "zImage-orange-pi-zero.bin";
                                 path = "/3-zImage";
                                 device = "/dev/mmcblk0p1";
                                 filesystem = "vfat"
