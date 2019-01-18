@@ -1,8 +1,6 @@
 software =
 {
-        version = "@@DISTRO_VERSION@@";
-
-        rte:
+        confirm:
         {
                 mmcblk0p2:
                 {
