@@ -18,6 +18,6 @@ saveenv
 run findfdt
 
 setenv bootargs console=${console} console=tty1 root=/dev/mmcblk0p${boot_part} rootwait panic=10 ${extra}
-load mmc 0:${boot_part} ${fdt_addr_r} ${boot_part}-${fdtfile}
+load mmc 0:${boot_part} ${fdt_addr_r} ${fdtfile}
 load mmc 0:${boot_part} ${kernel_addr_r} ${boot_part}-zImage
 bootz ${kernel_addr_r} - ${fdt_addr_r} || bootm ${kernel_addr_r} - ${fdt_addr_r}
