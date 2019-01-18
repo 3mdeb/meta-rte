@@ -1,6 +1,6 @@
 software =
 {
-        version = "DISTRO_VERSION";
+        version = "@@DISTRO_VERSION@@";
 
         stable:
         {
