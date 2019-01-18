@@ -1,19 +1,23 @@
-LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302 \
-                   "
+DESCRIPTION = "Recipe generating SWU image for RTE"
+SECTION = ""
 
-# IMAGE_DEPENDS: list of Yocto images that contains a root filesystem
-# it will be ensured they are built before creating swupdate image
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
+
+# Add all local files to be added to the SWU
+# sw-description must always be in the list.
+# You can extend with scripts or wahtever you need
+SRC_URI = " \
+    file://sw-description \
+    "
+
+# images to build before building swupdate image
 IMAGE_DEPENDS = "core-image-minimal"
 
-# SWUPDATE_IMAGES: list of images that will be part of the compound image
-# the list can have any binaries - images must be in the DEPLOY directory
-SWUPDATE_IMAGES = " \
-                core-image-minimal \
-                "
+# images and files that will be included in the .swu image
+SWUPDATE_IMAGES = "core-image-minimal"
 
-SRC_URI_append = "file://sw-description \
-                 "
-# Images can have multiple formats - define which image must be
-# taken to be put in the compound image
+# a deployable image can have multiple format, choose one
 SWUPDATE_IMAGES_FSTYPES[core-image-minimal] = ".direct.p2.gz"
+
+inherit swupdate
