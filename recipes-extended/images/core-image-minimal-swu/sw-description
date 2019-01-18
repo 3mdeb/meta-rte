@@ -30,12 +30,6 @@ software =
                                 path = "/2-zImage";
                                 device = "/dev/mmcblk0p1";
                                 filesystem = "vfat"
-                        },
-                        {
-                                filename = "sun8i-h2-plus-orangepi-zero.dtb";
-                                path = "/2-sun8i-h2-plus-orangepi-zero.dtb";
-                                device = "/dev/mmcblk0p1";
-                                filesystem = "vfat"
                         }
                         );
                 };
@@ -63,12 +57,6 @@ software =
                         {
                                 filename = "zImage-orange-pi-zero.bin";
                                 path = "/3-zImage";
-                                device = "/dev/mmcblk0p1";
-                                filesystem = "vfat"
-                        },
-                        {
-                                filename = "sun8i-h2-plus-orangepi-zero.dtb";
-                                path = "/3-sun8i-h2-plus-orangepi-zero.dtb";
                                 device = "/dev/mmcblk0p1";
                                 filesystem = "vfat"
                         }
