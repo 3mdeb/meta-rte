@@ -82,6 +82,11 @@ function upgradeFromFile {
         exit 1
     fi
 
+    if [ ! -f "$swu_file" ]; then
+        echo "\"$swu_file\" does not exist"
+        exit 1
+    fi
+
     checkCurrentPartition
     local current_part=$?
     if [ $current_part -eq 2 ]; then
