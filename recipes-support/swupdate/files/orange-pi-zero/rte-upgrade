@@ -1,0 +1,130 @@
+#!/bin/sh
+
+PART2="mmcblk0p2"
+PART3="mmcblk0p3"
+CONFIRM_SWU="/usr/share/swu-confirm.swu"
+
+function printHelp {
+cat <<EOF
+
+Usage: ./$(basename ${0}) command [filename]
+
+    Commands:
+        help                 print this help
+        confirm              confirm current system as default
+        upgrade SWU_FILE     upgrade system using given SWU_FILE
+
+    Examples:
+        $0 confirm
+        $0 upgrade core-image-minimal-swu.swu
+
+EOF
+exit 1
+}
+
+if [ $# -eq 0 -o $# -gt 2 ]; then
+    echo "Invalid number of arguments"
+    printHelp
+fi
+
+function errorCheck {
+    local error_code="$?"
+    local error_msg="$1"
+    if [ "$error_code" -ne 0  ]; then
+        echo "$error_msg : $error_code"
+        exit 1
+    fi
+}
+
+function checkCurrentPartition {
+    if mount | grep "$PART2 on /" > /dev/null; then
+        echo "Current partition is $PART2"
+        return 2
+    elif mount | grep "${PART3} on /" > /dev/null; then
+        echo "Current partition is $PART3"
+        return 3
+    else
+        return 0
+    fi
+}
+
+function swupdateConfirm {
+    if [ -f $CONFIRM_SWU ]; then
+        checkCurrentPartition
+        local current_part=$?
+        if [ $current_part -eq 2 ]; then
+            swupdate -e "confirm,$PART2" -i $CONFIRM_SWU -v
+            errorCheck "SWUpdate confirm failed"
+            echo "Confirmed partition $PART2 as default"
+            rm $CONFIRM_SWU
+            errorCheck "Failed to remove $CONFIRM_SWU"
+        elif [ $current_part -eq 3 ]; then
+            swupdate -e "confirm,$PART3" -i $CONFIRM_SWU -v
+            errorCheck "SWUpdate confirm failed"
+            echo "Confirmed partition $PART3 as default"
+            rm $CONFIRM_SWU
+            errorCheck "Failed to remove $CONFIRM_SWU"
+        else
+            echo "Unexpected rootfs partition"
+            exit 1
+        fi
+    else
+        echo "\"$CONFIRM_SWU\" file does not exist"
+	exit 0
+    fi
+}
+
+function upgradeFromFile {
+    local swu_file="$1"
+
+    if [ -z "$swu_file" ]; then
+        echo "SWU_FILE not given"
+        exit 1
+    fi
+
+    if [ ! -f "$swu_file" ]; then
+        echo "\"$swu_file\" does not exist"
+        exit 1
+    fi
+
+    checkCurrentPartition
+    local current_part=$?
+    if [ $current_part -eq 2 ]; then
+        swupdate -e "rte,$PART3" -i $swu_file -v
+        errorCheck "SWUpdate failed"
+    elif [ $current_part -eq 3 ]; then
+        swupdate -e "rte,$PART2" -i $swu_file -v
+        errorCheck "SWUpdate failed"
+    else
+        echo "Unexpected rootfs partition"
+        exit 1
+    fi
+
+    echo "Rebooting in 3..."
+    sleep 1
+    echo "Rebooting in 2..."
+    sleep 1
+    echo "Rebooting in 1..."
+    sleep 1
+    echo "Rebooting in 0..."
+    reboot
+}
+
+COMMAND="$1"
+SWU_FILE="$2"
+
+case "$COMMAND" in
+    "upgrade")
+        upgradeFromFile $SWU_FILE
+        ;;
+    "confirm")
+        swupdateConfirm
+        ;;
+    "help")
+        printHelp
+        ;;
+    *)
+        echo "Invalid command"
+        printHelp
+        ;;
+esac
