@@ -24,14 +24,6 @@ software =
                                 value = "3";
                         }
                         );
-                        files: (
-                        {
-                                filename = "zImage-orange-pi-zero.bin";
-                                path = "/2-zImage";
-                                device = "/dev/mmcblk0p1";
-                                filesystem = "vfat"
-                        }
-                        );
                 };
                 mmcblk0p3:
                 {
@@ -51,14 +43,6 @@ software =
                         {
                                 name = "fback";
                                 value = "2";
-                        }
-                        );
-                        files: (
-                        {
-                                filename = "zImage-orange-pi-zero.bin";
-                                path = "/3-zImage";
-                                device = "/dev/mmcblk0p1";
-                                filesystem = "vfat"
                         }
                         );
                 };

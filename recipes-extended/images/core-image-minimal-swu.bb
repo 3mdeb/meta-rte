@@ -14,17 +14,14 @@ SRC_URI = " \
 # images to build before building swupdate image
 IMAGE_DEPENDS = " \
     core-image-minimal \
-    virtual/kernel \
     "
 
 # images and files that will be included in the .swu image
 SWUPDATE_IMAGES = " \
     core-image-minimal \
-    zImage \
     "
 
 # a deployable image can have multiple format, choose one
 SWUPDATE_IMAGES_FSTYPES[core-image-minimal] = ".direct.p2.gz"
-SWUPDATE_IMAGES_FSTYPES[zImage] = ".bin"
 
 inherit swupdate
