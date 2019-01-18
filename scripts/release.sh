@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Our Jenkins in container has to run as root. But the Yocto build has to be
+# performed by the user.
+if [ "$IS_JENKINS" = "true" ]; then
+    GOSU="gosu builder"
+    mkdir -p build/
+    chown 1000:1000 build/
+else
+    GOSU=""
+fi
+
 function errorExit {
     errorMessage="$1"
     echo "$errorMessage"
@@ -39,7 +49,7 @@ function prepare {
 function build {
     local kas_file="$1"
     [ -z "$SSH_DIR" ] && errorExit "SSH_DIR not present in env"
-    ./kas-docker --ssh-dir $SSH_DIR build $kas_file
+    $GOSU ./kas-docker --ssh-dir $SSH_DIR build $kas_file
     errorCheck "Build failed"
 }
 
