@@ -99,6 +99,15 @@ function upgradeFromFile {
         echo "Unexpected rootfs partition"
         exit 1
     fi
+
+    echo "Rebooting in 3..."
+    sleep 1
+    echo "Rebooting in 2..."
+    sleep 1
+    echo "Rebooting in 1..."
+    sleep 1
+    echo "Rebooting in 0..."
+    reboot
 }
 
 COMMAND="$1"
