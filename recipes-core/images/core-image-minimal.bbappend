@@ -6,6 +6,7 @@ IMAGE_INSTALL_append = " \
    packagegroup-rte-imx \
    packagegroup-rte-stm \
    packagegroup-rte-coreboot \
+   locale-base-en-us \
    "
 
 # set root password
