@@ -32,12 +32,16 @@ VERSION="${TAG}"
 REMOTE_DIR="${REMOTE_DIR}/${VERSION}"
 
 BASE_IMAGE_NAME="core-image-minimal"
+BASE_SWU_IMAGE_NAME="core-image-minimal-swu"
 MACHINE="orange-pi-zero"
 IMAGE_EXTENSION="wic.gz"
+SWU_IMAGE_EXTENSION="swu"
 BUILD_DIR="${PWD}/build"
 DEPLOY_DIR="${BUILD_DIR}/tmp/deploy/images/${MACHINE}"
 LOCAL_IMAGE_NAME="${DEPLOY_DIR}/${BASE_IMAGE_NAME}-${MACHINE}.${IMAGE_EXTENSION}"
 REMOTE_IMAGE_NAME="${BASE_IMAGE_NAME}-${MACHINE}-${VERSION}.${IMAGE_EXTENSION}"
+LOCAL_SWU_IMAGE_NAME="${DEPLOY_DIR}/${BASE_SWU_IMAGE_NAME}-${MACHINE}.${SWU_IMAGE_EXTENSION}"
+REMOTE_SWU_IMAGE_NAME="${BASE_SWU_IMAGE_NAME}-${MACHINE}-${VERSION}.${SWU_IMAGE_EXTENSION}"
 
 function prepare {
     wget -O ./kas-docker https://raw.githubusercontent.com/siemens/kas/master/kas-docker
@@ -66,3 +70,4 @@ function uploadImage {
 prepare
 build "kas.yml"
 uploadImage $LOCAL_IMAGE_NAME $REMOTE_IMAGE_NAME
+uploadImage $LOCAL_SWU_IMAGE_NAME $REMOTE_SWU_IMAGE_NAME

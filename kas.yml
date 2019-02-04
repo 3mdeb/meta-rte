@@ -3,7 +3,9 @@ header:
 
 machine: orange-pi-zero
 distro: rte
-target: core-image-minimal
+target:
+  - core-image-minimal
+  - core-image-minimal-swu
 
 repos:
   meta-rte:
