@@ -6,8 +6,7 @@ meta-rte
 ## Prerequisites
 
 [kas](https://github.com/siemens/kas) installed. The preferred way is to use it
-inside container, via the
-[kas-docker script](https://github.com/siemens/kas/blob/master/kas-docker)
+inside container, via the [kas-docker] script.
 
 ### docker installation
 
@@ -27,8 +26,8 @@ chmod +x ~/bin/kas-docker
 ```
 mkdir rte-sdk
 cd rte-sdk
-git clone git@gitlab.com:3mdeb/rte/meta-rte.git
-kas-docker --ssh-dir ~/ssh-keys build meta-rte/kas.yml
+git clone https://github.com/3mdeb/meta-rte.git
+kas-docker build meta-rte/kas.yml
 ```
 
 ## Flash
@@ -91,3 +90,5 @@ generate-changelog.sh
 
 > We either can push directly to master, or via another PR. Neither solution
 > seems perfect for me at the moment.
+
+[kas-docker]: https://github.com/siemens/kas/blob/master/kas-docker
