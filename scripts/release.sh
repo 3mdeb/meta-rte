@@ -52,8 +52,7 @@ function prepare {
 
 function build {
     local kas_file="$1"
-    [ -z "$SSH_DIR" ] && errorExit "SSH_DIR not present in env"
-    $GOSU ./kas-docker --ssh-dir $SSH_DIR build $kas_file
+    $GOSU ./kas-docker build $kas_file
     errorCheck "Build failed"
 }
 
