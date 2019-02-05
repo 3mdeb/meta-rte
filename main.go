@@ -11,6 +11,8 @@ import (
 	"time"
 )
 
+var version = "undefined"
+
 // Flags
 var (
 	configFilePath  = flag.String("c", "/etc/RteCtrl/RteCtrl.cfg", "path to config file")
@@ -40,6 +42,8 @@ func toggleButton(g *gpioControl.Gpio, id int) {
 func main() {
 
 	flag.Parse()
+
+	log.Println("RteCtrl version:", version);
 
 	log.Println("reading", *configFilePath)
 

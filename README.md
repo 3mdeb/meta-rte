@@ -33,14 +33,6 @@ RTE controller
            +------+     +-----------+      +-------+
 ```
 
-## Dependencies
-
-* gorilla mux
-
-  ```
-  go get github.com/gorilla/mux
-  ```
-
 ## Building
 
 * Clone:
@@ -56,13 +48,19 @@ RTE controller
 * For host system:
 
   ```
-  go build
+  make
   ```
 
-* For arm system:
+* For `arm` system:
 
   ```
-  GOARCH=arm go build
+  make build-arm
+  ```
+
+* For `amd64` system:
+
+  ```
+  make build-amd64
   ```
 
 ## Installation
