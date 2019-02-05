@@ -1,6 +1,8 @@
 RTE controller
 ==============
 
+[![Build Status](https://travis-ci.com/3mdeb/RteCtrl.svg?branch=master)](https://travis-ci.com/3mdeb/RteCtrl)
+
 ## General architecture
 
 ```
@@ -33,21 +35,13 @@ RTE controller
            +------+     +-----------+      +-------+
 ```
 
-## Dependencies
-
-* gorilla mux
-
-  ```
-  go get github.com/gorilla/mux
-  ```
-
 ## Building
 
 * Clone:
 
   ```
   mkdir -p ~/go/src/3mdeb && cd ~/go/src/3mdeb
-  git clone git@gitlab.com:3mdeb_rte/RteCtrl.git
+  git clone git@github.com:3mdeb/RteCtrl.git
   cd RteCtrl
   ```
 
@@ -56,13 +50,19 @@ RTE controller
 * For host system:
 
   ```
-  go build
+  make
   ```
 
-* For arm system:
+* For `arm` system:
 
   ```
-  GOARCH=arm go build
+  make build-arm
+  ```
+
+* For `amd64` system:
+
+  ```
+  make build-amd64
   ```
 
 ## Installation
