@@ -39,7 +39,7 @@ RTE controller
 
   ```
   mkdir -p ~/go/src/3mdeb && cd ~/go/src/3mdeb
-  git clone git@gitlab.com:3mdeb_rte/RteCtrl.git
+  git clone git@github.com:3mdeb/RteCtrl.git
   cd RteCtrl
   ```
 
