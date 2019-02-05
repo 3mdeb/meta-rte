@@ -1,13 +1,13 @@
 DESCRIPTION = "RTE controller"
-SECTION = "net"
-HOMEPAGE = "https://gitlab.com/3mdeb/rte/RteCtrl/README.md"
+SECTION = "rte"
+HOMEPAGE = "https://github.com/3mdeb/RteCtrl/blob/master/README.md"
 
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+LIC_FILES_CHKSUM = "file://${S}/src/${GO_IMPORT}/LICENSE;md5=50335162666472aa33383f35cce3e355"
 
-SRC_URI = "git://git@gitlab.com/3mdeb/rte/RteCtrl.git;protocol=ssh;branch=master"
-SRCREV = "${AUTOREV}"
-PV = "0.1+${SRCREV}"
+TAG = "0.5.1"
+SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=master;tag=${TAG}"
+PV = "${TAG}"
 
 DEPENDS += "github.com-gorilla-mux"
 
