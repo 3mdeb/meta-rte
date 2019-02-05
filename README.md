@@ -3,8 +3,6 @@ meta-rte
 
 # Usage
 
-> [rte-oe-manifest](https://gitlab.com/3mdeb/rte/rte-oe-manifest) is deprecated
-
 ## Prerequisites
 
 [kas](https://github.com/siemens/kas) installed. The preferred way is to use it
@@ -22,36 +20,6 @@ inside container, via the
 ```
 wget -O ~/bin/kas-docker https://raw.githubusercontent.com/siemens/kas/master/kas-docker
 chmod +x ~/bin/kas-docker
-```
-
-### ssh configuration
-
-During fetch and build phases inside container, we need the access the following
-private repositories:
-
-* [meta-rte](https://gitlab.com/3mdeb/rte/meta-rte)
-* [RteCtrl](https://gitlab.com/3mdeb/rte/RteCtrl)
-
-It is advised not to use your main SSH key for this purpose. Rather create a
-new one with limited access.
-
-* Create `~/ssh-keys` directory with following content:
-
-```
-config
-gitlab_key_ro
-gitlab_key_ro.pub
-```
-
-`~/ssh-keys/config` file content:
-
-```
-Host gitlab.com
-    HostName       gitlab.com
-    User           git
-    IdentityFile   ~/.ssh/gitlab_key_ro
-    StrictHostKeyChecking no
-    IdentitiesOnly yes
 ```
 
 ## Build
