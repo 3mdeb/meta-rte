@@ -3,13 +3,10 @@ meta-rte
 
 # Usage
 
-> [rte-oe-manifest](https://gitlab.com/3mdeb/rte/rte-oe-manifest) is deprecated
-
 ## Prerequisites
 
 [kas](https://github.com/siemens/kas) installed. The preferred way is to use it
-inside container, via the
-[kas-docker script](https://github.com/siemens/kas/blob/master/kas-docker)
+inside container, via the [kas-docker] script.
 
 ### docker installation
 
@@ -24,43 +21,13 @@ wget -O ~/bin/kas-docker https://raw.githubusercontent.com/siemens/kas/master/ka
 chmod +x ~/bin/kas-docker
 ```
 
-### ssh configuration
-
-During fetch and build phases inside container, we need the access the following
-private repositories:
-
-* [meta-rte](https://gitlab.com/3mdeb/rte/meta-rte)
-* [RteCtrl](https://gitlab.com/3mdeb/rte/RteCtrl)
-
-It is advised not to use your main SSH key for this purpose. Rather create a
-new one with limited access.
-
-* Create `~/ssh-keys` directory with following content:
-
-```
-config
-gitlab_key_ro
-gitlab_key_ro.pub
-```
-
-`~/ssh-keys/config` file content:
-
-```
-Host gitlab.com
-    HostName       gitlab.com
-    User           git
-    IdentityFile   ~/.ssh/gitlab_key_ro
-    StrictHostKeyChecking no
-    IdentitiesOnly yes
-```
-
 ## Build
 
 ```
 mkdir rte-sdk
 cd rte-sdk
-git clone git@gitlab.com:3mdeb/rte/meta-rte.git
-kas-docker --ssh-dir ~/ssh-keys build meta-rte/kas.yml
+git clone https://github.com/3mdeb/meta-rte.git
+kas-docker build meta-rte/kas.yml
 ```
 
 ## Flash
@@ -114,4 +81,6 @@ SD card with the name `rte.conf`.
 
 * [Development process description](docs/development.md)
 
-* [Release process description](release.md)
+* [Release process description](docs/release.md)
+
+[kas-docker]: https://github.com/siemens/kas/blob/master/kas-docker
