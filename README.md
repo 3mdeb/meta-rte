@@ -89,6 +89,12 @@ Login: root
 Password: meta-rte
 ```
 
+## OpenVPN
+
+There is a possibility to use OpenVPN. The only thing you have to do is
+copy the config file to the `openvpn` folder on `storage` partition of
+SD card with the name `rte.conf`.
+
 # Development workflow
 
 ## Individual MR
