@@ -26,6 +26,9 @@ generate-changelog.sh
 
 * Commit and push change log
 
+> We either can push directly to master, or via another PR. Neither solution
+> seems perfect for me at the moment.
+
 ## Versioning scheme
 
 `meta-rte` is versioned using [semantic versioning](http://semver.org/) scheme

@@ -98,28 +98,14 @@ Password: meta-rte
 
 * Commit changes
 
-* Push on branch and create merge request
+* Push on branch and create pull request
 
 * Wait for review and merge
 
-## Release new version
+# Meta-RTE Yocto BSP documentation
 
-* Pull the merge events into local repository
+* [BSP layers description](docs/layer-description.md)
 
-* Bump `DISTRO_VERSION` in the `conf/distro/rte.conf` file
+* [Development process description](docs/development.md)
 
-* Create the tag
-
-* Update change log:
-
-> [auto-changelog](https://github.com/CookPete/auto-changelog) tool is used
-> there
-
-```.bash
-generate-changelog.sh
-```
-
-* Commit and push change log
-
-> We either can push directly to master, or via another PR. Neither solution
-> seems perfect for me at the moment.
+* [Release process description](release.md)
