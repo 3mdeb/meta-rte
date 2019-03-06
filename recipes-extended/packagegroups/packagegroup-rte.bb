@@ -30,6 +30,8 @@ RDEPENDS_packagegroup-rte-core = " \
     openssh-sftp-server \
     swupdate \
     u-boot \
+    openvpn \
+    openvpn-rte \
     "
 
 RDEPENDS_packagegroup-rte-utils = " \

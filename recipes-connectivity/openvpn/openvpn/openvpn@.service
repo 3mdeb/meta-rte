@@ -1,0 +1,13 @@
+[Unit]
+Description=Our version of openvpn service
+After=syslog.target network.target
+ConditionPathExists=/storage/openvpn/rte.conf
+
+[Service]
+PrivateTmp=true
+Type=forking
+PIDFile=/var/run/openvpn/%i.pid
+ExecStart=/usr/sbin/openvpn --daemon --writepid /var/run/openvpn/%i.pid --cd /storage/openvpn/ --config %i.conf
+
+[Install]
+WantedBy=multi-user.target

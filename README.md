@@ -56,6 +56,12 @@ Login: root
 Password: meta-rte
 ```
 
+## OpenVPN
+
+There is a possibility to use OpenVPN. The only thing you have to do is
+copy the config file to the `openvpn` folder on `storage` partition of
+SD card with the name `rte.conf`.
+
 # Development workflow
 
 ## Individual MR
@@ -65,30 +71,16 @@ Password: meta-rte
 
 * Commit changes
 
-* Push on branch and create merge request
+* Push on branch and create pull request
 
 * Wait for review and merge
 
-## Release new version
+# Meta-RTE Yocto BSP documentation
 
-* Pull the merge events into local repository
+* [BSP layers description](docs/layer-description.md)
 
-* Bump `DISTRO_VERSION` in the `conf/distro/rte.conf` file
+* [Development process description](docs/development.md)
 
-* Create the tag
-
-* Update change log:
-
-> [auto-changelog](https://github.com/CookPete/auto-changelog) tool is used
-> there
-
-```.bash
-generate-changelog.sh
-```
-
-* Commit and push change log
-
-> We either can push directly to master, or via another PR. Neither solution
-> seems perfect for me at the moment.
+* [Release process description](docs/release.md)
 
 [kas-docker]: https://github.com/siemens/kas/blob/master/kas-docker
