@@ -7,6 +7,7 @@ IMAGE_INSTALL_append = " \
    packagegroup-rte-stm \
    packagegroup-rte-coreboot \
    locale-base-en-us \
+   python3-setuptools \
    python3-wakeonlan \
    "
 
