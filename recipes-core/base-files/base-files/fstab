@@ -5,4 +5,4 @@ tmpfs                /run                 tmpfs      mode=0755,nodev,nosuid,stri
 tmpfs                /var/volatile        tmpfs      defaults              0  0
 
 /dev/mmcblk0p1       /boot/bootpart       vfat       defaults              0  0
-/dev/mmcblk0p4       /storage             ext4       defaults              0  0
+/dev/mmcblk0p4       /data                ext4       defaults              0  0
