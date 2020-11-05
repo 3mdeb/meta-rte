@@ -61,6 +61,7 @@ RDEPENDS_packagegroup-rte-utils = " \
     bc \
     python3 \
     python3-modules \
+    python3-wakeonlan \
     "
 
 # packages useful for i.MX platforms testing
