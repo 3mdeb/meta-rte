@@ -17,6 +17,10 @@ repos:
       meta:
       meta-poky:
       meta-yocto-bsp:
+    patches:
+      meta-rte:
+        repo: meta-rte
+        path: patches/0001-do-not-remove-wic-partitions.patch
 
   meta-sunxi:
     url: https://github.com/linux-sunxi/meta-sunxi
