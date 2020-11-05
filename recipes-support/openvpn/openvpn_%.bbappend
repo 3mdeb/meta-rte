@@ -16,4 +16,4 @@ do_install_append() {
 
 SYSTEMD_SERVICE_${PN}-rte = "openvpn@rte.service"
 SYSTEMD_PACKAGES += "${PN}-rte"
-SYSTEMD_AUTO_ENABLE_${PN}-rte = "enable"
+SYSTEMD_AUTO_ENABLE_${PN}-rte = "disable"
