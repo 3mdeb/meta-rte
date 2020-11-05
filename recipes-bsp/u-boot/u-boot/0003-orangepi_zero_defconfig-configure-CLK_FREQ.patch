@@ -1,0 +1,19 @@
+From 666b9939f0db8fc76c088fed12d0e401f7d5827f Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Wed, 4 Nov 2020 20:40:40 +0000
+Subject: [PATCH] orangepi_zero_defconfig: configure CLK_FREQ
+
+Signed-off-by: Kas User <kas@example.com>
+---
+ configs/orangepi_zero_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
+index f756107be2..bd77e3a318 100644
+--- a/configs/orangepi_zero_defconfig
++++ b/configs/orangepi_zero_defconfig
+@@ -16,3 +16,4 @@ CONFIG_SUN8I_EMAC=y
+ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_OHCI_HCD=y
+ CONFIG_SYS_USB_EVENT_POLL_VIA_INT_QUEUE=y
++CONFIG_SYS_CLK_FREQ=480000000

@@ -1,0 +1,23 @@
+From 4cd20556cdb20fa4cf6a95201855238c8617f181 Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Wed, 4 Nov 2020 20:39:53 +0000
+Subject: [PATCH] orangepi_zero_defconfig: lower DRAM_CLK to 408
+
+Signed-off-by: Kas User <kas@example.com>
+---
+ configs/orangepi_zero_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
+index 6fb2fbbda2..f756107be2 100644
+--- a/configs/orangepi_zero_defconfig
++++ b/configs/orangepi_zero_defconfig
+@@ -3,7 +3,7 @@ CONFIG_ARCH_SUNXI=y
+ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_SPL=y
+ CONFIG_MACH_SUN8I_H3=y
+-CONFIG_DRAM_CLK=624
++CONFIG_DRAM_CLK=408
+ # CONFIG_VIDEO_DE2 is not set
+ CONFIG_SPL_SPI_SUNXI=y
+ # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
