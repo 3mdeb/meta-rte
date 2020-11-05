@@ -75,7 +75,6 @@ RDEPENDS_packagegroup-rte-imx = " \
 
 # packages useful for STM32 MCUs testing
 RDEPENDS_packagegroup-rte-stm = " \
-    stlink \
     openocd \
     "
 
