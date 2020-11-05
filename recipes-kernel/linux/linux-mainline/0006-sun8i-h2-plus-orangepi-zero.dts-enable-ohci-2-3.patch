@@ -1,33 +1,18 @@
-From 0b866741ed6152495e1b0d056d67efaeeeefceef Mon Sep 17 00:00:00 2001
+From 99c64b5f660b47928532cdc12008c7386f153dc9 Mon Sep 17 00:00:00 2001
 From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Thu, 8 Mar 2018 13:50:58 +0100
-Subject: [PATCH 5/7] sun8i-h2-plus-orangepi-zero.dts: enable ehci/ohci[2,3]
+Date: Wed, 4 Nov 2020 21:25:50 +0100
+Subject: [PATCH 6/8] sun8i-h2-plus-orangepi-zero.dts: enable ohci[2,3]
 
 Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
- arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index b51a998..0dde890 100644
+index 47e16150a9ba..494f49a3e9f0 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -104,6 +104,14 @@
- 	status = "okay";
- };
- 
-+&ehci2 {
-+	status = "okay";
-+};
-+
-+&ehci3 {
-+	status = "okay";
-+};
-+
- &emac {
- 	phy-handle = <&int_mii_phy>;
- 	phy-mode = "mii";
-@@ -162,6 +170,14 @@
+@@ -181,6 +181,14 @@
  	status = "okay";
  };
  
@@ -43,5 +28,5 @@ index b51a998..0dde890 100644
  	/* Disable SPI NOR by default: it optional on Orange Pi Zero boards */
  	status = "disabled";
 -- 
-2.7.4
+2.25.1
 
