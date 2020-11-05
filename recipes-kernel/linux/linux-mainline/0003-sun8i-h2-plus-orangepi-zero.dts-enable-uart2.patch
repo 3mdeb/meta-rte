@@ -1,7 +1,7 @@
-From 162d7b2fab1cd44015d388841e9e7a6e7caff5ec Mon Sep 17 00:00:00 2001
+From 4099211f4e8d0bf780fb2935ce3ea6c70e02480b Mon Sep 17 00:00:00 2001
 From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Thu, 8 Mar 2018 13:48:55 +0100
-Subject: [PATCH 3/7] sun8i-h2-plus-orangepi-zero.dts: enable uart2
+Date: Wed, 4 Nov 2020 21:23:53 +0100
+Subject: [PATCH 3/8] sun8i-h2-plus-orangepi-zero.dts: enable uart2
 
 Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
@@ -9,10 +9,10 @@ Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 9409249..8a06246 100644
+index e30dae583f62..aabd425560f1 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -190,7 +190,7 @@
+@@ -201,7 +201,7 @@
  &uart2 {
  	pinctrl-names = "default";
  	pinctrl-0 = <&uart2_pins>;
@@ -22,5 +22,5 @@ index 9409249..8a06246 100644
  
  &usb_otg {
 -- 
-2.7.4
+2.25.1
 

@@ -1,0 +1,32 @@
+From 1847eb5e13f101b3f90b419753add9981688f906 Mon Sep 17 00:00:00 2001
+From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+Date: Wed, 4 Nov 2020 21:25:23 +0100
+Subject: [PATCH 5/8] sun8i-h2-plus-orangepi-zero.dts: enable ehci[2,3]
+
+Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+---
+ arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+index 27de08a80121..47e16150a9ba 100644
+--- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+@@ -124,6 +124,14 @@
+ 	status = "okay";
+ };
+ 
++&ehci2 {
++	status = "okay";
++};
++
++&ehci3 {
++	status = "okay";
++};
++
+ &emac {
+ 	phy-handle = <&int_mii_phy>;
+ 	phy-mode = "mii";
+-- 
+2.25.1
+

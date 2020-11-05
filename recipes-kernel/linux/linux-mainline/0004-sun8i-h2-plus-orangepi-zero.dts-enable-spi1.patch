@@ -1,7 +1,7 @@
-From ccdbe68dae3f96674868bfa34b4d4f27c10ac066 Mon Sep 17 00:00:00 2001
+From 0e09ea8e8ebefc6560d19d792db089b3d93ee44d Mon Sep 17 00:00:00 2001
 From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Thu, 8 Mar 2018 13:49:56 +0100
-Subject: [PATCH 4/7] sun8i-h2-plus-orangepi-zero.dts: enable spi1
+Date: Wed, 4 Nov 2020 21:24:30 +0100
+Subject: [PATCH 4/8] sun8i-h2-plus-orangepi-zero.dts: enable spi1
 
 Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
@@ -9,10 +9,10 @@ Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 8a06246..b51a998 100644
+index aabd425560f1..27de08a80121 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -175,6 +175,10 @@
+@@ -186,6 +186,10 @@
  	};
  };
  
@@ -22,7 +22,7 @@ index 8a06246..b51a998 100644
 +
  &uart0 {
  	pinctrl-names = "default";
- 	pinctrl-0 = <&uart0_pins_a>;
+ 	pinctrl-0 = <&uart0_pa_pins>;
 -- 
-2.7.4
+2.25.1
 
