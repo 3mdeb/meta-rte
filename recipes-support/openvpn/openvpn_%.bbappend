@@ -2,7 +2,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 PACKAGES =+ "${PN}-rte"
 
-RTE_VPN_CONFIG_DIR = "/storage/openvpn"
+RTE_VPN_CONFIG_DIR = "/data/openvpn"
 
 FILES_${PN}-rte = "${RTE_VPN_CONFIG_DIR}"
 
