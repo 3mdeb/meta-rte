@@ -10,7 +10,7 @@ S = "${WORKDIR}/git"
 
 inherit setuptools3
 
-RDEPENDS_${PN} += "python3-core"
+RDEPENDS_${PN} += "python3-core python3-pkg-resources ncurses"
 
 # WARNING: We were unable to map the following python package/module
 # dependencies to the bitbake packages which include them:
