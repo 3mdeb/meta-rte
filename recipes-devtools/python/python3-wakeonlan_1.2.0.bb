@@ -11,4 +11,4 @@ S = "${WORKDIR}/wakeonlan-${PV}"
 
 inherit setuptools3
 
-RDEPENDS_${PN} += "python3-core python3-io"
+RDEPENDS_${PN} += "python3-core python3-io python3-pkg-resources"
