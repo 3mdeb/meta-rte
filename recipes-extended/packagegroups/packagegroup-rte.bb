@@ -32,6 +32,8 @@ RDEPENDS_packagegroup-rte-core = " \
     u-boot \
     openvpn \
     openvpn-rte \
+    xradio-firmware \
+    xradio \
     "
 
 RDEPENDS_packagegroup-rte-utils = " \
@@ -63,6 +65,7 @@ RDEPENDS_packagegroup-rte-utils = " \
     python3-modules \
     python3-wakeonlan \
     python3-asciinema \
+    wpa-supplicant \
     "
 
 # packages useful for i.MX platforms testing
