@@ -83,4 +83,6 @@ SD card with the name `rte.conf`.
 
 * [Release process description](docs/release.md)
 
+* [Instruction of setting up the system features](docs/rte-setup.md)
+
 [kas-docker]: https://github.com/siemens/kas/blob/master/kas-docker
