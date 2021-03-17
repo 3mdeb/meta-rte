@@ -62,6 +62,14 @@ There is a possibility to use OpenVPN. The only thing you have to do is
 copy the config file to the `openvpn` folder on `storage` partition of
 SD card with the name `rte.conf`.
 
+## Serial
+
+You can access the DUT's serial connection from the RS232/UART port at
+`/dev/ttyS1`, for example, through Minicom:
+```sh
+minicom -D /dev/ttyS1
+```
+
 # Development workflow
 
 ## Individual MR
