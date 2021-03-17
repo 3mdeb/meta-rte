@@ -62,6 +62,61 @@ There is a possibility to use OpenVPN. The only thing you have to do is
 copy the config file to the `openvpn` folder on `storage` partition of
 SD card with the name `rte.conf`.
 
+## Serial
+
+You can access the DUT's serial connection from the RS232/UART port at
+`/dev/ttyS1`, for example, through Minicom:
+
+```
+# minicom -D /dev/ttyS1
+```
+
+All possible devices can be listed using following command:
+
+```
+# ls /dev/tty*
+```
+
+Usually, in case of serial communication using UART, device name can be
+`ttyUSBx`, where `x` can be a numeric value of 0, 1, 2, 3...
+
+### Telnet
+
+It is also possible to use telnet communication via RTE. On RTE there is serial
+to network proxy service called `ser2net`. Its status can be seen by running a
+command:
+
+```
+root@orange-pi-zero:~# systemctl -all | grep ser2net
+  ser2net.service           loaded     active     running
+```
+
+Service configuration is placed here:
+
+```
+root@orange-pi-zero:~# cat /etc/ser2net.conf 
+13542:telnet:16000:/dev/ttyS1:115200 8DATABITS NONE 1STOPBIT
+13541:telnet:16000:/dev/ttyUSB0:115200 8DATABITS NONE 1STOPBIT
+```
+
+The first value indicates the port for telnet communication, the path /dev/tty*
+indicates the path to the device with which the connection is made.
+
+Serial connection with the device can be established by command:
+
+```
+telnet <RTE_IP> <PORT>
+```
+
+for example:
+
+```
+telnet 192.168.4.170 13541
+```
+
+In this case, a serial connection will be made via RTE with IP 192.168.4.170
+with device `/dev/ttyUSB0` using above configuration.
+
 # Development workflow
 
 ## Individual MR
