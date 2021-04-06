@@ -69,7 +69,7 @@ rte-sdk
 
 `build` directory contains a set of sub-directories with configuration data
 (`conf` directory) and build results (`tmp` directory). Output files (e.g.
-builded images) can be found in `build/tmp/deploy/images/orange-pi-zero`.
+built images) can be found in `build/tmp/deploy/images/orange-pi-zero`.
 
 ### Building recipe
 
@@ -92,4 +92,4 @@ shown above.
 Once you are familiar with the `RTE Yocto - Development process description`,
 you can continue with the:
 
-* [release process](../release.md)
+* [release process](release.md)
