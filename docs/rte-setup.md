@@ -4,9 +4,11 @@
 
 ### Setup MAC adress at U-Boot
 
-After flashing the card with the new image the `MAC` is not changing.
-This situation may happen because the `MAC` address is stored in `U-Boot`
-environment variable. You can change the address by changing the variable from
+After flashing the card with the new image, the `MAC` will be generated from the
+board's serial id and stored in `U-Boot`'s environment variable on the first
+boot.
+
+You can change the address for a single boot by modifying the variable from
 `U-Boot` command line. Execute the following instructions:
 1. Stop loading the `U-Boot` by hitting any key:
     ```
@@ -22,5 +24,7 @@ environment variable. You can change the address by changing the variable from
     ```
 4. Restart the platform:
     ```
-    => reset
+    => run bootcmd
     ```
+
+After reboot, the MAC address will return to the original one.
