@@ -1,0 +1,65 @@
+commit b13771a4cee22c60db695e9c2942bfb179ae6f8a
+Author: Jakub Lecki <jakub.lecki@3mdeb.com>
+Date:   Tue Jul 27 09:33:02 2021 +0200
+
+    force recalculating the MAC address on each boot
+    
+    This is a walkaround for the problem of persisting MAC address when
+    running the system on multiple boards.
+    
+    Signed-off-by: Jakub Lecki <jakub.lecki@3mdeb.com>
+
+diff --git a/board/sunxi/board.c b/board/sunxi/board.c
+index 6afea6ef42e4..d26a1140a571 100644
+--- a/board/sunxi/board.c
++++ b/board/sunxi/board.c
+@@ -779,6 +779,7 @@ static void setup_environment(const void *fdt)
+ 	char serial_string[17] = { 0 };
+ 	unsigned int sid[4];
+ 	uint8_t mac_addr[6];
++	uint8_t mac_addr_stored[6];
+ 	char ethaddr[16];
+ 	int i, ret;
+ 
+@@ -815,9 +816,6 @@ static void setup_environment(const void *fdt)
+ 			else
+ 				sprintf(ethaddr, "eth%daddr", i);
+ 
+-			if (env_get(ethaddr))
+-				continue;
+-
+ 			/* Non OUI / registered MAC address */
+ 			mac_addr[0] = (i << 4) | 0x02;
+ 			mac_addr[1] = (sid[0] >>  0) & 0xff;
+@@ -826,7 +824,30 @@ static void setup_environment(const void *fdt)
+ 			mac_addr[4] = (sid[3] >>  8) & 0xff;
+ 			mac_addr[5] = (sid[3] >>  0) & 0xff;
+ 
+-			eth_env_set_enetaddr(ethaddr, mac_addr);
++			if (eth_env_get_enetaddr(ethaddr, mac_addr_stored)) {
++				if (memcmp(mac_addr, mac_addr_stored, 6) == 0){
++					/* Addresses are the same */
++					printf("Environment variable \'%s\' already set to "
++						   "SID derivation.\n",
++						   ethaddr);
++					continue;
++				}
++				/*
++				 * clear a stored mac address to store a new one - useful
++				 * when moving the system between the platforms.
++				 */
++				printf("\'%s\' value differ "
++					   "from the calculated one, clearing...\n",
++					   ethaddr);
++				env_set(ethaddr, NULL);
++			}
++
++			if (eth_env_set_enetaddr(ethaddr, mac_addr) == 0)
++				printf("Environment variable \'%s\' set to : %pM\n", ethaddr,
++					   mac_addr);
++			else
++				printf("Error while setting \'%s\' environment variable.\n",
++					   ethaddr);
+ 		}
+ 
+ 		if (!env_get("serial#")) {
