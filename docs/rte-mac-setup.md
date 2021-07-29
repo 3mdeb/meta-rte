@@ -1,8 +1,4 @@
-# RTE features setup
-
-## Network
-
-### Setup MAC adress at U-Boot
+# Setup MAC adress at U-Boot
 
 After flashing the card with the new image, the `MAC` will be generated from the
 board's serial id and stored in `U-Boot`'s environment variable on the first
