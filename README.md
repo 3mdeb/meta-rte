@@ -135,4 +135,6 @@ with device `/dev/ttyUSB0` using above configuration.
 
 * [Release process description](docs/release.md)
 
+* [Instruction of setting the MAC address in U-Boot](docs/rte-mac-setup.md)
+
 [kas-docker]: https://github.com/siemens/kas/blob/master/kas-docker
