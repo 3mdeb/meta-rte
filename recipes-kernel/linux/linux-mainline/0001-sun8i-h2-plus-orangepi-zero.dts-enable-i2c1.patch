@@ -1,7 +1,7 @@
-From 02b6de4a0b947e586d6958272d673509fe0406d2 Mon Sep 17 00:00:00 2001
+From 45c12c6d3998b4045432182dd78afc7135c2844e Mon Sep 17 00:00:00 2001
 From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Thu, 8 Mar 2018 12:40:30 +0100
-Subject: [PATCH 1/7] sun8i-h2-plus-orangepi-zero.dts: enable i2c1
+Date: Wed, 4 Nov 2020 21:22:36 +0100
+Subject: [PATCH 1/8] sun8i-h2-plus-orangepi-zero.dts: enable i2c1
 
 Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
@@ -9,20 +9,20 @@ Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 6713d0f..8dbbb31 100644
+index f19ed981da9d..3a22b27c14b3 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -111,6 +111,10 @@
+@@ -131,6 +131,10 @@
  	status = "okay";
  };
  
-+&i2c1 {
++&i2c1{
 +	status = "okay";
 +};
 +
  &mmc0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&mmc0_pins_a>;
+ 	vmmc-supply = <&reg_vcc3v3>;
+ 	bus-width = <4>;
 -- 
-2.7.4
+2.25.1
 

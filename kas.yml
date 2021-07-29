@@ -11,20 +11,24 @@ repos:
   meta-rte:
 
   poky:
-    url: https://github.com/3mdeb/poky
-    refspec: e30ead75d1e18fbef12b04b447338effa8021700
+    url: https://git.yoctoproject.org/git/poky
+    refspec: 40e448301edf142dc00a0ae6190017adac1e57b2
     layers:
       meta:
       meta-poky:
       meta-yocto-bsp:
+    patches:
+      meta-rte:
+        repo: meta-rte
+        path: patches/0001-do-not-remove-wic-partitions.patch
 
   meta-sunxi:
     url: https://github.com/linux-sunxi/meta-sunxi
-    refspec: 29b20da5e8cdea846c26d47a930d16114d71e0ca
+    refspec: 37bfb7c8cdfb648b266c2edb7255297ec2043fe7
 
   meta-openembedded:
     url: http://git.openembedded.org/meta-openembedded
-    refspec: 8760facba1bceb299b3613b8955621ddaa3d4c3f
+    refspec: 2a5c534d2b9f01e9c0f39701fccd7fc874945b1c
     layers:
       meta-oe:
       meta-python:
@@ -32,8 +36,7 @@ repos:
 
   meta-swupdate:
     url: https://github.com/sbabic/meta-swupdate
-    refspec: f2b44eb89dd1145444bbb976c693ad0f9382a2da
-
+    refspec: 4c82d83feacb1ad24f8e15ded5ed1a651708dd98
 
 bblayers_conf_header:
   standard: |

@@ -59,7 +59,7 @@ Password: meta-rte
 ## OpenVPN
 
 There is a possibility to use OpenVPN. The only thing you have to do is
-copy the config file to the `openvpn` folder on `storage` partition of
+copy the config file to the `openvpn` folder on `data` partition of
 SD card with the name `rte.conf`.
 
 ## Serial
@@ -134,5 +134,7 @@ with device `/dev/ttyUSB0` using above configuration.
 * [Development process description](docs/development.md)
 
 * [Release process description](docs/release.md)
+
+* [Instruction of setting the MAC address in U-Boot](docs/rte-mac-setup.md)
 
 [kas-docker]: https://github.com/siemens/kas/blob/master/kas-docker

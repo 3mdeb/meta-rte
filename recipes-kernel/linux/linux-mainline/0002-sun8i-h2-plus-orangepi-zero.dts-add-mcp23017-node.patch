@@ -1,7 +1,7 @@
-From bd19a72e7397c61bf6256dda7a3e1c7e218e6331 Mon Sep 17 00:00:00 2001
+From 088d6003d0ba112822465f6016be175bb2b70a4f Mon Sep 17 00:00:00 2001
 From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Thu, 8 Mar 2018 12:42:16 +0100
-Subject: [PATCH 2/7] sun8i-h2-plus-orangepi-zero.dts: add mcp23017 node
+Date: Wed, 4 Nov 2020 21:23:27 +0100
+Subject: [PATCH 2/8] sun8i-h2-plus-orangepi-zero.dts: add mcp23017 node
 
 Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
@@ -9,12 +9,12 @@ Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
  1 file changed, 7 insertions(+)
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 8dbbb31..9409249 100644
+index 3a22b27c14b3..e30dae583f62 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -113,6 +113,13 @@
+@@ -133,6 +133,13 @@
  
- &i2c1 {
+ &i2c1{
  	status = "okay";
 +
 +	gpio20: gpio@20 {
@@ -27,5 +27,5 @@ index 8dbbb31..9409249 100644
  
  &mmc0 {
 -- 
-2.7.4
+2.25.1
 
