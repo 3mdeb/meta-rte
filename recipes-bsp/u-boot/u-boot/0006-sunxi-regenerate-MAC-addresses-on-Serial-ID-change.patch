@@ -1,0 +1,92 @@
+From 8006c1e349516947ca6f27a36a1ef908b4218993 Mon Sep 17 00:00:00 2001
+From: Jakub Lecki <jakub.lecki@3mdeb.com>
+Date: Fri, 30 Jul 2021 12:11:48 +0200
+Subject: [PATCH] board: sunxi: regenerate MAC addresses on Serial ID change.
+
+Signed-off-by: Jakub Lecki <jakub.lecki@3mdeb.com>
+---
+ board/sunxi/board.c | 46 +++++++++++++++++++++++++++++++++++----------
+ 1 file changed, 36 insertions(+), 10 deletions(-)
+
+diff --git a/board/sunxi/board.c b/board/sunxi/board.c
+index 6afea6ef42..355f1cdad0 100644
+--- a/board/sunxi/board.c
++++ b/board/sunxi/board.c
+@@ -777,10 +777,12 @@ static void parse_spl_header(const uint32_t spl_addr)
+ static void setup_environment(const void *fdt)
+ {
+ 	char serial_string[17] = { 0 };
++	char *serial_saved;
+ 	unsigned int sid[4];
+ 	uint8_t mac_addr[6];
+ 	char ethaddr[16];
+ 	int i, ret;
++	bool mac_override = false;
+ 
+ 	ret = sunxi_get_sid(sid);
+ 	if (ret == 0 && sid[0] != 0) {
+@@ -805,6 +807,28 @@ static void setup_environment(const void *fdt)
+ 		if ((sid[3] & 0xffffff) == 0)
+ 			sid[3] |= 0x800000;
+ 
++		snprintf(serial_string, sizeof(serial_string),
++				"%08x%08x", sid[0], sid[3]);
++		serial_saved = env_get("serial#");
++		if (!serial_saved) {
++			printf("Serial number not found in U-Boot environment!\n"
++					  "Regenerating the MAC addresses...\n");
++			mac_override = true;
++			env_set("serial#", serial_string);
++		}
++		else{
++			if(strcmp(serial_saved, serial_string)){
++				printf("Serial number changed!\n"
++					  "Regenerating the MAC addresses...\n");
++				mac_override = true;
++				env_set("serial#", serial_string);
++			}
++			else{
++				/* Serial did not change so generate only lacking MAC addresses*/
++				mac_override = false;
++			}
++		}
++
+ 		for (i = 0; i < 4; i++) {
+ 			sprintf(ethaddr, "ethernet%d", i);
+ 			if (!fdt_get_alias(fdt, ethaddr))
+@@ -815,8 +839,12 @@ static void setup_environment(const void *fdt)
+ 			else
+ 				sprintf(ethaddr, "eth%daddr", i);
+ 
+-			if (env_get(ethaddr))
+-				continue;
++			if (env_get(ethaddr)) {
++				if (mac_override)
++					env_set(ethaddr, NULL);
++				else
++					continue;
++			}
+ 
+ 			/* Non OUI / registered MAC address */
+ 			mac_addr[0] = (i << 4) | 0x02;
+@@ -826,14 +854,12 @@ static void setup_environment(const void *fdt)
+ 			mac_addr[4] = (sid[3] >>  8) & 0xff;
+ 			mac_addr[5] = (sid[3] >>  0) & 0xff;
+ 
+-			eth_env_set_enetaddr(ethaddr, mac_addr);
+-		}
+-
+-		if (!env_get("serial#")) {
+-			snprintf(serial_string, sizeof(serial_string),
+-				"%08x%08x", sid[0], sid[3]);
+-
+-			env_set("serial#", serial_string);
++			if (eth_env_set_enetaddr(ethaddr, mac_addr) == 0)
++				printf("Environment variable \'%s\' set to : %pM\n", ethaddr,
++					   mac_addr);
++			else
++				printf("Error while setting \'%s\' environment variable.\n",
++					   ethaddr);
+ 		}
+ 	}
+ }
