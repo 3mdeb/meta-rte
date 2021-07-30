@@ -1,10 +1,17 @@
 # Setup MAC adress at U-Boot
 
 After flashing the card with the new image, the `MAC` will be generated from the
-board's serial id and stored in `U-Boot`'s environment variable on the first
+board's `Serial ID` and stored in `U-Boot`'s environment variable on the first
 boot.
 
-You can change the address for a single boot by modifying the variable from
+If no `Serial ID` is found in U-Boot environment, tha `MAC` will be regenerated.
+
+If `Serial ID` change (e.g. by booting the SD card on another device), the
+`MAC` will be regenerated again.
+
+If `Serial ID` is the same, only unset `MAC` addresses will be generated. 
+
+You can change the address by modifying the variable from
 `U-Boot` command line. Execute the following instructions:
 1. Stop loading the `U-Boot` by hitting any key:
     ```
@@ -22,5 +29,4 @@ You can change the address for a single boot by modifying the variable from
     ```
     => run bootcmd
     ```
-
-After reboot, the MAC address will return to the original one.
+> Note: If `Serial ID` change, you will lost your custom `MAC`.
