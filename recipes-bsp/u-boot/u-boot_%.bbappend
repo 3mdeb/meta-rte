@@ -7,7 +7,7 @@ SRC_URI_append = " \
     file://0003-orangepi_zero_defconfig-configure-CLK_FREQ.patch \
     file://0004-sun8i-disable-Vendor-Parameter-Protection.patch \
     file://0005-store-generated-mac-address-in-an-environment-variab.patch \
-    file://0006-force-recalculating-the-MAC-address-on-each-boot.patch \
+    file://0006-sunxi-regenerate-MAC-addresses-on-Serial-ID-change.patch \
     file://fw_env.config \
     file://boot.cmd \
     file://random-ethaddr.cfg \
