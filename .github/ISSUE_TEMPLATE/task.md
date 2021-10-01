@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 **meta-rte version (if applicable)**
-<!--(The version of Dasharo you're using (e.g., `v0.2.0`))-->
+<!--(The version of meta-rte you're using (e.g., `v0.2.0`))-->
 
 
 **Affected component(s) or functionality (if applicable)**
