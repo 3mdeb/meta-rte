@@ -17,6 +17,7 @@ PACKAGES = " \
 RDEPENDS_packagegroup-rte-core = " \
     kernel-modules \
     bash \
+    curl \
     ser2net \
     minicom \
     tmux \

@@ -6,7 +6,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${S}/src/${GO_IMPORT}/LICENSE;md5=50335162666472aa33383f35cce3e355"
 
 TAG = "0.5.1"
-SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=master;tag=${TAG}"
+SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=3mdeb/rte_ctrl_script;tag=${TAG}"
 PV = "${TAG}"
 
 DEPENDS += "github.com-gorilla-mux"
