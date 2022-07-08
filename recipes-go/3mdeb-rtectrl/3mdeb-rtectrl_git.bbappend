@@ -3,13 +3,12 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += " \
     file://RteCtrl.cfg \
     file://RteCtrl.service \
-    file://rte_ctrl.sh \
+    git://github.com/3mdeb/RteCtrl/blob/3mdeb/rte_ctrl_script/scripts/rte_ctrl \
     "
 
 FILES_${PN} += " \
     ${sysconfdir}/RteCtrl.cfg \
     ${systemd_unitdir}/system/RteCtrl.service \
-    ${bindir}/rte_ctrl.sh \
     "
 
 do_install_append() {
@@ -19,9 +18,6 @@ do_install_append() {
 
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/RteCtrl.service ${D}${systemd_unitdir}/system/
-
-    install -d ${D}{bindir}
-    install -m 0755 ${WORKDIR}/rte_ctrl.sh ${D}${bindir}
 }
 
 SYSTEMD_PACKAGES = "${PN}"
