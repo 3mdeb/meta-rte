@@ -3,7 +3,6 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += " \
     file://RteCtrl.cfg \
     file://RteCtrl.service \
-    git://github.com/3mdeb/RteCtrl/blob/3mdeb/rte_ctrl_script/scripts/rte_ctrl \
     "
 
 FILES_${PN} += " \
