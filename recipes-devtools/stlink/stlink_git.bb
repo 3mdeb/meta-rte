@@ -1,13 +1,14 @@
 DESCRIPTION = "stm32 discovery line linux programmer"
 HOMEPAGE = "https://github.com/texane/stlink"
 LICENSE = "BSD"
-LIC_FILES_CHKSUM = "file://${S}/LICENSE.md;md5=3374725a40df7047d33d627811b8149e"
+LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=a119cf258a06d6a2c7f4da37ca03e341"
 
 BRANCH = "master"
-TAG = "v1.7.0"
+TAG = "v1.5.0"
 
 SRC_URI = " \
     git://github.com/stlink-org/stlink.git;protocol=https;branch=${BRANCH};tag=${TAG} \
+    file://0001-remove-CMAKE_LIBRARY_PATH-from-CMakeLists-path.patch \
     "
 
 SRCPV = "${TAG}"

@@ -80,7 +80,6 @@ RDEPENDS_packagegroup-rte-imx = " \
 # packages useful for STM32 MCUs testing
 RDEPENDS_packagegroup-rte-stm = " \
     openocd \
-    stlink \
     "
 
 # packages useful for testing coreboot on various platforms
