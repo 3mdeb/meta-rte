@@ -5,19 +5,28 @@ HOMEPAGE = "https://github.com/3mdeb/RteCtrl/blob/master/README.md"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${S}/src/${GO_IMPORT}/LICENSE;md5=50335162666472aa33383f35cce3e355"
 
-TAG = "0.5.1"
+TAG = "0.5.2"
 SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=master;tag=${TAG}"
 PV = "${TAG}"
 
 DEPENDS += "github.com-gorilla-mux"
+
+RDEPENDS_${PN} += " \
+    bash \
+    "
+
+RDEPENDS_${PN}-dev += " \
+    bash \
+    "
 
 GO_IMPORT = "3mdeb/RteCtrl"
 GO_INSTALL = "${GO_IMPORT}"
 
 inherit go
 
-FILES_${PN} += "\
+FILES_${PN} += " \
     ${datadir}/RteWeb/* \
+    ${bindir}/rte_ctrl \
     "
 
 do_install_append() {
@@ -25,4 +34,8 @@ do_install_append() {
     install -d ${D}${datadir}/RteWeb
     install -m 0644 ${S}/src/${GO_IMPORT}/web/index.html ${D}${datadir}/RteWeb
     install -m 0644 ${S}/src/${GO_IMPORT}/web/md5.js ${D}${datadir}/RteWeb
+
+    # rte_ctrl script 
+    install -d ${D}{bindir}
+    install -m 0755 ${S}/src/${GO_IMPORT}/scripts/rte_ctrl ${D}${bindir}
 }
