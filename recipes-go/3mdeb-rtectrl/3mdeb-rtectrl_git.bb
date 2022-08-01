@@ -5,9 +5,8 @@ HOMEPAGE = "https://github.com/3mdeb/RteCtrl/blob/master/README.md"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${S}/src/${GO_IMPORT}/LICENSE;md5=50335162666472aa33383f35cce3e355"
 
-TAG = "0.5.1"
-SRC_REV = "3fdbd32906d49d571854ea8604266f18b2795dd9"
-SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=rest-server-rate-limit;rev=${SRC_REV}"
+TAG = "0.5.3"
+SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=master;tag=${TAG}"
 PV = "${TAG}"
 
 DEPENDS += " \
