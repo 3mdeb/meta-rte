@@ -56,6 +56,49 @@ Login: root
 Password: meta-rte
 ```
 
+## Update
+
+To perform update on platform we will use swupdate.
+
+- Check current version of your system
+  ```shell
+  # cat /etc/os-release 
+  ID=rte
+  NAME="RTE (Remote Test Environment Distro)"
+  VERSION="0.7.3 (rocko)"
+  VERSION_ID=0.7.3
+  PRETTY_NAME="RTE (Remote Test Environment Distro) 0.7.3 (rocko)"
+  ```
+
+- Copy your .swu update file to board, for example using scp
+  ```shell
+  $ scp path/to/swu/file.swu root@192.168.4.126:/path/to/deploy/file/
+  ```
+
+- Start the swupdate process
+  ```shell
+  # swupdate -e "rte,mmcblk0p3" -i /path/to/file.swu -v
+  Swupdate v2020.04.0
+  
+  Licensed under GPLv2. See source distribution for detailed copyright notices.
+  (...)
+  Software updated successfully
+  Please reboot the device to start the new software
+  [INFO ] : SWUPDATE successful ! 
+  [DEBUG] : SWUPDATE running :  [postupdate] : Running Post-update command
+  ```
+
+- After success reboot board twice, if it boots correctly and system version has
+  changed properly after each of them, update is successful
+  ```shell
+  # root@rte:~# cat /etc/os-release 
+  ID=rte
+  NAME="RTE (Remote Test Environment Distro)"
+  VERSION="0.7.4-rc1 (rocko)"
+  VERSION_ID=0.7.4-rc1
+  PRETTY_NAME="RTE (Remote Test Environment Distro) 0.7.4-rc1 (rocko)"
+  ```
+
 ## OpenVPN
 
 There is a possibility to use OpenVPN. The only thing you have to do is
