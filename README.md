@@ -56,6 +56,60 @@ Login: root
 Password: meta-rte
 ```
 
+## Update
+
+To perform update on platform we will use
+[SWUpdate](https://sbabic.github.io/swupdate/index.html) software already
+installed on OS.
+
+- Download latest available .swu update image from [releases
+  page](https://github.com/3mdeb/meta-rte/releases).
+
+- Provide anyhow downloaded .swu update image to device, for example using scp
+  ```shell
+  $ scp path/to/swu/file.swu root@RTE_IP:/path/to/deploy/file/
+  ```
+
+  >Note: you can check RTE_IP by running `ip a` command on RTE.
+
+- Check active partition, run `findmnt /` command on RTE
+  ```shell
+  # findmnt /
+  TARGET SOURCE         FSTYPE OPTIONS
+  /      /dev/mmcblk0p2 ext4   rw,relatime
+  ```
+
+- Now run `swupdate` command, for flag `-e` we need to provide an inactive
+  partition which in this case is `mmcblk0p3`. If `findmnt /` command would
+  return `mmcblk0p3` then `mmcblk0p2` should be provided for `-e`. Flag `-i` is
+  used to provide update image stored locally and `-v` will cause to print debug
+  logs.
+  ```shell
+  # swupdate -e "rte,mmcblk0p3" -i /path/to/file.swu -v
+  Swupdate v2020.04.0
+
+  Licensed under GPLv2. See source distribution for detailed copyright notices.
+  (...)
+  Software updated successfully
+  Please reboot the device to start the new software
+  [INFO ] : SWUPDATE successful !
+  [DEBUG] : SWUPDATE running :  [postupdate] : Running Post-update command
+  ```
+
+- After success reboot the board. Platform should start from diferrent partition
+  and updated system. This can be verified by running `cat /etc/os-release`.
+  ```shell
+  # cat /etc/os-release
+  ID=rte
+  NAME="RTE (Remote Test Environment Distro)"
+  VERSION="0.7.4-rc1 (rocko)"
+  VERSION_ID=0.7.4-rc1
+  PRETTY_NAME="RTE (Remote Test Environment Distro) 0.7.4-rc1 (rocko)"
+  ```
+
+- From now, updated partition will be set as active, so every next reboot will
+  cause to boot updated OS.
+
 ## OpenVPN
 
 There is a possibility to use OpenVPN. The only thing you have to do is
@@ -91,7 +145,7 @@ command:
 Service configuration is placed here:
 
 ```
-# cat /etc/ser2net.conf 
+# cat /etc/ser2net.conf
 13542:telnet:16000:/dev/ttyS1:115200 8DATABITS NONE 1STOPBIT
 13541:telnet:16000:/dev/ttyUSB0:115200 8DATABITS NONE 1STOPBIT
 ```
@@ -119,8 +173,8 @@ with device `/dev/ttyUSB0` using above configuration.
 ## Individual MR
 
 > Our [change log](CHANGELOG.md) mostly depends on the merge events and the
-> merge request names are presented as introduced changes in this file. Be sure 
-to use `git add -p` and add only your version, so as not to change previous 
+> merge request names are presented as introduced changes in this file. Be sure
+to use `git add -p` and add only your version, so as not to change previous
 release notes (incorrect links to previous pull requests).
 
 * Commit changes
