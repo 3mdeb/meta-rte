@@ -1,0 +1,63 @@
+From 0132bc8f274ff020a77d62eccb5f672956469e2b Mon Sep 17 00:00:00 2001
+From: Artur Kowalski <artur.kowalski@3mdeb.com>
+Date: Wed, 19 Oct 2022 16:37:10 +0200
+Subject: [PATCH] flashchips: add support for MX77L25650F chip
+
+Add basic support Macronix MX77L25650F. Can read, write and erase the
+chip as long as write protection is not enabled (WP is not supported at
+the moment so can't disable it).
+
+Change-Id: Iaea5485f8b59b8538dc47beada2c308376ea027c
+Signed-off-by: Artur Kowalski <artur.kowalski@3mdeb.com>
+---
+
+diff --git a/flashchips.c b/flashchips.c
+index 625fe62..d346e63 100644
+--- a/flashchips.c
++++ b/flashchips.c
+@@ -10424,6 +10424,33 @@
+ 		.voltage	= {2700, 3600},
+ 	},
+ 
++	{
++		.vendor = "Macronix",
++		.name = "MX77L25650F",
++		.bustype = BUS_SPI,
++		.manufacture_id = MACRONIX_ID,
++		.model_id = MACRONIX_MX77L25650F,
++		.total_size = 32768,
++		.page_size = 256,
++		.feature_bits = FEATURE_WRSR_WREN | FEATURE_OTP | FEATURE_4BA,
++		.tested = TEST_OK_PR,
++		.probe		= PROBE_SPI_RDID,
++		.probe_timing	= TIMING_ZERO,
++		.block_erasers	= {
++			{
++				.eraseblocks = { {32 * 1024, 1024} },
++				.block_erase = SPI_BLOCK_ERASE_52,
++			},
++			{
++				.eraseblocks = { {64 * 1024, 512} },
++				.block_erase = SPI_BLOCK_ERASE_D8,
++			}
++		},
++		// TODO: add support for flash protection
++		.write		= SPI_CHIP_WRITE256,
++		.read		= SPI_CHIP_READ,
++	},
++
+ 	/* The ST M25P05 is a bit of a problem. It has the same ID as the
+ 	 * ST M25P05-A in RES mode, but supports only 128 byte writes instead
+ 	 * of 256 byte writes. We rely heavily on the fact that PROBE_SPI_RES1
+diff --git a/include/flashchips.h b/include/flashchips.h
+index 5df42dc..c5a9f23 100644
+--- a/include/flashchips.h
++++ b/include/flashchips.h
+@@ -521,6 +521,7 @@
+ #define MACRONIX_MX25U51245G	0x253a
+ #define MACRONIX_MX25L3235D	0x5E16	/* MX25L3225D/MX25L3235D/MX25L3237D */
+ #define MACRONIX_MX25L6495F	0x9517
++#define MACRONIX_MX77L25650F	0x7519
+ 
+ #define MACRONIX_MX25R3235F	0x2816
+ #define MACRONIX_MX25R6435F	0x2817
