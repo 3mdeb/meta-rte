@@ -54,6 +54,7 @@ RDEPENDS_packagegroup-rte-utils = " \
     sysfsutils \
     grep \
     gawk \
+    sd-mux \
     sed \
     procps \
     psmisc \
