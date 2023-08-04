@@ -32,6 +32,8 @@ kas-docker build meta-rte/kas.yml
 
 ## Flash
 
+### etcher
+
 The easiest way to flash image on all system platforms is to use `etcher`. It
 is multi-platform application that is available for Linux, Windows or macOS.
 
@@ -48,6 +50,26 @@ the image first.
    are present, click on `Change` and select the one you want to use.
 
 - When confirmed, click on the `Flash` button to start flashing procedure.
+
+### bmaptool
+
+If you prefer a command-line tool, then you should use bmaptool, just install it with
+
+```
+sudo apt install bmap-tools
+```
+
+then run with
+
+```
+sudo bmaptool copy path/to/image/example.wic.gz /dev/yourSDcard
+```
+
+remember, the images are located in the build directory, for example like this:
+
+```
+~/Desktop/rte-sdk/build/tmp/deploy/images/orange-pi-zero/your_image.wic.gz
+```
 
 ## Login to the system
 
