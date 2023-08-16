@@ -59,10 +59,12 @@ If you prefer a command-line tool, then you should use bmaptool. To install it,
 depending on the package manager your system uses, use one of the following
 commands:
 
+**for Ubuntu:**
 ```
 sudo apt install bmap-tools
 ```
 
+**for Fedora:**
 ```
 sudo dnf install bmap-tools
 ```
