@@ -32,6 +32,10 @@ kas-docker build meta-rte/kas.yml
 
 ## Flash
 
+There are two main ways to flash an image, etcher and bmaptool.
+
+### etcher
+
 The easiest way to flash image on all system platforms is to use `etcher`. It
 is multi-platform application that is available for Linux, Windows or macOS.
 
@@ -48,6 +52,38 @@ the image first.
    are present, click on `Change` and select the one you want to use.
 
 - When confirmed, click on the `Flash` button to start flashing procedure.
+
+### bmaptool
+
+If you prefer a command-line tool, then you should use bmaptool. To install it,
+depending on the package manager your system uses, use one of the following
+commands:
+
+**for Ubuntu:**
+```
+sudo apt install bmap-tools
+```
+
+**for Fedora:**
+```
+sudo dnf install bmap-tools
+```
+
+you can then download the latest image from the
+[releases](https://github.com/3mdeb/meta-rte/releases) page. You should
+download both the `.wic.bmap` and `.wic.gz` files.
+
+Once you have chosen the version you want and downloaded it (both files), you can then
+flash it using bmaptool, like this:
+
+```
+bmaptool copy --bmap /path/to/example.wic.bmap /path/to/example.wic.gz /dev/sdX
+```
+
+in order to know what `/dev/sdX` you want to flash, its a good idea to use
+the `lsblk` command, before and after plugging in your SD card. You should be
+able to see the difference in the output of those two commands, and determine
+what your SD card is called.
 
 ## Login to the system
 
