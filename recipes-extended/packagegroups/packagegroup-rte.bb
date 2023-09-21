@@ -60,6 +60,7 @@ RDEPENDS_packagegroup-rte-utils = " \
     iproute2 \
     iputils \
     less \
+    vim \
     nfs-utils \
     bc \
     python3 \
