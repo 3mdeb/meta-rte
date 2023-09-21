@@ -6,19 +6,19 @@ meta-rte
 ## Prerequisites
 
 [kas](https://github.com/siemens/kas) installed. The preferred way is to use it
-inside container, via the [kas-docker] script.
+inside container, via the [kas-container] script.
 
 ### docker installation
 
 * [docker installation](https://docs.docker.com/install/)
 
-### kas-docker installation
+### kas-container installation
 
-* [kas-docker] installation:
+* [kas-container] installation:
 
 ```
-wget -O ~/bin/kas-docker https://raw.githubusercontent.com/siemens/kas/master/kas-docker
-chmod +x ~/bin/kas-docker
+wget -O ~/bin/kas-container https://raw.githubusercontent.com/siemens/kas/master/kas-container
+chmod +x ~/bin/kas-container
 ```
 
 ## Build
@@ -27,7 +27,7 @@ chmod +x ~/bin/kas-docker
 mkdir rte-sdk
 cd rte-sdk
 git clone https://github.com/3mdeb/meta-rte.git
-kas-docker build meta-rte/kas.yml
+kas-container build meta-rte/kas.yml
 ```
 
 ## Flash
@@ -229,4 +229,3 @@ release notes (incorrect links to previous pull requests).
 
 * [Instruction of setting the MAC address in U-Boot](docs/rte-mac-setup.md)
 
-[kas-docker]: https://github.com/siemens/kas/blob/master/kas-docker
