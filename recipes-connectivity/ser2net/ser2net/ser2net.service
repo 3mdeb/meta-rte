@@ -4,7 +4,7 @@ After=syslog.target
 
 [Service]
 Type=forking
-ExecStart=/usr/sbin/ser2net -c /etc/ser2net.conf -P /run/ser2net.pid
+ExecStart=/usr/sbin/ser2net -c /etc/ser2net.yaml -P /run/ser2net.pid
 
 [Install]
 WantedBy=multi-user.target

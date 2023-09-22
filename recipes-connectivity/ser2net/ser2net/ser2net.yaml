@@ -1,0 +1,14 @@
+%YAML 1.1
+---
+
+define: &confver 1.0
+
+# Connection to read from /dev/ttyS1
+connection: &con1
+  accepter: telnet, tcp, 13541
+  connector: serialdev, /dev/ttyS1, 115200n81, local
+
+# Connection to read from /dev/debug_uart_converter
+connection: &con2
+  accepter: telnet, tcp, 13542
+  connector: serialdev, /dev/debug_uart_converter, 115200n81, local
