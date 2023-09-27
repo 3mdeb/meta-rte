@@ -70,6 +70,7 @@ RDEPENDS_packagegroup-rte-utils = " \
     python3-wakeonlan \
     python3-asciinema \
     wpa-supplicant \
+    cpu \
     "
 
 # packages useful for i.MX platforms testing
