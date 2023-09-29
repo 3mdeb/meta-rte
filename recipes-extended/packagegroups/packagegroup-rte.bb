@@ -54,6 +54,7 @@ RDEPENDS_packagegroup-rte-utils = " \
     sysfsutils \
     grep \
     gawk \
+    sd-mux \
     sed \
     procps \
     psmisc \
@@ -62,6 +63,7 @@ RDEPENDS_packagegroup-rte-utils = " \
     less \
     vim \
     nfs-utils \
+    bmap-tools \
     bc \
     python3 \
     python3-modules \
