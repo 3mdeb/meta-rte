@@ -20,18 +20,18 @@ inherit autotools pkgconfig systemd
 BBCLASSEXTEND = "native nativesdk"
 
 SRC_URI += " \
-    file://ser2net.conf \
+    file://ser2net.yaml \
     file://ser2net.service \
     "
 
 FILES_${PN} += " \
-    ${sysconfdir}/ser2net.conf \
+    ${sysconfdir}/ser2net.yaml \
     ${systemd_unitdir}/system/ser2net.service \
     "
 
 do_install_append() {
     install -d ${D}${sysconfdir}
-    install -m 0644 ${WORKDIR}/ser2net.conf ${D}${sysconfdir}
+    install -m 0644 ${WORKDIR}/ser2net.yaml ${D}${sysconfdir}
 
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/ser2net.service ${D}${systemd_unitdir}/system/
