@@ -68,7 +68,6 @@ RDEPENDS_packagegroup-rte-utils = " \
     python3 \
     python3-modules \
     python3-wakeonlan \
-    python3-asciinema \
     wpa-supplicant \
     cpu \
     "
