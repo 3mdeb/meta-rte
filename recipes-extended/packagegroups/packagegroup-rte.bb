@@ -61,7 +61,7 @@ RDEPENDS_packagegroup-rte-utils = " \
     iproute2 \
     iputils \
     less \
-    vim \
+    vim-tiny \
     nfs-utils \
     bmap-tools \
     bc \
