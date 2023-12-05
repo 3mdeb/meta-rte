@@ -18,4 +18,5 @@ SRC_URI += " \
     file://usb-serial.cfg \
     file://magic-sysrq.cfg \
     file://ina-2xx.cfg \
+    file://9p.cfg \
     "
