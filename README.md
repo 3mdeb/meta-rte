@@ -1,6 +1,16 @@
 meta-rte
 ========
 
+# Meta-RTE Yocto BSP documentation
+
+* [BSP layers description](docs/layer-description.md)
+
+* [Development process description](docs/development.md)
+
+* [Release process description](docs/release.md)
+
+* [Instruction of setting the MAC address in U-Boot](docs/rte-mac-setup.md)
+
 # Usage
 
 ## Prerequisites
@@ -218,14 +228,3 @@ release notes (incorrect links to previous pull requests).
 * Push on branch and create pull request
 
 * Wait for review and merge
-
-# Meta-RTE Yocto BSP documentation
-
-* [BSP layers description](docs/layer-description.md)
-
-* [Development process description](docs/development.md)
-
-* [Release process description](docs/release.md)
-
-* [Instruction of setting the MAC address in U-Boot](docs/rte-mac-setup.md)
-
