@@ -11,6 +11,8 @@ meta-rte
 
 * [Instruction of setting the MAC address in U-Boot](docs/rte-mac-setup.md)
 
+* [cpu command introduction and use case](docs/cpu.md)
+
 # Usage
 
 ## Prerequisites
