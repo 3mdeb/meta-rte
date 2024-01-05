@@ -6,22 +6,26 @@ command.
 ## Introduction
 
 The `cpu` command allows you to log in to a remote system (in this case RTE) and
-see some of the files from your local system. This allows you to execute
-programs installed on your local system in the remote environment. Another use
-case is executing `minicom` on RTE and storing the logs on your host PC without
-having to `scp` them and without worrying about RTE running out
-of space. This use case is demonstrated in this document.
+mount parts of your host file system so that they are visible as if they were
+part of the remote system. This allows you to execute programs present in your
+local system in the remote environment without having to install them there.
+Another use case is executing `minicom` on RTE and storing the logs on your host
+PC without having to `scp` them and without worrying about RTE running out of
+space. This use case is demonstrated in this document.
 
 ## Prerequisites
 
-* RTE with system version `0.7.4-rc5` or later connected to your local network
+* RTE with system version `0.7.4` or later connected to your local network
 * Some bootable platform connected to the RTE via serial
 * The `cpu` command installed on your host PC
 
 ## Using cpu
 
 This section describes how to use the `cpu` command to execute `minicom` on RTE
-and store the logs on your host PC without them ever appearing on the RTE.
+and store the logs on your host PC without them ever appearing on the RTE. As
+mentioned in the introduction, the main advantage of this approach are that you
+do not have to fear running out of storage place. Also, it saves time in case
+you prefer to analyze the logs on your local machine.
 
 First you must generate an SSH key pair on your host.
 
