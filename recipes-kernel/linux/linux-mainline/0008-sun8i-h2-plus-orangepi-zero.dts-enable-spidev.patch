@@ -1,9 +1,13 @@
 From a3fdb474de35b8f1bcbc700fec28b58f97da2391 Mon Sep 17 00:00:00 2001
-From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Wed, 4 Nov 2020 21:28:57 +0100
+From: Pawel Langowski <pawel.langowski@3mdeb.com>
+Date: tue, 16 Jan 2024 14:25:57 +0100
 Subject: [PATCH 8/8] sun8i-h2-plus-orangepi-zero.dts: enable spidev
 
-Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+The `compatible` attrubute should be in the form "brand,product". The brand has
+been arbitrarily chosen to be "linux".
+
+
+Signed-off-by: Pawel Langowski <pawel.langowski@3mdeb.com>
 ---
  arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 15 ++++++++++++++-
  1 file changed, 14 insertions(+), 1 deletion(-)
@@ -21,31 +25,29 @@ index 494f49a3e9f0..cc4377e73e5d 100644
  
  	flash@0 {
  		#address-cells = <1>;
-@@ -199,11 +199,24 @@
+@@ -199,11 +199,23 @@
  		compatible = "mxicy,mx25l1606e", "winbond,w25q128";
  		reg = <0>;
  		spi-max-frequency = <40000000>;
-+		status = "disabled";
-+	};
-+
-+	spidev@0 {
-+		compatible = "spidev";
++    status = "disabled";
+ 	};
++ 	spidev@0 {
++		compatible = "linux,spidev";
 +		reg = <0>;
 +		spi-max-frequency = <40000000>;
- 	};
++  };
  };
  
  &spi1 {
  	status = "okay";
 +
-+	spidev@0 {
-+		compatible = "spidev";
++ 	spidev@0 {
++		compatible = "linux,spidev";
 +		reg = <0>;
 +		spi-max-frequency = <40000000>;
-+	};
++  };
  };
  
  &uart0 {
 -- 
 2.25.1
-
