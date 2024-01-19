@@ -3,7 +3,7 @@ From: Pawel Langowski <pawel.langowski@3mdeb.com>
 Date: tue, 16 Jan 2024 14:25:57 +0100
 Subject: [PATCH 8/8] sun8i-h2-plus-orangepi-zero.dts: enable spidev
 
-The `compatible` attrubute should be in the form "brand,product". The brand has
+The `compatible` attribute should be in the form "brand,product". The brand has
 been arbitrarily chosen to be "linux".
 
 
@@ -25,27 +25,28 @@ index 494f49a3e9f0..cc4377e73e5d 100644
  
  	flash@0 {
  		#address-cells = <1>;
-@@ -199,11 +199,23 @@
+@@ -199,11 +199,24 @@
  		compatible = "mxicy,mx25l1606e", "winbond,w25q128";
  		reg = <0>;
  		spi-max-frequency = <40000000>;
-+    status = "disabled";
- 	};
-+ 	spidev@0 {
++		status = "disabled";
++	};
++
++	spidev@0 {
 +		compatible = "linux,spidev";
 +		reg = <0>;
 +		spi-max-frequency = <40000000>;
-+  };
+ 	};
  };
  
  &spi1 {
  	status = "okay";
 +
-+ 	spidev@0 {
++	spidev@0 {
 +		compatible = "linux,spidev";
 +		reg = <0>;
 +		spi-max-frequency = <40000000>;
-+  };
++	};
  };
  
  &uart0 {
