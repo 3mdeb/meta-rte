@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://${S}/src/github.com/hashicorp/golang-lru/LICENSE;md5=
 
 GO_IMPORT = "github.com/hashicorp/golang-lru"
 
-SRC_URI = "git://${GO_IMPORT};protocol=https"
+SRC_URI = "git://${GO_IMPORT};protocol=https;branch=main"
 SRCREV = "14eae340515388ca95aa8e7b86f0de668e981f54"
 PV = "0.5.4"
 
