@@ -12,7 +12,7 @@ repos:
 
   poky:
     url: https://git.yoctoproject.org/git/poky
-    refspec: 40e448301edf142dc00a0ae6190017adac1e57b2
+    refspec: f7def85be9f99dcb4ba488bead201f670304379b
     layers:
       meta:
       meta-poky:
@@ -24,11 +24,11 @@ repos:
 
   meta-sunxi:
     url: https://github.com/linux-sunxi/meta-sunxi
-    refspec: 37bfb7c8cdfb648b266c2edb7255297ec2043fe7
+    refspec: 8f5b915749709f21c2af543fdcde0898aff60154
 
   meta-openembedded:
     url: http://git.openembedded.org/meta-openembedded
-    refspec: 2a5c534d2b9f01e9c0f39701fccd7fc874945b1c
+    refspec: 78a14731cf0cf38a19ff8bd0e9255b319afaf3a7
     layers:
       meta-oe:
       meta-python:
@@ -36,7 +36,7 @@ repos:
 
   meta-swupdate:
     url: https://github.com/sbabic/meta-swupdate
-    refspec: 4c82d83feacb1ad24f8e15ded5ed1a651708dd98
+    refspec: a924d4bfd9dd54638ac8348d3f2845339f789770
 
 bblayers_conf_header:
   standard: |
