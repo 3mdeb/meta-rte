@@ -1,26 +1,29 @@
-From bb4c5769fd20f01be18e2426437564243743ca89 Mon Sep 17 00:00:00 2001
-From: Jakub Lecki <jakub.lecki@3mdeb.com>
-Date: Mon, 26 Jul 2021 10:12:28 +0200
+From 292f2a586d87589f3f5b4411fd698b8b89d1d6ac Mon Sep 17 00:00:00 2001
+From: Tymoteusz Burak <tymoteusz.burak@3mdeb.com>
+Date: Tue, 2 Jul 2024 15:04:33 +0000
 Subject: [PATCH] sun8i: disable Vendor Parameter Protection
+Upstream-Status: Pending
 
 by setting CONFIG_ENV_OVERWRITE to 1
 
-Signed-off-by: Jakub Lecki <jakub.lecki@3mdeb.com>
+Signed-off-by: Tymoteusz Burak <tymoteusz.burak@3mdeb.com>
 ---
  include/configs/sun8i.h | 3 +++
  1 file changed, 3 insertions(+)
 
 diff --git a/include/configs/sun8i.h b/include/configs/sun8i.h
-index 9b4675e4c3..e0cabd7bb1 100644
+index b6cd8d39a8..b1beaf90a7 100644
 --- a/include/configs/sun8i.h
 +++ b/include/configs/sun8i.h
-@@ -12,6 +12,9 @@
-  * A23 specific configuration
-  */
- 
+@@ -8,6 +8,9 @@
+ #ifndef __CONFIG_H
+ #define __CONFIG_H
+
 +/* Allow for manual overwriting environment variables like ethaddr */
 +#define CONFIG_ENV_OVERWRITE 1
 +
- /*
-  * Include common sunxi configuration where most the settings are
-  */
+ #include <configs/sunxi-common.h>
+
+ #endif /* __CONFIG_H */
+--
+2.39.2
