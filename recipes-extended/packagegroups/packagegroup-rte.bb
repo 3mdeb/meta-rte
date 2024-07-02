@@ -63,7 +63,7 @@ RDEPENDS:packagegroup-rte-utils = " \
     less \
     vim-tiny \
     nfs-utils \
-    bmap-tools \
+    bmaptool \
     bc \
     python3 \
     python3-modules \
