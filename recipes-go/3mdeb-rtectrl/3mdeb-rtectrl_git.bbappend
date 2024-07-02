@@ -1,16 +1,16 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
     file://RteCtrl.cfg \
     file://RteCtrl.service \
     "
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${sysconfdir}/RteCtrl.cfg \
     ${systemd_unitdir}/system/RteCtrl.service \
     "
 
-do_install_append() {
+do_install:append() {
     # configuration file
     install -d ${D}${sysconfdir}/RteCtrl
     install -m 0644 ${WORKDIR}/RteCtrl.cfg ${D}${sysconfdir}/RteCtrl/
@@ -21,8 +21,8 @@ do_install_append() {
 
 SYSTEMD_PACKAGES = "${PN}"
 
-SYSTEMD_SERVICE_${PN} = "RteCtrl.service"
+SYSTEMD_SERVICE:${PN} = "RteCtrl.service"
 
-SYSTEMD_AUTO_ENABLE_${PN} = "enable"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 inherit systemd

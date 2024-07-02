@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SUMMARY = "A serial to network proxy"
 SECTION = "console/network"
@@ -24,12 +24,12 @@ SRC_URI += " \
     file://ser2net.service \
     "
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${sysconfdir}/ser2net.yaml \
     ${systemd_unitdir}/system/ser2net.service \
     "
 
-do_install_append() {
+do_install:append() {
     install -d ${D}${sysconfdir}
     install -m 0644 ${WORKDIR}/ser2net.yaml ${D}${sysconfdir}
 
@@ -39,6 +39,6 @@ do_install_append() {
 
 SYSTEMD_PACKAGES = "${PN}"
 
-SYSTEMD_SERVICE_${PN} = "ser2net.service"
+SYSTEMD_SERVICE:${PN} = "ser2net.service"
 
-SYSTEMD_AUTO_ENABLE_${PN} = "enable"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"

@@ -1,6 +1,6 @@
 DESCRIPTION = "Linux software for Dediprog SF100 and SF600 SPI flash programmers"
 SECTION = "devel"
-LICENSE = "GPL-2.0"
+LICENSE = "GPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a23a74b3f4caf9616230789d94217acb"
 
 DEPENDS = "libusb"
@@ -20,7 +20,7 @@ do_install () {
     oe_runmake DESTDIR=${D} PREFIX=/usr install
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${datadir}/DediProg \
 "
 

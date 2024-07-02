@@ -1,6 +1,6 @@
-IMAGE_FEATURES_append = " ssh-server-openssh"
+IMAGE_FEATURES:append = " ssh-server-openssh"
 
-IMAGE_INSTALL_append = " \
+IMAGE_INSTALL:append = " \
    packagegroup-rte-core \
    packagegroup-rte-utils \
    packagegroup-rte-imx \
