@@ -15,11 +15,11 @@ DEPENDS += " \
     github.com-hashicorp-golang-lru \
 "
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     bash \
     "
 
-RDEPENDS_${PN}-dev += " \
+RDEPENDS:${PN}-dev += " \
     bash \
     "
 
@@ -28,12 +28,12 @@ GO_INSTALL = "${GO_IMPORT}"
 
 inherit go
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${datadir}/RteWeb/* \
     ${bindir}/rte_ctrl \
     "
 
-do_install_append() {
+do_install:append() {
     # webserver files
     install -d ${D}${datadir}/RteWeb
     install -m 0644 ${S}/src/${GO_IMPORT}/web/index.html ${D}${datadir}/RteWeb

@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
     file://imx_usb.conf \
@@ -6,7 +6,7 @@ SRC_URI += " \
     file://mx6_usb_sdp_spl.conf \
     "
 
-do_install_append() {
+do_install:append() {
     #remove default config files
     rm ${D}${sysconfdir}/imx-loader.d/*
     install -m 0644 ${WORKDIR}/imx_usb.conf ${D}${sysconfdir}/imx-loader.d/
