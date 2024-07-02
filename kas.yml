@@ -26,6 +26,13 @@ repos:
     url: https://github.com/linux-sunxi/meta-sunxi
     refspec: 8f5b915749709f21c2af543fdcde0898aff60154
 
+  meta-arm:
+    url: https://git.yoctoproject.org/git/meta-arm
+    refspec: 58268ddccbe2780de28513273e15193ee949987b
+    layers:
+      meta-arm:
+      meta-arm-toolchain:
+
   meta-openembedded:
     url: http://git.openembedded.org/meta-openembedded
     refspec: 78a14731cf0cf38a19ff8bd0e9255b319afaf3a7
