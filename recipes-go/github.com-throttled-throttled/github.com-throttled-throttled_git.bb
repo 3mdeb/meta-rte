@@ -7,11 +7,11 @@ SRC_URI = "git://github.com/throttled/throttled"
 SRCREV = "eef0076db706fe4531e6efe7dea5cfc402593562"
 PV = "2.9.1"
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     bash \
     "
 
-RDEPENDS_${PN}-dev += " \
+RDEPENDS:${PN}-dev += " \
     bash \
     "
 

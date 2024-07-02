@@ -25,4 +25,4 @@ do_install() {
     install -m 0600 ${S}/${SWU_CONFIRM_NAME} ${D}${datadir}/
 }
 
-FILES_${PN} = "${datadir}/${SWU_CONFIRM_NAME}"
+FILES:${PN} = "${datadir}/${SWU_CONFIRM_NAME}"
