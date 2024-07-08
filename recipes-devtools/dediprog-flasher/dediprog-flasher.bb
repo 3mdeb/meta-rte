@@ -16,7 +16,7 @@ PV = "1.0+${SRCPV}"
 S = "${WORKDIR}/git"
 
 do_install () {
-    oe_runmake DESTDIR=${D} install
+    oe_runmake DESTDIR=${D} PREFIX=/usr install
 }
 
 inherit pkgconfig
