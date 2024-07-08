@@ -20,4 +20,8 @@ do_install () {
     oe_runmake DESTDIR=${D} PREFIX=/usr install
 }
 
+FILES_${PN} += " \
+    ${datadir}/DediProg \
+"
+
 inherit pkgconfig
