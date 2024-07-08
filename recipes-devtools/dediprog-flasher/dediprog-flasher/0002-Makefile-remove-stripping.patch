@@ -1,0 +1,29 @@
+From 96d8849c3c482f21ad04f1dad45bf59f453e43d6 Mon Sep 17 00:00:00 2001
+From: Tymoteusz Burak <tymoteusz.burak@3mdeb.com>
+Date: Mon, 8 Jul 2024 10:58:45 +0000
+Subject: [PATCH] Makefile: remove stripping
+
+This patch modifies the install process to disable stripping of binaries by the
+Makefile and allow the stripping to be handled by bitbake to integrate
+it seamlessly into the bitbake workflow.
+
+ Signed-off-by: Tymoteusz Burak <tymoteusz.burak@3mdeb.com>
+---
+ Makefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 139e5c0..aa6eba5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -58,7 +58,6 @@ install: $(PROGRAM)
+ 	[ $(shell id -u) -eq 0 ] || (echo "Error: install needs root privileges" && false)
+ 	install -v -o 0 -g 0 -m 755 -d $(DESTDIR)$(PREFIX)/bin $(DESTDIR)$(PREFIX)/share/DediProg
+ 	echo -n "install: " && install -v -o 0 -g 0 -m 0755 $(PROGRAM) $(DESTDIR)$(PREFIX)/bin/$(PROGRAM)
+-	strip $(DESTDIR)$(PREFIX)/bin/$(PROGRAM)
+ 	install -v -o 0 -g 0 -m 755 -d $(DESTDIR)$(PREFIX)/share/DediProg
+ 	echo -n "install: " && install -v -o 0 -g 0 -m 0644 ChipInfoDb.dedicfg $(DESTDIR)$(PREFIX)/share/DediProg/ChipInfoDb.dedicfg
+ 	install -v -o 0 -g 0 -m 755 -d $(DESTDIR)/etc/udev/rules.d
+-- 
+2.30.2
+
