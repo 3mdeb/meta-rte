@@ -89,6 +89,7 @@ RDEPENDS_packagegroup-rte-stm = " \
 # packages useful for testing coreboot on various platforms
 RDEPENDS_packagegroup-rte-coreboot = " \
     flashrom \
+    dediprog-flasher \
     ifdtool \
     cbfstool \
     "
