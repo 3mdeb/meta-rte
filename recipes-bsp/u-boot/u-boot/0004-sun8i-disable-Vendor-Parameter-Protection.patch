@@ -1,4 +1,4 @@
-From 292f2a586d87589f3f5b4411fd698b8b89d1d6ac Mon Sep 17 00:00:00 2001
+From 67fe3b8fddf9cf3e0d28e2cde77f590902cf0d7f Mon Sep 17 00:00:00 2001
 From: Tymoteusz Burak <tymoteusz.burak@3mdeb.com>
 Date: Tue, 2 Jul 2024 15:04:33 +0000
 Subject: [PATCH] sun8i: disable Vendor Parameter Protection
@@ -18,12 +18,10 @@ index b6cd8d39a8..b1beaf90a7 100644
 @@ -8,6 +8,9 @@
  #ifndef __CONFIG_H
  #define __CONFIG_H
-
+ 
 +/* Allow for manual overwriting environment variables like ethaddr */
 +#define CONFIG_ENV_OVERWRITE 1
 +
  #include <configs/sunxi-common.h>
-
+ 
  #endif /* __CONFIG_H */
---
-2.39.2
