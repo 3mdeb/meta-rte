@@ -70,6 +70,7 @@ RDEPENDS:packagegroup-rte-utils = " \
     python3-wakeonlan \
     wpa-supplicant \
     cpu \
+    xcb-proto-dev \
     "
 
 # packages useful for i.MX platforms testing
