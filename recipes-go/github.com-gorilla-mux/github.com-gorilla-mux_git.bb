@@ -13,4 +13,4 @@ PV = "1.8.1"
 GO_IMPORT = "github.com/gorilla/mux"
 GO_INSTALL = "${GO_IMPORT}"
 
-inherit go
+inherit go-mod
