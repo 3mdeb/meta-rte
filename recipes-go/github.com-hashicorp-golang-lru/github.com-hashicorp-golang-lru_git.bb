@@ -9,4 +9,4 @@ PV = "0.5.4"
 
 GO_INSTALL = "${GO_IMPORT}"
 
-inherit go
+inherit go-mod
