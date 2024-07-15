@@ -5,9 +5,9 @@ HOMEPAGE = "https://github.com/3mdeb/RteCtrl/blob/master/README.md"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${S}/src/${GO_IMPORT}/LICENSE;md5=50335162666472aa33383f35cce3e355"
 
-TAG = "0.5.3-rc2"
-PV = "${TAG}"
-SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=rest-server-rate-limit;tag=${TAG}"
+PV = "0.5.3"
+SRCREV = "9910a7254dae317fdcc0afebf91e3985a0622005"
+SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=master"
 
 DEPENDS += " \
     github.com-gorilla-mux \
@@ -26,7 +26,7 @@ RDEPENDS:${PN}-dev += " \
 GO_IMPORT = "3mdeb/RteCtrl"
 GO_INSTALL = "${GO_IMPORT}"
 
-inherit go
+inherit go-mod
 
 FILES:${PN} += " \
     ${datadir}/RteWeb/* \
