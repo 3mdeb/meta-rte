@@ -17,4 +17,4 @@ RDEPENDS:${PN}-dev += " \
 
 GO_INSTALL = "${GO_IMPORT}"
 
-inherit go
+inherit go-mod
