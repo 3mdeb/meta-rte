@@ -1,6 +1,6 @@
 DESCRIPTION = "stm32 discovery line linux programmer"
 HOMEPAGE = "https://github.com/texane/stlink"
-LICENSE = "BSD"
+LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE.md;md5=3374725a40df7047d33d627811b8149e"
 
 BRANCH = "master"
