@@ -32,7 +32,6 @@ RDEPENDS:packagegroup-rte-core = " \
     swupdate \
     u-boot \
     openvpn \
-    openvpn-rte \
     xradio-firmware \
     xradio \
     "
