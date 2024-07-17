@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = " \
     file://debian/copyright;md5=9e761451917adf0a2bc35d987cc88a9d \
 "
 
-SRC_URI = "git://git.tizen.org/tools/testlab/sd-mux"
+SRC_URI = "git://github.com/3mdeb/sd-mux.git;protocol=https;branch=master"
 
 # Modify these as desired
 PV = "0.0.2+git${SRCPV}"
