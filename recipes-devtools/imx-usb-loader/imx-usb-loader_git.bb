@@ -1,6 +1,6 @@
 DESCRIPTION = "USB & UART loader for i.MX5/6/7/8 series"
 SECTION = "devel"
-LICENSE = "LGPLv2.1"
+LICENSE = "LGPL-2.1-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=4fbd65380cdd255951079008b364516c"
 
 DEPENDS = "libusb"
