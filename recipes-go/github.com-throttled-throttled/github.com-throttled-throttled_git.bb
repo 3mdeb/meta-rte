@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://${S}/src/github.com/throttled/throttled/v2/LICENSE;md
 
 GO_IMPORT = "github.com/throttled/throttled/v2"
 
-SRC_URI = "git://github.com/throttled/throttled"
+SRC_URI = "git://github.com/throttled/throttled;protocol=https;branch=master"
 SRCREV = "eef0076db706fe4531e6efe7dea5cfc402593562"
 PV = "2.9.1"
 
