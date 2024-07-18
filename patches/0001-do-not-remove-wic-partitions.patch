@@ -1,20 +1,21 @@
 diff --git a/meta/classes-recipe/image_types_wic.bbclass b/meta/classes-recipe/image_types_wic.bbclass
-index cf3be909b30c..2da4c44362ae 100644
+index cf3be909b30c..b7fcfc62605d 100644
 --- a/meta/classes-recipe/image_types_wic.bbclass
 +++ b/meta/classes-recipe/image_types_wic.bbclass
-@@ -88,7 +88,15 @@ IMAGE_CMD:wic () {
+@@ -88,7 +88,16 @@ IMAGE_CMD:wic () {
  		esac
  		shift
  	done
 -	mv "$build_wic/$(basename "${wks%.wks}")"*.${IMAGER} "$out.wic"
++	cp "$build_wic/$(basename "${wks%.wks}")"*.${IMAGER} "$out.wic"
 +	wks_basename="$(basename "${wks%.wks}")"
-+	mv "$build_wic/$wks_basename"*.direct "$out${IMAGE_NAME_SUFFIX}.wic"
++	cp "$build_wic/$wks_basename"*.direct "$out${IMAGE_NAME_SUFFIX}.wic"
 +	for partition in "$build_wic/$wks_basename"*.direct.p2; do
 +		partition_basename="$(basename "$partition")"
 +		ext="${partition_basename##*.}"
 +		gzip -f -9 -k "$partition"
 +		partition_image_basename="${IMAGE_BASENAME}-${MACHINE}".direct."$ext"
-+		mv "$partition".gz "${DEPLOY_DIR_IMAGE}/$partition_image_basename".gz
++		cp "$partition".gz "${DEPLOY_DIR_IMAGE}/$partition_image_basename".gz
 +	done
  }
  IMAGE_CMD:wic[vardepsexclude] = "WKS_FULL_PATH WKS_FILES TOPDIR"
