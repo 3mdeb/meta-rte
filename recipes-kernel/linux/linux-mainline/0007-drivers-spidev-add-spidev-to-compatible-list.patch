@@ -1,29 +1,24 @@
-From 9e83c1dfde8d9060b61ce9f8fa5c542671bf210e Mon Sep 17 00:00:00 2001
-From: Pawel Langowski <pawel.langowski@3mdeb.com>
-Date: Tue, 16 Jan 2024 14:20:10 +0100
-Subject: [PATCH 7/8] drivers: spidev: add spidev to compatible list
+From dc90e35216fe2664fdffba924440579eadd1a4a2 Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Fri, 19 Jul 2024 10:53:04 +0000
+Subject: [PATCH 7/9] drivers: spidev: add spidev to compatible list
 
-By default, spidev shows a warning if a node in the device tree's "compatible
-attribute contains "spidev". This is however not always desired. This commit
-adds "spidev" to the list of compatible devices in order to disable the warning.
-
-Signed-off-by: Pawel Langowski <pawel.langowski@3mdeb.com> 
 ---
  drivers/spi/spidev.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/spi/spidev.c b/drivers/spi/spidev.c
-index be503a0e6ef7..80c5c097b78f 100644
+index d13dc15cc..37e06975e 100644
 --- a/drivers/spi/spidev.c
 +++ b/drivers/spi/spidev.c
-@@ -678,6 +678,7 @@ static const struct of_device_id spidev_dt_ids[] = {
- 	{ .compatible = "lwn,bk4" },
- 	{ .compatible = "dh,dhcom-board" },
- 	{ .compatible = "menlo,m53cpld" },
+@@ -737,6 +737,7 @@ static const struct of_device_id spidev_dt_ids[] = {
+ 	{ .compatible = "lineartechnology,ltc2488", .data = &spidev_of_check },
+ 	{ .compatible = "lwn,bk4", .data = &spidev_of_check },
+ 	{ .compatible = "menlo,m53cpld", .data = &spidev_of_check },
 +	{ .compatible = "spidev" },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, spidev_dt_ids);
+ 	{ .compatible = "micron,spi-authenta", .data = &spidev_of_check },
+ 	{ .compatible = "rohm,dh2228fv", .data = &spidev_of_check },
+ 	{ .compatible = "semtech,sx1301", .data = &spidev_of_check },
 -- 
-2.25.1
+2.44.1
 
