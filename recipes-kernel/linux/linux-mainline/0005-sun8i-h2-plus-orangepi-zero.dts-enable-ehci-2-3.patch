@@ -1,18 +1,17 @@
-From 1847eb5e13f101b3f90b419753add9981688f906 Mon Sep 17 00:00:00 2001
-From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Wed, 4 Nov 2020 21:25:23 +0100
-Subject: [PATCH 5/8] sun8i-h2-plus-orangepi-zero.dts: enable ehci[2,3]
+From 5997da5df80ca42139eb41dbd749bba583fafcbf Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Fri, 19 Jul 2024 10:46:14 +0000
+Subject: [PATCH 5/9] sun8i-h2-plus-orangepi-zero.dts: enable ehci[2,3]
 
-Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
- arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 8 ++++++++
+ .../boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts    | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 27de08a80121..47e16150a9ba 100644
---- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-+++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -124,6 +124,14 @@
+diff --git a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+index 5b9685fe0..d60928421 100644
+--- a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+@@ -128,6 +128,14 @@ &ehci1 {
  	status = "okay";
  };
  
@@ -28,5 +27,5 @@ index 27de08a80121..47e16150a9ba 100644
  	phy-handle = <&int_mii_phy>;
  	phy-mode = "mii";
 -- 
-2.25.1
+2.44.1
 
