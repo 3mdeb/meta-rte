@@ -1,18 +1,17 @@
-From 45c12c6d3998b4045432182dd78afc7135c2844e Mon Sep 17 00:00:00 2001
-From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Wed, 4 Nov 2020 21:22:36 +0100
-Subject: [PATCH 1/8] sun8i-h2-plus-orangepi-zero.dts: enable i2c1
+From 8e77e61b9027fc29415acb569f9bbcaefef6edf6 Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Fri, 19 Jul 2024 10:39:05 +0000
+Subject: [PATCH 1/9] sun8i-h2-plus-orangepi-zero.dts: enable i2c1
 
-Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
- arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 4 ++++
+ arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index f19ed981da9d..3a22b27c14b3 100644
---- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-+++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -131,6 +131,10 @@
+diff --git a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+index ca94e313f..28995fd34 100644
+--- a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+@@ -135,6 +135,10 @@ &emac {
  	status = "okay";
  };
  
@@ -24,5 +23,5 @@ index f19ed981da9d..3a22b27c14b3 100644
  	vmmc-supply = <&reg_vcc3v3>;
  	bus-width = <4>;
 -- 
-2.25.1
+2.44.1
 

@@ -1,18 +1,17 @@
-From 4099211f4e8d0bf780fb2935ce3ea6c70e02480b Mon Sep 17 00:00:00 2001
-From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Wed, 4 Nov 2020 21:23:53 +0100
-Subject: [PATCH 3/8] sun8i-h2-plus-orangepi-zero.dts: enable uart2
+From 13a2f08fe997f83f1ec362e480c2ef122b04bc0b Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Fri, 19 Jul 2024 10:43:15 +0000
+Subject: [PATCH 3/9] sun8i-h2-plus-orangepi-zero.dts: enable uart2
 
-Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
- arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 2 +-
+ arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index e30dae583f62..aabd425560f1 100644
---- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-+++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -201,7 +201,7 @@
+diff --git a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+index 6bf17d12d..a210cf678 100644
+--- a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+@@ -213,7 +213,7 @@ &uart1 {
  &uart2 {
  	pinctrl-names = "default";
  	pinctrl-0 = <&uart2_pins>;
@@ -22,5 +21,5 @@ index e30dae583f62..aabd425560f1 100644
  
  &usb_otg {
 -- 
-2.25.1
+2.44.1
 

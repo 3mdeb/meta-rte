@@ -1,18 +1,17 @@
-From 99c64b5f660b47928532cdc12008c7386f153dc9 Mon Sep 17 00:00:00 2001
-From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Wed, 4 Nov 2020 21:25:50 +0100
-Subject: [PATCH 6/8] sun8i-h2-plus-orangepi-zero.dts: enable ohci[2,3]
+From 1e34a5c183a3836fb4e06f7f764db11aff7870a5 Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Fri, 19 Jul 2024 10:47:13 +0000
+Subject: [PATCH 6/9] sun8i-h2-plus-orangepi-zero.dts: enable ohci[2,3]
 
-Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
- arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 8 ++++++++
+ .../boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts    | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 47e16150a9ba..494f49a3e9f0 100644
---- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-+++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -181,6 +181,14 @@
+diff --git a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+index d60928421..7ada0008e 100644
+--- a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+@@ -193,6 +193,14 @@ &ohci1 {
  	status = "okay";
  };
  
@@ -28,5 +27,5 @@ index 47e16150a9ba..494f49a3e9f0 100644
  	/* Disable SPI NOR by default: it optional on Orange Pi Zero boards */
  	status = "disabled";
 -- 
-2.25.1
+2.44.1
 
