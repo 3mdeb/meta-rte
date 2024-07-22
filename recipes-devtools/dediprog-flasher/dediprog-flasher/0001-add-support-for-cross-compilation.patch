@@ -1,5 +1,6 @@
 Author: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 Date:   Fri Jul 5 16:39:13 2024 +0200
+Upstream-Status: Submitted [https://github.com/DediProgSW/SF100Linux/pull/86]
 
     Makefile: allow overriding CC
     
