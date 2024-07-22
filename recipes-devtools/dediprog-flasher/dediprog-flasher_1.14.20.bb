@@ -9,8 +9,10 @@ SRCREV = "e691f2d432144e3dbc82e9e0eea1ebaed4f3becf"
 SRC_URI = " \
     git://github.com/DediProgSW/SF100Linux.git;protocol=https;branch=master \
     file://0001-add-support-for-cross-compilation.patch \
-    file://0002-Makefile-remove-stripping.patch \
+    file://0002-Makefile-add-conditional-stripping.patch \
     "
+
+EXTRA_OEMAKE = "NOSTRIP=1"
 
 PV = "1.0+${SRCPV}"
 
