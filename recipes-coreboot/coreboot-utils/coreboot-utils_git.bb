@@ -1,9 +1,11 @@
-DESCRIPTION = "coreboot tools"
+SUMMARY = "cbfstool and ifdtool utilities for working with coreboot firmware"
+HOMEPAGE = "https://github.com/coreboot/coreboot/blob/main/README.md"
 SECTION = "coreboot"
-HOMEPAGE = "https://github.com/coreboot/coreboot/README.md"
 
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
+
+PV = "0.1+${SRCREV}"
 
 SRC_URI = " \
     gitsm://github.com/coreboot/coreboot.git;protocol=https;branch=4.8_branch \
@@ -13,15 +15,13 @@ SRC_URI = " \
 # checkout 4.8.1 tag
 SRCREV = "6794ce02d45273427c1c6675950c8468380c040a"
 
-PV = "0.1+${SRCREV}"
-
 # this indicates the folder to run do_compile from.
-S="${WORKDIR}/git"
+S = "${WORKDIR}/git"
 
 PACKAGES =+ "cbfstool ifdtool"
 
-FILES:cbfstool = "${bindir}/cbfstool"
-FILES:ifdtool = "${bindir}/ifdtool"
+FILES:cbfstool += "${bindir}/cbfstool"
+FILES:ifdtool += "${bindir}/ifdtool"
 
 INSANE_SKIP:cbfstool = "ldflags"
 INSANE_SKIP:ifdtool = "ldflags"
@@ -32,7 +32,7 @@ do_compile () {
     oe_runmake -C util/cbfstool
     oe_runmake -C util/ifdtool
 }
- 
+
 # this will copy the compiled file and place it in ${bindir}, which is /usr/bin
 do_install () {
     install -d ${D}${bindir}

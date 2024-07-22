@@ -4,7 +4,7 @@
 [3mdeb's RTE](https://shop.3mdeb.com/product/rte/).
 The structure of the meta-rte layer looks like below:
 
-```
+```sh
 meta-rte
 ├── CHANGELOG.md
 ├── conf
@@ -62,24 +62,29 @@ contains distro configuration file `rte.conf` and layer configuration file
 ## recipes-bsp
 
 ### u-boot
+
 [U-Boot bbappend file](https://gitlab.com/3mdeb/rte/meta-rte/blob/master/recipes-bsp/u-boot/u-boot_%25.bbappend)
 is used to apply custom patches and two important files:
 
 * [fw_env.config](https://gitlab.com/3mdeb/rte/meta-rte/blob/master/recipes-bsp/u-boot/u-boot/orange-pi-zero/fw_env.config),
 which contains the environment location on the `MMC` block device
 
+<!-- markdownlint-disable-next-line line-length -->
 * [boot.cmd](https://gitlab.com/3mdeb/rte/meta-rte/blob/master/recipes-bsp/u-boot/u-boot/orange-pi-zero/boot.cmd) -
 U-Boot boot script to load the Linux kernel and device tree from proper
 partition and pass the bootargs to the Linux kernel.
 
 ## recipes-connectivity
+
 ### ser2net
+
 Recipe installing custom configuration file with specific uart devices and
-service for ser2net deamon.
+service for ser2net daemon.
 
 ## recipes-core
 
 ### base-files
+
 System hostname and [/etc/fstab](https://gitlab.com/3mdeb/rte/meta-rte/blob/master/recipes-core/base-files/base-files/fstab)
 file are configured there - partition for `/boot/bootpart` and `/storage` are
 mounted here.
@@ -105,9 +110,10 @@ Place for definition of udev rules. For now `debug_uart_converter`,
 `rs_485_converter`, `can_converter` are defined.
 
 ## recipes-coreboot
+
 ### coreboot-utils
 
-Coreboot utils installation: `cbfstool`, `ifdtool`
+coreboot utils installation: `cbfstool`, `ifdtool`
 
 ## recipes-devtools
 
@@ -116,6 +122,7 @@ Coreboot utils installation: `cbfstool`, `ifdtool`
 * stlink
 
 ## recipes-extended
+
 ### images
 
 Recipes for the `SWU` images, which allow to upgrade the system using the
@@ -153,21 +160,22 @@ Recipes for `RTE REST API` server
 
 ### gorilla-mux
 
-Recipes for `gorilla-mux ` - powerful URL router and dispatcher for golang.
-
+Recipes for `gorilla-mux` - powerful URL router and dispatcher for golang.
 
 ## recipes-kernel
+
 ### linux
 
 Provides the recipe for the linux-yocto-mainline, patches and custom defconfig.
 
 ## recipes-support
+
 ### swupdate
 
 We use SWUpdate as the utility to upgrade our system. The directory contains
 build configuration and some patches:
 
-```
+```sh
 swupdate
 ├── files
 │   ├── defconfig
