@@ -39,7 +39,7 @@ chmod +x ~/bin/kas-container
 mkdir rte-sdk
 cd rte-sdk
 git clone https://github.com/3mdeb/meta-rte.git
-kas-container build meta-rte/kas.yml
+KAS_IMAGE_VERSION="4.2" kas-container build meta-rte/kas.yml
 ```
 
 ## Flash
