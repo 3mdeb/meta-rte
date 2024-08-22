@@ -3,6 +3,8 @@ HOMEPAGE = "https://github.com/texane/stlink"
 LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE.md;md5=3374725a40df7047d33d627811b8149e"
 
+PV = "1.7.0+git${SRCPV}"
+
 BRANCH = "master"
 TAG = "v1.7.0"
 
