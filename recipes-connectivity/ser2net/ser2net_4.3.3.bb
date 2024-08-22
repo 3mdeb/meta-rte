@@ -1,8 +1,8 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SUMMARY = "A serial to network proxy"
-SECTION = "console/network"
 HOMEPAGE = "http://sourceforge.net/projects/ser2net/"
+SECTION = "console/network"
 
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=bae3019b4c6dc4138c217864bd04331f"
@@ -17,9 +17,7 @@ UPSTREAM_CHECK_URI = "http://sourceforge.net/projects/ser2net/files/ser2net"
 
 inherit autotools pkgconfig systemd
 
-BBCLASSEXTEND = "native nativesdk"
-
-SRC_URI += " \
+SRC_URI:append = " \
     file://ser2net.yaml \
     file://ser2net.service \
     "
@@ -28,6 +26,7 @@ FILES:${PN} += " \
     ${sysconfdir}/ser2net.yaml \
     ${systemd_unitdir}/system/ser2net.service \
     "
+BBCLASSEXTEND = "native nativesdk"
 
 do_install:append() {
     install -d ${D}${sysconfdir}

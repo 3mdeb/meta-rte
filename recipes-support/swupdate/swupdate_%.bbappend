@@ -5,6 +5,11 @@ SRC_URI += " \
     file://rte-upgrade \
 "
 
+FILES:${PN} += " \
+    ${sbindir}/rte-upgrade \
+    ${systemd_unitdir}/system/confirm-upgrade.service \
+"
+
 RDEPENDS:${PN} = "swu-confirm"
 
 do_install:append() {
@@ -14,11 +19,6 @@ do_install:append() {
     install -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/confirm-upgrade.service ${D}${systemd_unitdir}/system
 }
-
-FILES:${PN} += " \
-    ${sbindir}/rte-upgrade \
-    ${systemd_unitdir}/system/confirm-upgrade.service \
-"
 
 SYSTEMD_SERVICE:${PN} += " \
     confirm-upgrade.service \

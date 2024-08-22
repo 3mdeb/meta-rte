@@ -1,6 +1,6 @@
-DESCRIPTION = "flashrom is a utility for identifying, reading, writing, verifying and erasing flash chips"
-LICENSE = "GPLv2"
+SUMMARY = "flashrom is a utility for identifying, reading, writing, verifying and erasing flash chips"
 HOMEPAGE = "http://flashrom.org"
+LICENSE = "GPLv2"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 DEPENDS = "pciutils libusb libusb-compat"
