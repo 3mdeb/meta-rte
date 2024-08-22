@@ -49,7 +49,7 @@ the [pre-release semver versioning scheme](https://semver.org/#spec-item-9).
 Generally, in `RTE` software project we shall use the following scheme for
 `release candidates`:
 
-```
+```sh
 MAJOR.MINOR.PATCH-rc.RC_ID
 ```
 

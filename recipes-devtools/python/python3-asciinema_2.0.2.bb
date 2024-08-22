@@ -4,7 +4,8 @@ HOMEPAGE = "https://asciinema.org"
 LICENSE = "GPLv3 & GPL-3.0+"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=d32239bcb673463ab874e80d47fae504"
 
-SRC_URI = "git://github.com/asciinema/asciinema.git;protocol=https;branch=master;tag=v2.0.2"
+SRC_URI = "git://github.com/asciinema/asciinema.git;protocol=https;branch=master"
+SRCREV = "ab1be29888e3aca947343773148641fcc396f311"
 
 S = "${WORKDIR}/git"
 

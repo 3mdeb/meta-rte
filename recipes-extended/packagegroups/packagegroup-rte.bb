@@ -1,6 +1,8 @@
 SUMMARY = "RTE support packagegroup"
-DESCRIPTION = "Support packagegroups which allow to take advantage of the \
-Remote Testing Environment board features"
+DESCRIPTION = " \
+    Support packagegroups which allow to take advantage of the \
+    Remote Testing Environment board features \
+    "
 PR = "r1"
 
 inherit packagegroup
