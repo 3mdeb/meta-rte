@@ -1,6 +1,6 @@
 SUMMARY = "Control software for sd-mux devices."
 HOMEPAGE = "https://github.com/3mdeb/sd-mux"
-LICENSE = "Apachev2"
+LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = " \
     file://LICENSE;md5=064ad0ceb0d2be1dd2e7fc4ba1b9de6f \
     file://debian/copyright;md5=9e761451917adf0a2bc35d987cc88a9d \
