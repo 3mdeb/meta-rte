@@ -19,4 +19,5 @@ SRC_URI += " \
     file://magic-sysrq.cfg \
     file://ina-2xx.cfg \
     file://9p.cfg \
+    file://gpio-sysfs.cfg \
     "
