@@ -11,6 +11,8 @@ SRC_URI = "file://cpud"
 
 S = "${WORKDIR}"
 
+INSANE_SKIP:${PN}:append = "already-stripped"
+
 do_install() {
     install -d ${D}${bindir}
     install -m 755 ${S}/cpud ${D}${bindir}/
