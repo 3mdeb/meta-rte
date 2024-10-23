@@ -5,7 +5,7 @@ LICENSE = "GPLv3 & GPL-3.0+"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=d32239bcb673463ab874e80d47fae504"
 
 SRC_URI = "git://github.com/asciinema/asciinema.git;protocol=https;branch=master"
-SRCREV = "ab1be29888e3aca947343773148641fcc396f311"
+SRCREV = "1a71be26c4c29e7cd98b97a11233cf3fb724ba9b"
 
 S = "${WORKDIR}/git"
 
