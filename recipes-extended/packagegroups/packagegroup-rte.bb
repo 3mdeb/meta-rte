@@ -75,6 +75,7 @@ RDEPENDS:packagegroup-rte-utils = " \
     cpu \
     xcb-proto-dev \
     rte-persistent-data \
+    rte-tests \
     "
 
 # packages useful for i.MX platforms testing
