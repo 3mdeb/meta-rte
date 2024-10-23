@@ -74,6 +74,7 @@ RDEPENDS:packagegroup-rte-utils = " \
     wpa-supplicant \
     cpu \
     xcb-proto-dev \
+    rte-persistent-data \
     "
 
 # packages useful for i.MX platforms testing
