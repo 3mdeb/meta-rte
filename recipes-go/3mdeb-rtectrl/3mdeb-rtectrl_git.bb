@@ -1,13 +1,9 @@
-DESCRIPTION = "RTE controller"
-SECTION = "rte"
+SUMMARY = "REST API controller for the RTE board"
 HOMEPAGE = "https://github.com/3mdeb/RteCtrl/blob/master/README.md"
+SECTION = "rte"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${S}/src/${GO_IMPORT}/LICENSE;md5=50335162666472aa33383f35cce3e355"
-
-TAG = "0.5.3-rc2"
-PV = "${TAG}"
-SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=rest-server-rate-limit;tag=${TAG}"
 
 DEPENDS += " \
     github.com-gorilla-mux \
@@ -15,25 +11,29 @@ DEPENDS += " \
     github.com-hashicorp-golang-lru \
 "
 
-RDEPENDS_${PN} += " \
+PV = "0.5.3"
+SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=master"
+SRCREV = "9910a7254dae317fdcc0afebf91e3985a0622005"
+
+FILES:${PN} += " \
+    ${datadir}/RteWeb/* \
+    ${bindir}/rte_ctrl \
+    "
+
+RDEPENDS:${PN} += " \
     bash \
     "
 
-RDEPENDS_${PN}-dev += " \
+RDEPENDS:${PN}-dev += " \
     bash \
     "
 
 GO_IMPORT = "3mdeb/RteCtrl"
 GO_INSTALL = "${GO_IMPORT}"
 
-inherit go
+inherit go-mod
 
-FILES_${PN} += " \
-    ${datadir}/RteWeb/* \
-    ${bindir}/rte_ctrl \
-    "
-
-do_install_append() {
+do_install:append() {
     # webserver files
     install -d ${D}${datadir}/RteWeb
     install -m 0644 ${S}/src/${GO_IMPORT}/web/index.html ${D}${datadir}/RteWeb

@@ -1,22 +1,21 @@
-From 70183d131207d4b25533ecb0366c5d5be3d9b840 Mon Sep 17 00:00:00 2001
+From 9e0a29df289242fd8f712a952264b9ade62f932d Mon Sep 17 00:00:00 2001
 From: Cezary Sobczak <cezary.sobczak@3mdeb.com>
 Date: Thu, 14 Jan 2021 10:25:18 +0100
 Subject: [PATCH 2/2] orangepi_zero_defconfig-configure-CLK_FREQ
+Upstream-Status: Pending
 
 Signed-off-by: Cezary Sobczak <cezary.sobczak@3mdeb.com>
+Signed-off-by: Tymoteusz Burak <tymoteusz.burak@3mdeb.com>
 ---
  configs/orangepi_zero_defconfig | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
-index f2f50a882f61..20969e763904 100644
+index 03463ee7b1..d1386efa31 100644
 --- a/configs/orangepi_zero_defconfig
 +++ b/configs/orangepi_zero_defconfig
-@@ -11,3 +11,4 @@ CONFIG_CONSOLE_MUX=y
- CONFIG_SUN8I_EMAC=y
+@@ -14,3 +14,4 @@ CONFIG_SUN8I_EMAC=y
+ CONFIG_SPI=y
  CONFIG_USB_EHCI_HCD=y
  CONFIG_USB_OHCI_HCD=y
 +CONFIG_SYS_CLK_FREQ=480000000
--- 
-2.17.1
-

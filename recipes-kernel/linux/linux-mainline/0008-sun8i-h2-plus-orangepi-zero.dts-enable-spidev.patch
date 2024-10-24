@@ -1,22 +1,17 @@
-From a3fdb474de35b8f1bcbc700fec28b58f97da2391 Mon Sep 17 00:00:00 2001
-From: Pawel Langowski <pawel.langowski@3mdeb.com>
-Date: tue, 16 Jan 2024 14:25:57 +0100
-Subject: [PATCH 8/8] sun8i-h2-plus-orangepi-zero.dts: enable spidev
+From 7cd91052e176aaad5ed20f5451eed82eb9be19cc Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Fri, 19 Jul 2024 10:51:32 +0000
+Subject: [PATCH 8/9] sun8i-h2-plus-orangepi-zero.dts: enable spidev
 
-The `compatible` attribute should be in the form "brand,product". The brand has
-been arbitrarily chosen to be "linux".
-
-
-Signed-off-by: Pawel Langowski <pawel.langowski@3mdeb.com>
 ---
- arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ .../allwinner/sun8i-h2-plus-orangepi-zero.dts    | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 494f49a3e9f0..cc4377e73e5d 100644
---- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-+++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -191,7 +191,7 @@
+diff --git a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+index 7ada0008e..bb8187a62 100644
+--- a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+@@ -203,7 +203,7 @@ &ohci3 {
  
  &spi0 {
  	/* Disable SPI NOR by default: it optional on Orange Pi Zero boards */
@@ -25,8 +20,8 @@ index 494f49a3e9f0..cc4377e73e5d 100644
  
  	flash@0 {
  		#address-cells = <1>;
-@@ -199,11 +199,24 @@
- 		compatible = "mxicy,mx25l1606e", "winbond,w25q128";
+@@ -211,11 +211,25 @@ flash@0 {
+ 		compatible = "mxicy,mx25l1606e", "jedec,spi-nor";
  		reg = <0>;
  		spi-max-frequency = <40000000>;
 +		status = "disabled";
@@ -37,6 +32,7 @@ index 494f49a3e9f0..cc4377e73e5d 100644
 +		reg = <0>;
 +		spi-max-frequency = <40000000>;
  	};
++
  };
  
  &spi1 {
@@ -51,4 +47,5 @@ index 494f49a3e9f0..cc4377e73e5d 100644
  
  &uart0 {
 -- 
-2.25.1
+2.44.1
+

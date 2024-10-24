@@ -1,0 +1,25 @@
+From d8cdc8708f89c586abc6eb8d7a77f7b45cf1c29a Mon Sep 17 00:00:00 2001
+From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+Date: Wed, 23 Oct 2024 21:39:00 +0200
+Subject: [PATCH] drivers/spi/spidev.c: add spidev compatible
+
+Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
+---
+ drivers/spi/spidev.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/spi/spidev.c b/drivers/spi/spidev.c
+index d13dc15cc191..551630857fca 100644
+--- a/drivers/spi/spidev.c
++++ b/drivers/spi/spidev.c
+@@ -735,6 +735,7 @@ static const struct of_device_id spidev_dt_ids[] = {
+ 	{ .compatible = "cisco,spi-petra", .data = &spidev_of_check },
+ 	{ .compatible = "dh,dhcom-board", .data = &spidev_of_check },
+ 	{ .compatible = "lineartechnology,ltc2488", .data = &spidev_of_check },
++	{ .compatible = "linux,spidev", .data = &spidev_of_check },
+ 	{ .compatible = "lwn,bk4", .data = &spidev_of_check },
+ 	{ .compatible = "menlo,m53cpld", .data = &spidev_of_check },
+ 	{ .compatible = "micron,spi-authenta", .data = &spidev_of_check },
+-- 
+2.47.0
+

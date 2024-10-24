@@ -1,7 +1,11 @@
 SUMMARY = "RTE support packagegroup"
-DESCRIPTION = "Support packagegroups which allow to take advantage of the \
-Remote Testing Environment board features"
+DESCRIPTION = " \
+    Support packagegroups which allow to take advantage of the \
+    Remote Testing Environment board features \
+    "
 PR = "r1"
+
+PACKAGE_ARCH = "${TUNE_PKGARCH}"
 
 inherit packagegroup
 
@@ -14,7 +18,7 @@ PACKAGES = " \
     "
 
 # core system components
-RDEPENDS_packagegroup-rte-core = " \
+RDEPENDS:packagegroup-rte-core = " \
     kernel-modules \
     bash \
     curl \
@@ -32,12 +36,11 @@ RDEPENDS_packagegroup-rte-core = " \
     swupdate \
     u-boot \
     openvpn \
-    openvpn-rte \
     xradio-firmware \
     xradio \
     "
 
-RDEPENDS_packagegroup-rte-utils = " \
+RDEPENDS:packagegroup-rte-utils = " \
     e2fsprogs-e2fsck \
     e2fsprogs-mke2fs \
     e2fsprogs-badblocks \
@@ -63,17 +66,20 @@ RDEPENDS_packagegroup-rte-utils = " \
     less \
     vim-tiny \
     nfs-utils \
-    bmap-tools \
+    bmaptool \
     bc \
     python3 \
     python3-modules \
     python3-wakeonlan \
     wpa-supplicant \
     cpu \
+    xcb-proto-dev \
+    rte-persistent-data \
+    rte-tests \
     "
 
 # packages useful for i.MX platforms testing
-RDEPENDS_packagegroup-rte-imx = " \
+RDEPENDS:packagegroup-rte-imx = " \
     can-utils \
     android-tools \
     imx-usb-loader \
@@ -81,14 +87,15 @@ RDEPENDS_packagegroup-rte-imx = " \
     "
 
 # packages useful for STM32 MCUs testing
-RDEPENDS_packagegroup-rte-stm = " \
+RDEPENDS:packagegroup-rte-stm = " \
     openocd \
     stlink \
     "
 
 # packages useful for testing coreboot on various platforms
-RDEPENDS_packagegroup-rte-coreboot = " \
+RDEPENDS:packagegroup-rte-coreboot = " \
     flashrom \
+    dediprog-flasher \
     ifdtool \
     cbfstool \
     "

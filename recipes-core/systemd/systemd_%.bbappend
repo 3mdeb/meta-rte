@@ -1,13 +1,13 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
     file://50-dhcp.network \
     file://locale.conf \
     "
 
-FILES_${PN} += "/etc/*"
+FILES:${PN} += "/etc/*"
 
-do_install_append() {
+do_install:append() {
     install -d ${D}${systemd_unitdir}/network
     install -m 0644 ${WORKDIR}/50-dhcp.network ${D}${systemd_unitdir}/network
 

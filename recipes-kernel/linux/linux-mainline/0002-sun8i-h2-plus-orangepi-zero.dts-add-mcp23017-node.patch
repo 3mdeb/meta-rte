@@ -1,22 +1,20 @@
-From 088d6003d0ba112822465f6016be175bb2b70a4f Mon Sep 17 00:00:00 2001
-From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Wed, 4 Nov 2020 21:23:27 +0100
-Subject: [PATCH 2/8] sun8i-h2-plus-orangepi-zero.dts: add mcp23017 node
+From 4b24ee6073f129e62d5a70ad6e79719ba2396be1 Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Fri, 19 Jul 2024 10:41:18 +0000
+Subject: [PATCH 2/9] sun8i-h2-plus-orangepi-zero.dts: add mcp23017 node
 
-Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
- arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 3a22b27c14b3..e30dae583f62 100644
---- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-+++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -133,6 +133,13 @@
+diff --git a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+index 28995fd34..6bf17d12d 100644
+--- a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+@@ -137,6 +137,12 @@ &emac {
  
  &i2c1{
  	status = "okay";
-+
 +	gpio20: gpio@20 {
 +		compatible = "microchip,mcp23017";
 +		gpio-controller;
@@ -27,5 +25,5 @@ index 3a22b27c14b3..e30dae583f62 100644
  
  &mmc0 {
 -- 
-2.25.1
+2.44.1
 

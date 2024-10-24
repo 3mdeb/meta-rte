@@ -1,0 +1,19 @@
+---
+extends: default
+
+rules:
+  comments:
+    require-starting-space: true
+    ignore-shebangs: true
+    min-spaces-from-content: 2
+  document-start:
+    present: true
+    level: error
+  indentation:
+    spaces: 2
+  line-length: disable
+  truthy:
+    check-keys: false
+  key-duplicates:
+    ignore: |
+      */ser2net/ser2net/ser2net.yaml

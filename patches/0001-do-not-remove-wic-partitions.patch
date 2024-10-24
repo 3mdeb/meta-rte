@@ -1,35 +1,30 @@
-commit 4143b38e05ed7e28c1007c6181035c6f342597ad
-Author: kas <kas@example.com>
-Date:   Tue Sep 8 08:55:55 2020 +0000
-
-    msg
-
-diff --git a/meta/classes/image_types_wic.bbclass b/meta/classes/image_types_wic.bbclass
-index b83308b45cb5..b8d3ad55586f 100644
---- a/meta/classes/image_types_wic.bbclass
-+++ b/meta/classes/image_types_wic.bbclass
-@@ -34,7 +34,15 @@ IMAGE_CMD_wic () {
- 	fi
- 
- 	BUILDDIR="${TOPDIR}" wic create "$wks" --vars "${STAGING_DIR}/${MACHINE}/imgdata/" -e "${IMAGE_BASENAME}" -o "$build_wic/" ${WIC_CREATE_EXTRA_ARGS}
--	mv "$build_wic/$(basename "${wks%.wks}")"*.direct "$out${IMAGE_NAME_SUFFIX}.wic"
+diff --git a/meta/classes-recipe/image_types_wic.bbclass b/meta/classes-recipe/image_types_wic.bbclass
+index cf3be909b30c..b7fcfc62605d 100644
+--- a/meta/classes-recipe/image_types_wic.bbclass
++++ b/meta/classes-recipe/image_types_wic.bbclass
+@@ -88,7 +88,16 @@ IMAGE_CMD:wic () {
+ 		esac
+ 		shift
+ 	done
+-	mv "$build_wic/$(basename "${wks%.wks}")"*.${IMAGER} "$out.wic"
++	cp "$build_wic/$(basename "${wks%.wks}")"*.${IMAGER} "$out.wic"
 +	wks_basename="$(basename "${wks%.wks}")"
-+	mv "$build_wic/$wks_basename"*.direct "$out${IMAGE_NAME_SUFFIX}.wic"
++	cp "$build_wic/$wks_basename"*.direct "$out${IMAGE_NAME_SUFFIX}.wic"
 +	for partition in "$build_wic/$wks_basename"*.direct.p2; do
 +		partition_basename="$(basename "$partition")"
 +		ext="${partition_basename##*.}"
 +		gzip -f -9 -k "$partition"
 +		partition_image_basename="${IMAGE_BASENAME}-${MACHINE}".direct."$ext"
-+		mv "$partition".gz "${DEPLOY_DIR_IMAGE}/$partition_image_basename".gz
++		cp "$partition".gz "${DEPLOY_DIR_IMAGE}/$partition_image_basename".gz
 +	done
  }
- IMAGE_CMD_wic[vardepsexclude] = "WKS_FULL_PATH WKS_FILES TOPDIR"
+ IMAGE_CMD:wic[vardepsexclude] = "WKS_FULL_PATH WKS_FILES TOPDIR"
  do_image_wic[cleandirs] = "${WORKDIR}/build-wic"
 diff --git a/scripts/lib/wic/plugins/imager/direct.py b/scripts/lib/wic/plugins/imager/direct.py
-index 2d06c242b6fe..7eb0d8dc2a6b 100644
+index a1d152659b62..fbbea1299fc8 100644
 --- a/scripts/lib/wic/plugins/imager/direct.py
 +++ b/scripts/lib/wic/plugins/imager/direct.py
-@@ -261,8 +261,7 @@ class DirectPlugin(ImagerPlugin):
+@@ -270,8 +270,7 @@ class DirectPlugin(ImagerPlugin):
                      return "/dev/%s%s%-d" % (part.disk, suffix, part.realnum)
  
      def cleanup(self):
@@ -39,4 +34,3 @@ index 2d06c242b6fe..7eb0d8dc2a6b 100644
  
          # Move results to the output dir
          if not os.path.exists(self.outdir):
-

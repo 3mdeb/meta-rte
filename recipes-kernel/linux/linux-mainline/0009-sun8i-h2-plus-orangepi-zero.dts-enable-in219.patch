@@ -1,0 +1,29 @@
+From ecdd4d03c4581c7af9647cc624cd33437a33ad2b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20=C5=BByjewski?= <tomasz.zyjewski@3mdeb.com>
+Date: Fri, 19 Jul 2024 11:43:07 +0000
+Subject: [PATCH 9/9] sun8i-h2-plus-orangepi-zero.dts: enable in219
+
+---
+ arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+index bb8187a62..7aa205988 100644
+--- a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+@@ -151,6 +151,12 @@ gpio20: gpio@20 {
+ 		#gpio-cells = <2>;
+ 		reg = <0x20>;
+ 	};
++	ina219@40 {
++		status = "okay";
++		compatible = "ti,ina219";
++		reg = <0x40>;
++		shunt-resistor = <100000>;  // R100
++	};
+ };
+ 
+ &mmc0 {
+-- 
+2.44.1
+

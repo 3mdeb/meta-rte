@@ -1,18 +1,17 @@
-From 0e09ea8e8ebefc6560d19d792db089b3d93ee44d Mon Sep 17 00:00:00 2001
-From: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-Date: Wed, 4 Nov 2020 21:24:30 +0100
-Subject: [PATCH 4/8] sun8i-h2-plus-orangepi-zero.dts: enable spi1
+From a6b9499e0b6efa9491a122c17960843200f3ca13 Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Fri, 19 Jul 2024 10:44:35 +0000
+Subject: [PATCH 4/9] sun8i-h2-plus-orangepi-zero.dts: enable spi1
 
-Signed-off-by: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
 ---
- arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 4 ++++
+ arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index aabd425560f1..27de08a80121 100644
---- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-+++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -186,6 +186,10 @@
+diff --git a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+index a210cf678..5b9685fe0 100644
+--- a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+@@ -198,6 +198,10 @@ flash@0 {
  	};
  };
  
@@ -24,5 +23,5 @@ index aabd425560f1..27de08a80121 100644
  	pinctrl-names = "default";
  	pinctrl-0 = <&uart0_pa_pins>;
 -- 
-2.25.1
+2.44.1
 
