@@ -8,4 +8,7 @@ IMAGE_INSTALL:append = " \
     packagegroup-rte-coreboot \
     locale-base-en-us \
     "
-# set root passwordINHERIT += "extrausers"RTE_ROOT_PWD = "meta-rte"EXTRA_USERS_PARAMS = "usermod -P ${RTE_ROOT_PWD} root;"
+
+INHERIT += "extrausers"
+RTE_ROOT_PWD = "meta-rte"
+EXTRA_USERS_PARAMS = "usermod -P ${RTE_ROOT_PWD} root;"
