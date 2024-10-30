@@ -1,0 +1,26 @@
+From 2060e08623dd97b47f5c03651ac865d2efbd203a Mon Sep 17 00:00:00 2001
+From: Pawel Langowski <pawel.langowski@3mdeb.com>
+Date: Tue, 29 Oct 2024 09:47:51 +0100
+Subject: [PATCH] Disable wifi chip
+
+Signed-off-by: Pawel Langowski <pawel.langowski@3mdeb.com>
+---
+ arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+index 1b001f2ad0ef..baab19d3604f 100644
+--- a/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/allwinner/sun8i-h2-plus-orangepi-zero.dts
+@@ -143,7 +143,7 @@ &mmc1 {
+ 	mmc-pwrseq = <&wifi_pwrseq>;
+ 	bus-width = <4>;
+ 	non-removable;
+-	status = "okay";
++	status = "disabled";
+ 
+ 	/*
+ 	 * Explicitly define the sdio device, so that we can add an ethernet
+-- 
+2.46.2
+
