@@ -9,6 +9,8 @@ IMAGE_INSTALL:append = " \
     locale-base-en-us \
     "
 
-INHERIT += "extrausers"
-RTE_ROOT_PWD = "meta-rte"
-EXTRA_USERS_PARAMS = "usermod -P ${RTE_ROOT_PWD} root;"
+inherit extrausers
+
+# Result of `printf "%q" $(mkpasswd -m sha256crypt meta-rte)`
+RTE_ROOT_PWD = "\$5\$8XCtHnklsZSCLoAi\$4lHnmijhTjSPuuvddA9ktyVa5X4nAOXS9M4AWqOrnt1"
+EXTRA_USERS_PARAMS = "usermod -p '${RTE_ROOT_PWD}' root"
