@@ -20,4 +20,5 @@ SRC_URI += " \
     file://ina-2xx.cfg \
     file://9p.cfg \
     file://gpio-sysfs.cfg \
+    file://debug-fs.cfg \
     "
