@@ -6,7 +6,7 @@
 
 * [Development process description](docs/development.md)
 
-* [Release process description](docs/release.md)
+* [Release process description](https://docs.zarhus.com/development-process/standard-release-process/)
 
 * [Instruction of setting the MAC address in U-Boot](docs/rte-mac-setup.md)
 
