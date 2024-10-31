@@ -1,5 +1,4 @@
-RTE Yocto - Development process description
-------------------------
+# RTE Yocto - Development process description
 
 ## Intro
 
@@ -15,7 +14,7 @@ repository. Tags in this repository correspond to the releases of the whole
 `RTE Yocto BSP`. The content (meta layers and their revisions) of given
 `RTE Yocto BSP` release is defined by the
 [kas file](https://gitlab.com/3mdeb/rte/meta-rte/blob/master/kas.yml).
-Desciption of kas file add project configuration can be found
+Description of kas file add project configuration can be found
 [here](https://kas.readthedocs.io/en/0.19.0/userguide.html#project-configuration).
 
 ## Prerequisites
@@ -31,8 +30,8 @@ Minimal recommended hardware is:
 
 ### Software requirements
 
-* Linux distribution with [Docker](https://docs.docker.com/install/) installed
-* [kas](https://github.com/siemens/kas) installed. The preferred way is to use
+- Linux distribution with [Docker](https://docs.docker.com/install/) installed
+- [kas](https://github.com/siemens/kas) installed. The preferred way is to use
 it inside container, via the
 [kas-docker script](https://github.com/siemens/kas/blob/master/kas-docker).
 Check [meta-rte prerequisites](https://gitlab.com/3mdeb/rte/meta-rte#prerequisites)
@@ -45,7 +44,7 @@ in `meta-rte` repository.
 
 ### Building images
 
-```
+```sh
 mkdir rte-sdk
 cd rte-sdk
 git clone git@gitlab.com:3mdeb/rte/meta-rte.git
@@ -56,7 +55,7 @@ It will clone layers defined in `kas file`, set up everything and build
 recipes defined in `target` section in kas file. After the `RTE Yocto BSP` has
 been set up, the `rte-sdk` content can look like:
 
-```
+```sh
 rte-sdk
 ├── build
 ├── meta-openembedded
@@ -77,10 +76,9 @@ built images) can be found in `build/tmp/deploy/images/orange-pi-zero`.
 is a set of metadata to build given component. A recipe can build be used to
 build a small package, Linux kernel, or even the whole image.
 
-
 Alternatively, you can invoke usual bitbake steps manually, e.g.:
 
-```
+```sh
 SHELL=bash kas-docker --ssh-dir ~/.ssh/ssh-keys shell meta-rte/kas.yml -c 'bitbake core-image-minimal-swu'
 ```
 
@@ -92,4 +90,4 @@ shown above.
 Once you are familiar with the `RTE Yocto - Development process description`,
 you can continue with the:
 
-* [release process](release.md)
+- [release process](release.md)

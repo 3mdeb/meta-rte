@@ -1,16 +1,18 @@
-DESCRIPTION = "SWU confirm image"
+# nooelint: oelint.file.underscores
+SUMMARY = "SWU confirm image"
+HOMEPAGE = "https://github.com/sbabic/swupdate/tree/master"
 SECTION = "utils"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
+
+DEPENDS += "cpio"
 
 SRC_URI = " \
     file://sw-description \
     "
 
 S = "${WORKDIR}"
-
-DEPENDS += "cpio"
 
 SWU_CONFIRM_FILES = "sw-description"
 SWU_CONFIRM_NAME = "swu-confirm.swu"
@@ -25,4 +27,4 @@ do_install() {
     install -m 0600 ${S}/${SWU_CONFIRM_NAME} ${D}${datadir}/
 }
 
-FILES_${PN} = "${datadir}/${SWU_CONFIRM_NAME}"
+FILES:${PN} += "${datadir}/${SWU_CONFIRM_NAME}"
