@@ -4,6 +4,83 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.8.0-rc1] - 2024-10-31
+
+### Added
+- recipes-devtools/dediprog-flasher: add recipe
+- recipes-extended/packagegroups/packagegroup-rte.bb: added dediprog-flasher
+- dediprog-flasher/0001-add-support-for-cross-compilation.patch: added
+- dediprog-flasher/0002-Makefile-remove-stripping.patch: added
+- recipes-devtools/dediprog-flasher: add /usr/share/DediProg to FILES
+- kas.yml: added meta-arm dependancy
+- conf/distro/rte.conf: added usrmerge to DISTRO_FEATURES
+- recipes-bsp/u-boot/u-boot/*: added Upstream-Status to patches
+- recipes-*: added missing branch parameters to SRC_URI
+- minicom: add a default config to disable hardware flow control
+- rte-tests: add
+
+
+### Changed
+- recipes-devtools/dediprog-flasher: do_install() add PREFIX=/usr
+- *: updated bitbake syntax
+- kas.yml: updated fetched layers revisions to scarthgap
+- conf: changed layer compatibility to scarthgap
+- patches/0001-do-not-remove-wic-partitions.patch: updated
+- packagegroups/packagegroup-rte.bb: bmap-tools -> bmaptool
+- conf/distro/rte.conf: bump used u-boot version
+- u-boot/0004-sun8i-disable-Vendor-Parameter-Protection.patch: updated
+- recipes-bsp/u-boot/u-boot/*: updated context lines to fix fuzz
+- recipes-bsp/u-boot/u-boot/*: reordered patches
+- kas.yml: ABORT -> HALT
+- recipes-graphics/xorg-proto/xcb-proto: use package from upstream
+- github.com-gorilla-mux/github.com-gorilla-mux_git.bb: updated rev
+- recipes-go/github.com-*: inherit go -> inherit go-mod
+- recipes-go/3mdeb-rtectrl/3mdeb-rtectrl_git.bb: Updated commit
+- recipes-devtools/stlink/stlink_git.bb: LICENSE = BSD -> BSD-3-Clause
+- images/core-image-minimal.bbappend: updated extrausers syntax
+- recipes-devtools/sd-mux/sd-mux_git.bb: changed source
+- imx-usb-loader/imx-usb-loader_git.bb: updated LICENSE value
+- patches/0001-do-not-remove-wic-partitions.patch: mv -> cp
+- recipes-kernel/linux/linux-mainline: updated patches
+- recipes-devtools/dediprog-flasher: Updated based on meta-oe patch review
+- distro/rte.conf: bump to 0.8
+- README.md: specify which kas version to use
+- *:  Add basic pre-commit configuration
+- *: Fix files so that pre-commit passes
+- *: Address pre-commit for non standard recipes
+- core-image-minimal.bbappend: Fix comment
+- Fix build errors
+- u-boot: boot.cmd: adjust boot cmd
+- linux: enable obsolete GPIO_SYSFS
+- rte-persistent-data: dummy recipe to create /data dir
+- wic/sunxi-mmc-spl.wks: bring back data partition
+- bsp: flashrom: update to 1.4.0
+- connectivity: gensio: update to 2.8.7
+- connectivity: ser2net: update to 4.6.2
+- devtools: python3-asciinema: update to 2.4.0
+- conf/distro/rte.conf: Add e2fsprogs-native to WKS_FILE_DEPENDS
+- recipes-core/images/core-image-minimal: Uncomment root password settings
+- recipes-kernel: linux-mainline: Add CONFIG_DEBUG_FS
+- recipes-core/images/core-image-minimal.bbappend: Use encrypted root password
+- recipes-go/3mdeb-rtectrl/3mdeb-rtectrl/RteCtrl.cfg: Modify GPIO expander numbers
+- recipes-kernel/linux/linux-mainline: Disable WiFi chip
+- distro/rte.conf: bump to 0.8.0-rc1
+- CHANGLELOG: Add notes for v0.8.0-rc1
+
+
+### Fixed
+- linux-mainline: fix spidev patch
+- tree-wide: fix license warnings
+- conf/distro/rte.conf: fix p4
+- distro/rte.conf: fix remaining old style override syntax
+
+
+### Removed
+- kas.yml: removed image-mklibs & image-prelink
+- u-boot/0001-nanopi_neo_air_defconfig-Enable-eMMC-support.patch: removed
+- recipes-support/openvpn: deleted
+
+
 
 ## [0.7.5] - 2024-03-12
 
