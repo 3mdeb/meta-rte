@@ -3,9 +3,9 @@ HOMEPAGE = "https://github.com/texane/stlink"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=3374725a40df7047d33d627811b8149e"
 
-PV = "1.7.0+git${SRCPV}"
-
 DEPENDS = "libusb"
+
+PV = "1.7.0+git${SRCPV}"
 
 SRC_URI = " \
     git://github.com/stlink-org/stlink.git;protocol=https;branch=master \
