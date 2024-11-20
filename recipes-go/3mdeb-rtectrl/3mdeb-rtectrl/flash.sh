@@ -205,7 +205,7 @@ case "$CMD" in
     echo "Probing ..."
 
     if [ -z "$DRY_RUN" ]; then
-      flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS"
+      flashrom -p "$FLASHROM_PROGRAMMER" $FLASHROM_PARAMS
     else
       echo flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS"
     fi
@@ -218,7 +218,7 @@ case "$CMD" in
     echo "Reading flash and writing it into $FILE..."
 
     if [ -z "$DRY_RUN" ]; then
-      flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" -r "$FILE" -V
+      flashrom -p "$FLASHROM_PROGRAMMER" $FLASHROM_PARAMS -r "$FILE" -V
     else
       echo flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" -r "$FILE" -V
     fi
@@ -231,7 +231,7 @@ case "$CMD" in
     echo "Writing data from $FILE into flash..."
 
     if [ -z "$DRY_RUN" ]; then
-      flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" -w "$FILE"
+      flashrom -p "$FLASHROM_PROGRAMMER" $FLASHROM_PARAMS -w "$FILE"
     else
       echo flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" -w "$FILE"
     fi
@@ -244,7 +244,7 @@ case "$CMD" in
     echo "Checking WP list ..."
 
     if [ -z "$DRY_RUN" ]; then
-      flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-list
+      flashrom -p "$FLASHROM_PROGRAMMER" $FLASHROM_PARAMS --wp-list
     else
       echo flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-list
     fi
@@ -257,7 +257,7 @@ case "$CMD" in
     echo "Checking WP status ..."
 
     if [ -z "$DRY_RUN" ]; then
-      flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-status
+      flashrom -p "$FLASHROM_PROGRAMMER" $FLASHROM_PARAMS --wp-status
     else
       echo flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-status
     fi
@@ -270,7 +270,7 @@ case "$CMD" in
     echo "Setting WP region ..."
 
     if [ -z "$DRY_RUN" ]; then
-      flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-range="$WP_RANGE"
+      flashrom -p "$FLASHROM_PROGRAMMER" $FLASHROM_PARAMS --wp-range="$WP_RANGE"
     else
       echo flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-range="$WP_RANGE"
     fi
@@ -279,7 +279,7 @@ case "$CMD" in
     echo "Enabling WP region ..."
 
     if [ -z "$DRY_RUN" ]; then
-      flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-enable
+      flashrom -p "$FLASHROM_PROGRAMMER" $FLASHROM_PARAMS --wp-enable
     else
       echo flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-enable
     fi
@@ -292,7 +292,7 @@ case "$CMD" in
     echo "Disabling WP protection ..."
 
     if [ -z "$DRY_RUN" ]; then
-      flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-disable
+      flashrom -p "$FLASHROM_PROGRAMMER" $FLASHROM_PARAMS --wp-disable
     else
       echo flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-disable
     fi
@@ -301,7 +301,7 @@ case "$CMD" in
     echo "Clearing WP region ..."
 
     if [ -z "$DRY_RUN" ]; then
-      flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-range=0,0
+      flashrom -p "$FLASHROM_PROGRAMMER" $FLASHROM_PARAMS --wp-range=0,0
     else
       echo flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" --wp-range=0,0
     fi
@@ -314,7 +314,7 @@ case "$CMD" in
     echo "Erasing chip ..."
 
     if [ -z "$DRY_RUN" ]; then
-      flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" -E
+      flashrom -p "$FLASHROM_PROGRAMMER" $FLASHROM_PARAMS -E
     else
       echo flashrom -p "$FLASHROM_PROGRAMMER" "$FLASHROM_PARAMS" -E
     fi
