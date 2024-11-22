@@ -221,17 +221,12 @@ $ telnet 192.168.4.170 13541
 In this case, a serial connection will be made via RTE with IP 192.168.4.170
 with device `/dev/ttyUSB0` using above configuration.
 
-# Development workflow
+## Release process
 
-## Individual MR
+The release process can be found [here][zarhus-release-process].
 
-> Our [change log](CHANGELOG.md) mostly depends on the merge events and the
-> merge request names are presented as introduced changes in this file. Be sure
-to use `git add -p` and add only your version, so as not to change previous
-release notes (incorrect links to previous pull requests).
+When generating the changelog, you can provide your GitHub access token as a
+parameter to `generate-changelog.sh`. This will increase the cap on API call
+rate, which may otherwise prevent you from running `git cliff`.
 
-* Commit changes
-
-* Push on branch and create pull request
-
-* Wait for review and merge
+[zarhus-release-process]: https://docs.zarhus.com/development-process/standard-release-process
