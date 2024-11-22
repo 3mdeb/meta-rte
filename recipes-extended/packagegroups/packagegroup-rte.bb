@@ -38,6 +38,7 @@ RDEPENDS:packagegroup-rte-core = " \
     openvpn \
     xradio-firmware \
     xradio \
+    dcu \
     "
 
 RDEPENDS:packagegroup-rte-utils = " \
