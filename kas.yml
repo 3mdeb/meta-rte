@@ -27,6 +27,14 @@ repos:
     url: https://github.com/linux-sunxi/meta-sunxi
     refspec: 8f5b915749709f21c2af543fdcde0898aff60154
 
+  meta-dasharo:
+    url: https://github.com/Dasharo/meta-dasharo
+    refspec: 9883d91f5cf0ed07b119b3bcf8e877e5f958ff2f
+
+  meta-coreboot:
+    url: https://github.com/zarhus/meta-coreboot
+    refspec: 0cac162d0ce90161a7941b65eb8c4fc6eb1d3706
+
   meta-arm:
     url: https://git.yoctoproject.org/git/meta-arm
     refspec: 58268ddccbe2780de28513273e15193ee949987b
