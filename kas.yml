@@ -27,6 +27,14 @@ repos:
     url: https://github.com/linux-sunxi/meta-sunxi
     refspec: 8f5b915749709f21c2af543fdcde0898aff60154
 
+  meta-dasharo:
+    url: https://github.com/Dasharo/meta-dasharo
+    refspec: 45fb233a11409453a505604c9650e58cd8f2feec
+
+  meta-coreboot:
+    url: https://github.com/zarhus/meta-coreboot
+    refspec: 0ea7450cc86c530574ff928750467a7e3f3b095c
+
   meta-arm:
     url: https://git.yoctoproject.org/git/meta-arm
     refspec: 58268ddccbe2780de28513273e15193ee949987b
@@ -51,6 +59,7 @@ bblayers_conf_header:
     POKY_BBLAYERS_CONF_VERSION = "2"
     BBPATH = "${TOPDIR}"
     BBFILES ?= ""
+
 local_conf_header:
   standard: |
     CONF_VERSION = "1"
