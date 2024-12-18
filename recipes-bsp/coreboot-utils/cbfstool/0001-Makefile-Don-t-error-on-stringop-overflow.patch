@@ -1,0 +1,23 @@
+From d3d8ca3274e1b9cfbe64d618ccf7f452aab0634c Mon Sep 17 00:00:00 2001
+From: Kas User <kas@example.com>
+Date: Tue, 10 Dec 2024 18:15:41 +0000
+Subject: [PATCH] Makefile: Don't error on stringop-overflow
+
+Signed-off-by: Kas User <kas@example.com>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 5bbb0738..6db1187d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -125,7 +125,7 @@ endif
+ # Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
+ # please add them after this point (e.g., -DVBOOT_DEBUG).
+ DEBUG_FLAGS := $(if $(filter-out 0,${DEBUG}),-g -Og,-g -Os)
+-WERROR := -Werror
++WERROR := -Werror -Wno-error=stringop-overflow
+ FIRMWARE_FLAGS := -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
+ COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
+ 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls -Wshadow \
