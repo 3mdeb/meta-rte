@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [0.8.0-rc1] - 2024-10-31
+## 0.8.0-rc1 - 2024-10-31
 
 ### Added
 - recipes-devtools/dediprog-flasher: add recipe
@@ -82,7 +82,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 
-## [0.7.5] - 2024-03-12
+## 0.7.5 - 2024-03-12
 
 ### Added
 - CHANGELOG: add info about fixing golang recipes
@@ -95,7 +95,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - go: update go-based recipes to use main branch
 
 
-## [0.7.4] - 2024-01-05
+## 0.7.4 - 2024-01-05
 
 ### Changed
 - recipes-kernel/linux/linux-mainline: Add 9p kernel support
@@ -106,7 +106,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - rte.conf: release v0.7.4
 
 
-## [0.7.4-rc5] - 2023-10-05
+## 0.7.4-rc5 - 2023-10-05
 
 ### Changed
 - recipes-connectivity/ser2net: Replace old conf file with a YAML file
@@ -120,14 +120,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - extended: packagegroup-rte: remove python3-asciinema package
 
 
-## [0.7.4-rc4] - 2023-09-29
+## 0.7.4-rc4 - 2023-09-29
 
 ### Changed
 - packagegroups: install bmap-tools
 - distro: rte.conf: bump to v0.7.4-rc4
 
 
-## [0.7.4-rc3] - 2023-09-29
+## 0.7.4-rc3 - 2023-09-29
 
 ### Added
 - devtools: sd-mux: add recipe to build sd-mux utility from tizen
@@ -138,14 +138,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - distro: rte.conf: bump to v0.7.4-rc3
 
 
-## [0.7.4-rc2] - 2023-09-29
+## 0.7.4-rc2 - 2023-09-29
 
 ### Changed
 - 3mdeb-rtectrl: 3mdeb-rtectrl_git.bb: bump version to 0.5.3-rc2
 - distro: rte.conf: bump to v0.7.4-rc2
 
 
-## [0.7.4-rc1] - 2023-09-29
+## 0.7.4-rc1 - 2023-09-29
 
 ### Added
 - 3mdeb_rtectrl: add throttled and golang-lru to recipe
@@ -167,13 +167,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - README.md: fix whitespaces, correct update section
 
 
-## [0.7.3] - 2022-07-25
+## 0.7.3 - 2022-07-25
 
 ### Changed
 - rte.conf: release v0.7.3
 
 
-## [0.7.3-rc1] - 2022-07-18
+## 0.7.3-rc1 - 2022-07-18
 
 ### Added
 - linux: add ina2xx support
@@ -187,7 +187,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - devtools: stlink: fix incorrect path to patch
 
 
-## [0.7.2-rc2] - 2022-07-18
+## 0.7.2-rc2 - 2022-07-18
 
 ### Added
 - README.md: add info about including only current version in CHANGELOG.md
@@ -199,7 +199,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - distro: conf.rte: bump to v0.7.1-rc2
 
 
-## [0.7.2-rc1] - 2022-07-12
+## 0.7.2-rc1 - 2022-07-12
 
 ### Added
 - rte_ctrl: add rte_ctrl.sh script and curl to image
@@ -211,7 +211,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 3mdeb_rtectrl_git: fixed rte_ctrl script git source paths
 
 
-## [0.7.1] - 2021-08-09
+## 0.7.1 - 2021-08-09
 
 ### Changed
 - bsp: u-boot: regenerate MAC on Serial ID change
@@ -223,7 +223,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - bsp: u-boot: remove force MAC recalculating patch
 
 
-## [0.7.0] - 2021-07-29
+## 0.7.0 - 2021-07-29
 
 ### Added
 - recipes-devtools/python: add wakeonlan recipe
@@ -286,7 +286,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - packagegroup-rte: remove stlink due to copmilation issues
 
 
-## [0.6.2] - 2019-02-05
+## 0.6.2 - 2019-02-05
 
 ### Added
 - scripts/release.sh: add "BASE_SWU_IMAGE_NAME" variable
@@ -313,7 +313,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - README.md: remove private repos info
 
 
-## [0.6.1] - 2019-01-24
+## 0.6.1 - 2019-01-24
 
 ### Changed
 - scripts/release.sh: run kas-docker as user
@@ -329,7 +329,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - recipes-core/init-ifupdown/init-ifupdown_%.bbappend: remove "/etc/network/interfaces" file
 
 
-## [0.6.0] - 2019-01-18
+## 0.6.0 - 2019-01-18
 
 ### Added
 - kas.yml: add kas file
@@ -386,7 +386,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - u-boot/arm/boot.cmd: remove boot_part prefix of fdtfile
 
 
-## [0.5.3] - 2018-11-21
+## 0.5.3 - 2018-11-21
 
 ### Added
 - distro/rte.conf: add u-boot dependency on wic image
@@ -402,14 +402,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - fix changelog
 
 
-## [0.5.2] - 2018-11-21
+## 0.5.2 - 2018-11-21
 
 ### Changed
 - u-boot: patches to lower DRAM and CPU freq
 - release v0.5.2
 
 
-## [0.5.1] - 2018-10-02
+## 0.5.1 - 2018-10-02
 
 ### Added
 - packagegroup-rte.bb: add kernel-modules to packagegroup-rte-core
@@ -420,7 +420,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - release v0.5.1
 
 
-## [0.5.0] - 2018-10-01
+## 0.5.0 - 2018-10-01
 
 ### Added
 - conf/layer.conf: add sumo to LAYERSERIES_COMPAT
@@ -443,14 +443,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - sunxi-mmc-spl.wks: remove fixed-size from rootfs
 
 
-## [0.4.3] - 2018-09-06
+## 0.4.3 - 2018-09-06
 
 ### Changed
 - packagegroup-rte.bb: install openssh-sftp-server
 - distro/rte.conf: compress images for orange-pi-zero
 
 
-## [0.4.2] - 2018-09-06
+## 0.4.2 - 2018-09-06
 
 ### Added
 - README.md: add auto-changelog tool info
@@ -463,7 +463,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - systemd_%.bbappend: set WDT timeout to 15 seconds
 
 
-## [0.4.1] - 2018-09-06
+## 0.4.1 - 2018-09-06
 
 ### Added
 - packagegroup-rte.bb: add some general packages
@@ -474,7 +474,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - linux-mainline: bump to 4.18.6
 
 
-## [0.4.0] - 2018-08-25
+## 0.4.0 - 2018-08-25
 
 ### Added
 - recipes-devtools/imx-usb-loader_git.bb: add recipe
@@ -571,32 +571,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 0001-utils-do-not-override-compiler-variables.patch: remove patch from root dir
 - coreboot-utils: remove append file
 - coreboot-utils_git.bb: remove whitespaces
-
-
-[unreleased]: https://github.com/3mdeb/meta-rte/compare/v0.7.5..HEAD
-[0.7.5]: https://github.com/3mdeb/meta-rte/compare/v0.7.4..v0.7.5
-[0.7.4]: https://github.com/3mdeb/meta-rte/compare/v0.7.4-rc5..v0.7.4
-[0.7.4-rc5]: https://github.com/3mdeb/meta-rte/compare/v0.7.4-rc4..v0.7.4-rc5
-[0.7.4-rc4]: https://github.com/3mdeb/meta-rte/compare/v0.7.4-rc3..v0.7.4-rc4
-[0.7.4-rc3]: https://github.com/3mdeb/meta-rte/compare/v0.7.4-rc2..v0.7.4-rc3
-[0.7.4-rc2]: https://github.com/3mdeb/meta-rte/compare/v0.7.4-rc1..v0.7.4-rc2
-[0.7.4-rc1]: https://github.com/3mdeb/meta-rte/compare/v0.7.3..v0.7.4-rc1
-[0.7.3]: https://github.com/3mdeb/meta-rte/compare/v0.7.3-rc1..v0.7.3
-[0.7.3-rc1]: https://github.com/3mdeb/meta-rte/compare/v0.7.2-rc2..v0.7.3-rc1
-[0.7.2-rc2]: https://github.com/3mdeb/meta-rte/compare/v0.7.2-rc1..v0.7.2-rc2
-[0.7.2-rc1]: https://github.com/3mdeb/meta-rte/compare/v0.7.1..v0.7.2-rc1
-[0.7.1]: https://github.com/3mdeb/meta-rte/compare/v0.7.0..v0.7.1
-[0.7.0]: https://github.com/3mdeb/meta-rte/compare/v0.6.2..v0.7.0
-[0.6.2]: https://github.com/3mdeb/meta-rte/compare/v0.6.1..v0.6.2
-[0.6.1]: https://github.com/3mdeb/meta-rte/compare/v0.6.0..v0.6.1
-[0.6.0]: https://github.com/3mdeb/meta-rte/compare/v0.5.3..v0.6.0
-[0.5.3]: https://github.com/3mdeb/meta-rte/compare/v0.5.2..v0.5.3
-[0.5.2]: https://github.com/3mdeb/meta-rte/compare/v0.5.1..v0.5.2
-[0.5.1]: https://github.com/3mdeb/meta-rte/compare/v0.5.0..v0.5.1
-[0.5.0]: https://github.com/3mdeb/meta-rte/compare/v0.4.3..v0.5.0
-[0.4.3]: https://github.com/3mdeb/meta-rte/compare/v0.4.2..v0.4.3
-[0.4.2]: https://github.com/3mdeb/meta-rte/compare/v0.4.1..v0.4.2
-[0.4.1]: https://github.com/3mdeb/meta-rte/compare/v0.4.0..v0.4.1
-[0.4.0]: https://github.com/3mdeb/meta-rte/compare/v0.3.0..v0.4.0
 
 <!-- generated by git-cliff -->
