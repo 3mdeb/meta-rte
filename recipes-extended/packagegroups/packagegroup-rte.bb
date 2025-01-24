@@ -97,6 +97,7 @@ RDEPENDS:packagegroup-rte-stm = " \
 RDEPENDS:packagegroup-rte-coreboot = " \
     flashrom \
     dediprog-flasher \
+    flashprog-flasher \
     ifdtool \
     cbfstool \
     "
