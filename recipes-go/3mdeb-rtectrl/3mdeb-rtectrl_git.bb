@@ -12,7 +12,7 @@ DEPENDS += " \
 "
 
 PV = "0.5.3"
-SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=use-config-from-rtectrl"
+SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=master"
 SRCREV = "24ee0e666fb5ca63b4b65f894c53564f71fdfa79"
 
 FILES:${PN} += " \
