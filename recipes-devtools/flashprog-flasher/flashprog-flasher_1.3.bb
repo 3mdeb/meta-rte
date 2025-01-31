@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 DEPENDS = "libusb pciutils libftdi libgpiod"
 
 PV = "1.0+${SRCPV}"
-SRC_URI = "git://github.com/SourceArcade/flashprog.git;protocol=https;branch=main"
+SRC_URI = "git://github.com/SourceArcade/flashprog.git;protocol=https;branch=1.3.x"
 SRCREV = "9fc7d7bffa587b1ef82d313e4a098f5afe0a17da"
 
 # Disable JLINK since it is not needed right now.
