@@ -1,6 +1,6 @@
 [Unit]
 Description=ser2net
-After=syslog.target
+After=syslog.target network.target
 
 [Service]
 Type=forking
