@@ -7,6 +7,8 @@ IMAGE_INSTALL:append = " \
     packagegroup-rte-stm \
     packagegroup-rte-coreboot \
     locale-base-en-us \
+    python3-pip \
+    python3-osfv-scripts \
     "
 
 inherit extrausers
