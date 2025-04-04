@@ -12,8 +12,8 @@ DEPENDS += " \
 "
 
 PV = "0.5.3"
-SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=master"
-SRCREV = "9910a7254dae317fdcc0afebf91e3985a0622005"
+SRC_URI = "git://git@github.com/3mdeb/RteCtrl.git;protocol=https;branch=update-config-gpio"
+SRCREV = "24ee0e666fb5ca63b4b65f894c53564f71fdfa79"
 
 FILES:${PN} += " \
     ${datadir}/RteWeb/* \
@@ -42,4 +42,9 @@ do_install:append() {
     # rte_ctrl script
     install -d ${D}{bindir}
     install -m 0755 ${S}/src/${GO_IMPORT}/scripts/rte_ctrl ${D}${bindir}
+
+    # configuration file
+    install -d ${D}${sysconfdir}/RteCtrl
+    install -m 0644 ${S}/src/${GO_IMPORT}/config/RteCtrl.cfg ${D}${sysconfdir}/RteCtrl/
+
 }
