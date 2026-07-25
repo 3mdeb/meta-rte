@@ -11,11 +11,11 @@ SRCREV = "eef0076db706fe4531e6efe7dea5cfc402593562"
 
 RDEPENDS:${PN} += " \
     bash \
-    "
+"
 
 RDEPENDS:${PN}-dev += " \
     bash \
-    "
+"
 
 GO_INSTALL = "${GO_IMPORT}"
 

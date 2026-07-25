@@ -8,13 +8,13 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = " \
     file://rte-persistent-data-test.conf \
-    "
+"
 
 S = "${WORKDIR}"
 
 FILES:${PN} += " \
     ${PERSISTENT_DATA_DIR}/rte-persistent-data-test.conf \
-    "
+"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"

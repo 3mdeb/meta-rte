@@ -10,7 +10,7 @@ DEPENDS += "cpio"
 
 SRC_URI = " \
     file://sw-description \
-    "
+"
 
 S = "${WORKDIR}"
 

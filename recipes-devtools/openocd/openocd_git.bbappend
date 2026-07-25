@@ -3,7 +3,7 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/openocd:"
 SRC_URI += " \
     file://openocd.cfg \
     file://orangepi.cfg \
-    "
+"
 do_install:append() {
 
     install -m 0644 ${WORKDIR}/openocd.cfg ${D}${datadir}/openocd/scripts/

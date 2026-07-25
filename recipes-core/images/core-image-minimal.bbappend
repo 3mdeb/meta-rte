@@ -7,7 +7,7 @@ IMAGE_INSTALL:append = " \
     packagegroup-rte-stm \
     packagegroup-rte-coreboot \
     locale-base-en-us \
-    "
+"
 
 inherit extrausers
 

@@ -4,13 +4,13 @@ SRC_URI:append = " \
     file://RteCtrl.cfg \
     file://RteCtrl.service \
     file://flash.sh \
-    "
+"
 
 FILES:${PN} += " \
     ${sysconfdir}/RteCtrl.cfg \
     ${systemd_unitdir}/system/RteCtrl.service \
     ${sbindir}/flash.sh \
-    "
+"
 
 do_install:append() {
     # configuration file

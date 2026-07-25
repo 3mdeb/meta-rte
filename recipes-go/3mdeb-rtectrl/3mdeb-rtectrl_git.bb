@@ -18,15 +18,15 @@ SRCREV = "9910a7254dae317fdcc0afebf91e3985a0622005"
 FILES:${PN} += " \
     ${datadir}/RteWeb/* \
     ${bindir}/rte_ctrl \
-    "
+"
 
 RDEPENDS:${PN} += " \
     bash \
-    "
+"
 
 RDEPENDS:${PN}-dev += " \
     bash \
-    "
+"
 
 GO_IMPORT = "3mdeb/RteCtrl"
 GO_INSTALL = "${GO_IMPORT}"

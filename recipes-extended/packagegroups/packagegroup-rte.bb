@@ -2,7 +2,7 @@ SUMMARY = "RTE support packagegroup"
 DESCRIPTION = " \
     Support packagegroups which allow to take advantage of the \
     Remote Testing Environment board features \
-    "
+"
 PR = "r1"
 
 PACKAGE_ARCH = "${TUNE_PKGARCH}"
@@ -15,7 +15,7 @@ PACKAGES = " \
     packagegroup-rte-imx \
     packagegroup-rte-stm \
     packagegroup-rte-coreboot \
-    "
+"
 
 # core system components
 RDEPENDS:packagegroup-rte-core = " \
@@ -39,7 +39,7 @@ RDEPENDS:packagegroup-rte-core = " \
     xradio-firmware \
     xradio \
     dcu \
-    "
+"
 
 RDEPENDS:packagegroup-rte-utils = " \
     e2fsprogs-e2fsck \
@@ -77,7 +77,7 @@ RDEPENDS:packagegroup-rte-utils = " \
     xcb-proto-dev \
     rte-persistent-data \
     rte-tests \
-    "
+"
 
 # packages useful for i.MX platforms testing
 RDEPENDS:packagegroup-rte-imx = " \
@@ -85,13 +85,13 @@ RDEPENDS:packagegroup-rte-imx = " \
     android-tools \
     imx-usb-loader \
     udev-rules-rte \
-    "
+"
 
 # packages useful for STM32 MCUs testing
 RDEPENDS:packagegroup-rte-stm = " \
     openocd \
     stlink \
-    "
+"
 
 # packages useful for testing coreboot on various platforms
 RDEPENDS:packagegroup-rte-coreboot = " \
@@ -100,4 +100,4 @@ RDEPENDS:packagegroup-rte-coreboot = " \
     flashprog \
     ifdtool \
     cbfstool \
-    "
+"
