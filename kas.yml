@@ -54,6 +54,11 @@ repos:
     url: https://github.com/sbabic/meta-swupdate
     refspec: a924d4bfd9dd54638ac8348d3f2845339f789770
 
+  # for python3-importlib-resources
+  meta-jupyter:
+    url: https://github.com/Xilinx/meta-jupyter.git
+    commit: 5e47ac5efa4c9f7a36912253acbca0cdb2a812e6
+
 bblayers_conf_header:
   standard: |
     POKY_BBLAYERS_CONF_VERSION = "2"
