@@ -64,6 +64,7 @@ RDEPENDS:packagegroup-rte-utils = " \
     psmisc \
     iproute2 \
     iputils \
+    ipmitool \
     less \
     vim-tiny \
     nfs-utils \
