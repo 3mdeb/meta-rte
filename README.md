@@ -198,9 +198,17 @@ command:
 Service configuration is placed here:
 
 ```sh
-# cat /etc/ser2net.conf
-13542:telnet:16000:/dev/ttyS1:115200 8DATABITS NONE 1STOPBIT
-13541:telnet:16000:/dev/ttyUSB0:115200 8DATABITS NONE 1STOPBIT
+# cat /etc/ser2net.yaml
+
+# Connection to read from /dev/ttyS1
+connection: &con1
+  accepter: telnet, tcp, 13541
+  connector: serialdev, /dev/ttyS1, 115200n81, local
+
+# Connection to read from /dev/ttyUSB0
+connection: &con2
+  accepter: telnet, tcp, 13542
+  connector: serialdev, /dev/ttyUSB0, 115200n81, local
 ```
 
 The first value indicates the port for telnet communication, the path /dev/tty*
