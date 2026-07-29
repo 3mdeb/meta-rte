@@ -1,0 +1,30 @@
+# IANA Private Enterprise Numbers for the vendors reachable from an RTE.
+#
+# ipmitool reads this file to turn an IPMI manufacturer ID into a vendor name.
+# Without it, every ipmitool invocation prints two warnings, and manufacturers
+# report as unknown.
+#
+# Each entry is a pair of lines: the decimal enterprise number, then two spaces
+# and the organization name. The parser scans for a line beginning with a number
+# and reads the line straight after it as the name. Other lines are skipped, so
+# comments are safe between entries but must never split an entry's two lines.
+#
+# To add a vendor, run "ipmitool mc info" against its BMC and copy the pair of
+# lines matching the reported Manufacturer ID out of the full registry at
+# https://www.iana.org/assignments/enterprise-numbers.txt
+0
+  Reserved
+343
+  Intel Corporation
+3704
+  Advanced Micro Devices, Inc
+10876
+  Super Micro Computer Inc.
+15370
+  GIGA-BYTE TECHNOLOGY CO., LTD
+20974
+  American Megatrends, Inc
+49622
+  ASRock Rack Incorporation
+51973
+  Raptor Engineering, LLC
