@@ -73,6 +73,7 @@ RDEPENDS:packagegroup-rte-utils = " \
     python3 \
     python3-modules \
     python3-wakeonlan \
+    python3-osfv-cli \
     wpa-supplicant \
     cpu \
     xcb-proto-dev \

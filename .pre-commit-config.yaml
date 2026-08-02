@@ -50,6 +50,7 @@ repos:
           --hide=info,
           --quiet,
           --fix,
+          --jobs=1,
           --constantmods=+.oelint-constants.json
         ]
         name: Advanced oelint

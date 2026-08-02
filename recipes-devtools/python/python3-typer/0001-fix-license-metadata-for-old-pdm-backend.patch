@@ -1,0 +1,15 @@
+--- a/pyproject.toml	2026-08-02 12:54:17.062999238 +0200
++++ b/pyproject.toml	2026-08-02 12:54:37.650680087 +0200
+@@ -6,10 +6,8 @@
+
+ [project]
+ name = "typer"
+-license = "MIT"
+-license-files = [
+-    "LICENSE",
+-]
++license = { text = "MIT" }
++license-files = { paths = ["LICENSE"] }
+ dynamic = []
+ description = "Typer, build great CLIs. Easy to code. Based on Python type hints."
+ authors = [
