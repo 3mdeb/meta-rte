@@ -78,6 +78,7 @@ RDEPENDS:packagegroup-rte-utils = " \
     xcb-proto-dev \
     rte-persistent-data \
     rte-tests \
+    u-boot-fw-utils \
 "
 
 # packages useful for i.MX platforms testing

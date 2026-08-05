@@ -17,5 +17,11 @@ saveenv
 
 setenv bootargs console=${console} console=tty1 root=/dev/mmcblk0p${boot_part} rootwait panic=10 ${extra}
 ext4load mmc 0:${boot_part} ${fdt_addr_r} /boot/${fdtfile}
-ext4load mmc 0:${boot_part} ${kernel_addr_r} /boot/uImage
-booti ${kernel_addr_r} - ${fdt_addr_r} || bootm ${kernel_addr_r} - ${fdt_addr_r}
+# downgrade compatibility
+if test -e mmc 0:${boot_part} /boot/uImage; then
+    ext4load mmc 0:${boot_part} ${kernel_addr_r} /boot/uImage
+    bootm ${kernel_addr_r} - ${fdt_addr_r}
+else
+    ext4load mmc 0:${boot_part} ${kernel_addr_r} /boot/zImage
+    bootz ${kernel_addr_r} - ${fdt_addr_r} || bootm ${kernel_addr_r} - ${fdt_addr_r}
+fi
