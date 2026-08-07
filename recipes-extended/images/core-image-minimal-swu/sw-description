@@ -11,7 +11,7 @@ software =
                                 filename = "core-image-minimal-orange-pi-zero.direct.p2.gz";
                                 device = "/dev/mmcblk0p2";
                                 installed-directly = TRUE;
-                                compressed = TRUE;
+                                compressed = "zlib";
                         }
                         );
                         bootenv: (
@@ -32,7 +32,7 @@ software =
                                 filename = "core-image-minimal-orange-pi-zero.direct.p2.gz";
                                 device = "/dev/mmcblk0p3";
                                 installed-directly = TRUE;
-                                compressed = TRUE;
+                                compressed = "zlib";
                         }
                         );
                         bootenv: (
