@@ -12,6 +12,7 @@ software =
                                 device = "/dev/mmcblk0p2";
                                 installed-directly = TRUE;
                                 compressed = "zlib";
+                                hook = "preinst";
                         }
                         );
                         bootenv: (
@@ -33,6 +34,7 @@ software =
                                 device = "/dev/mmcblk0p3";
                                 installed-directly = TRUE;
                                 compressed = "zlib";
+                                hook = "preinst";
                         }
                         );
                         bootenv: (

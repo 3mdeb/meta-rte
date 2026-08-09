@@ -1,0 +1,413 @@
+--- For IDE hints you can temporarily download
+--- https://github.com/sbabic/swupdate/blob/2024.05/handlers/swupdate.lua
+--- and add: `local swupdate = require "swupdate"` to the code
+
+---@diagnostic disable: unused-local
+---@diagnostic disable: unused-function
+
+local SECTOR_SIZE = 512
+local MIB         = 1024 * 1024
+local DISK        = "mmcblk0"
+local PART        = {
+    A = 2,
+    B = 3,
+    DATA = 4
+}
+
+--- @diagnostic disable: undefined-global
+--- Replace __VAR__ with e.g. sed
+
+--- @type number -- in MiB
+local ROOTFS_SIZE = __ROOTFS_SIZE__
+--- @type number -- in MiB
+local DATA_SIZE = __DATA_SIZE__
+
+--- @diagnostic enable: undefined-global
+
+--- Convert a size in MiB to 512-byte sectors.
+--- @param mib number
+--- @return number
+local function mib_to_sectors(mib)
+    return (mib * MIB) / SECTOR_SIZE
+end
+
+--- Convert a size in 512-byte sectors to MiB
+--- @param sectors number
+--- @return number
+local function sectors_to_mib(sectors)
+    return (sectors * SECTOR_SIZE) / MIB
+end
+
+--- offset in sectors, 1st partition starts at 2048 and has a size of 16 MiB.
+local A_start = 2048 + mib_to_sectors(16)
+local B_start = A_start + mib_to_sectors(ROOTFS_SIZE)
+local data_start = B_start + mib_to_sectors(ROOTFS_SIZE)
+
+--- A single partition's target layout.
+--- @class PartitionSpec
+--- @field num     number  Partition number
+--- @field device  string  Device node
+--- @field start   number  Start offset in sectors
+--- @field size    number  Partition size in MiB
+
+--- @class NewPartitionLayout
+--- @field A     PartitionSpec
+--- @field B     PartitionSpec
+--- @field data  PartitionSpec
+local new_partition_layout = {
+    A = {
+        num    = PART.A,
+        device = "/dev/" .. DISK .. "p2",
+        start  = A_start,
+        size   = ROOTFS_SIZE,
+    },
+    B = {
+        num   = PART.B,
+        device = "/dev/" .. DISK .. "p3",
+        start = B_start,
+        size  = ROOTFS_SIZE,
+    },
+    data = {
+        num   = PART.DATA,
+        device = "/dev/" .. DISK .. "p4",
+        start = data_start,
+        size  = DATA_SIZE,
+    },
+}
+
+--- Read the first line of file as number
+--- @param path string
+--- @return number | nil  # file contents, or nil on error
+--- @return string | nil  # nil on success, error message on failure
+local function read_num_from_file(path)
+    local f, err = io.open(path, "r")
+    if not f then return nil, err
+    end
+    local contents = f:read("*n")
+    f:close()
+    return contents
+end
+
+--- @return string | nil -- cmdline of swupdate or nil on failure
+local function get_cmdline()
+    local file = io.open("/proc/self/cmdline", "rb")
+    if not file then
+        return nil
+    end
+    local data = file:read("*a")
+    file:close()
+    return data
+end
+
+--- @param cmd string -- command to run
+--- @return string | nil -- command output stripped of trailing whitespace or nil on error
+--- @return number | nil -- command return code or nil on error
+local function get_cmd_output(cmd)
+    local handle, err = io.popen(cmd, "r")
+    if not handle then
+        swupdate.error("popen failed: " .. tostring(err))
+        return nil, nil
+    end
+    local output = handle:read("*a"):gsub("%s+$", "")
+    local ok, _, code = handle:close()
+    if not ok then
+        swupdate.error("Failed to close the handle: " .. tostring(code))
+        return nil, code
+    end
+    return output, code
+end
+
+--- @return string | nil -- Get current working dir of swupdate
+local function get_swupdate_cwd()
+    cwd = get_cmd_output("readlink -f /proc/self/cwd")
+    if cwd == "" then return nil else return cwd end
+end
+
+--- @return string | nil -- Get absolute path of SWU update file
+local function get_swu_path()
+    local data = get_cmdline()
+    if not data then return nil end
+
+    local args = {}
+    for arg in data:gmatch("[^%z]+") do
+        table.insert(args, arg)
+    end
+
+    --- @type string | nil
+    local path = nil
+    for i, arg in ipairs(args) do
+        if (arg == "-i" or arg == "--image") and args[i + 1] then
+            path = args[i + 1]
+            break
+        end
+    end
+
+    return get_cmd_output("readlink -f " .. path)
+end
+
+--- @param path string | nil
+--- @return string | nil -- returns device on which 'path' is or nil on error
+local function get_mount_device(path)
+    if not path then return nil end
+    local findmnt_cmd = string.format(
+        'findmnt -n -o SOURCE "$(df --output=target "%s" | tail -1)"',
+        path
+    )
+    return get_cmd_output(findmnt_cmd)
+end
+
+--- execute command and pipe output to swupdate.trace.
+--- @param cmd string
+--- @return number -- returns command return code or negative number on error
+local function execute_trace(cmd)
+    local output, code = get_cmd_output(cmd)
+    if not output then return -1 end
+    swupdate.trace('%s', output)
+    if code then return code else return -1 end
+end
+
+--- Get current partition information
+--- @param partnum number
+--- @return PartitionSpec
+local function get_partition(partnum)
+    local partition = DISK .. "p" .. tostring(partnum)
+    local start, size, err
+    start, err = read_num_from_file("/sys/class/block/" .. partition .. "/start")
+    if not start then
+        error("Failed to read current partition offset: " .. tostring(err))
+    end
+    size, err = read_num_from_file("/sys/class/block/" .. partition .. "/size")
+    if not size then
+        error("Failed to read current partition size: " .. tostring(err))
+    end
+    return {
+        num = partnum,
+        device = "/dev/" .. partition,
+        start = start,
+        size = sectors_to_mib(size)
+    }
+end
+
+--- @return string -- root ('/') device
+local function getroot_dev()
+    --- older swupdate doesn't have getroot
+    if type(swupdate.getroot) == "function" then
+        return swupdate.getroot().path
+    end
+    local root_dev, code = get_cmd_output("findmnt -n -o SOURCE /")
+    if not root_dev or not code or code ~= 0 then
+        error("Failed to get root device: " .. tostring(code))
+    end
+    return root_dev
+end
+
+--- Get the partition SWUpdate is currently running from.
+--- @return PartitionSpec
+local function get_current_partition()
+    local dev = getroot_dev()
+    local partnum = tonumber(dev:match("(%d+)$"))
+    if not partnum then error("Couldn't get current partition number") end
+    return get_partition(partnum)
+end
+
+--- @param partition PartitionSpec
+--- @return boolean
+local function partition_migrated(partition)
+    local sysfs_path = "/sys/class/block/" .. DISK .. "p" .. partition.num
+    local start, size, err
+    start, err = read_num_from_file(sysfs_path .. "/start")
+    if not start then
+        error("Couldn't verify if " .. partition.device .. "is already migrated: " .. tostring(err))
+    end
+    size, err = read_num_from_file(sysfs_path .. "/size")
+    if not size then
+        error("Couldn't verify if " .. partition.device .. "is already migrated: " .. tostring(err))
+    end
+    return partition.start <= start and mib_to_sectors(partition.size) <= size
+end
+
+--- @param new_partition PartitionSpec -- new partition layout
+--- @return boolean
+local function can_migrate_partition(new_partition)
+    -- data partition is last, so we only check that it fits the disk size
+    if new_partition.num == PART.DATA then
+        -- ignore nil return value, maybe someone updates via network
+        local swu_device = get_mount_device(get_swu_path())
+        if swu_device == new_partition.device then
+            error("Cannot migrate /data partition while '.swu' update file is on it")
+        end
+        local disk_size, err = read_num_from_file("/sys/class/block/" .. DISK .. "/size")
+        if not disk_size then
+            error("Couldn't read disk size " .. tostring(err))
+        end
+        local data_end = new_partition_layout.data.start + mib_to_sectors(new_partition_layout.data.size)
+        if data_end >= disk_size then
+            swupdate.error(
+                "Cannot migrate data partition, it won't fit on disk.\n" ..
+                "Data partition would end at sector " .. tostring(data_end) ..
+                " while disk ends at sector " .. tostring(disk_size)
+            )
+            return false
+        end
+    elseif new_partition.num == PART.B then
+        --- shouldn't ever happen but check anyways that new partition B doesn't
+        --- overlap current partition A
+        local partition_a = get_partition(PART.A)
+        local partition_a_end = partition_a.start + mib_to_sectors(partition_a.size)
+        if new_partition.start < partition_a_end then
+            swupdate.error(
+                "Layout of new partition B overlaps current partition A.\n" ..
+                "partition A end: %d\npartition B start: %d",
+                partition_a_end, new_partition.start
+            )
+            return false
+        end
+    elseif new_partition.num == PART.A then
+        local partition_b = get_partition(PART.B)
+        if partition_b.start < new_partition.start + mib_to_sectors(new_partition.size) then
+            swupdate.error("Layout of new partition A overlaps current partition B")
+            return false
+        end
+
+    else
+        error("BUG: wrong partition number: " .. new_partition.num)
+    end
+
+    return true
+end
+
+--- @param new_partition PartitionSpec
+--- @return boolean  # true on success
+local function migrate_partition(new_partition)
+    swupdate.info("Migrating partition: %s to new layout", new_partition.device)
+    local sfdisk_cmd = string.format(
+        "echo 'start=%d, size=%dM, type=83' | sfdisk -N %d /dev/%s --no-reread --no-tell-kernel 2>&1",
+        new_partition.start,
+        new_partition.size,
+        new_partition.num,
+        DISK
+    )
+    local code = execute_trace(sfdisk_cmd)
+    if code ~= 0 then
+        swupdate.error("sfdisk failed (rc=%d)", code)
+        return false
+    end
+    code = execute_trace("partx -u /dev/" .. DISK .. " 2>&1")
+    if code ~= 0 then
+        swupdate.error("partx failed (rc=%d)", code)
+        return false
+    end
+
+    return true
+end
+
+--- @param  image     img_type  Lua equivalent of `struct img_type`
+local function migrate(image)
+    local current_partition = get_current_partition()
+    local ok, _, code
+    if image.device == current_partition.device then
+        swupdate.error("You are trying to update currently used partition!")
+        return false, nil
+    end
+
+    -- We are on partition A, trying to update partition B
+    if current_partition.device == new_partition_layout.A.device then
+        -- if partition B is already migrated, then continue update normally
+        if partition_migrated(new_partition_layout.B) then
+            swupdate.trace("Partitions already migrated")
+            return true, image
+        end
+        -- if data and B cannot be migrated then fail
+        if not (
+            can_migrate_partition(new_partition_layout.B) and
+            can_migrate_partition(new_partition_layout.data)
+        ) then
+            return false, nil
+        end
+
+        if not partition_migrated(new_partition_layout.data) then
+            swupdate.warn("Migrating data partition. All data there will be lost")
+            code = execute_trace("umount " .. new_partition_layout.data.device .. " 2>&1")
+            if code ~= 0 then
+                error("Failed to umount data partition (rc=" .. tostring(code) .. ")")
+            end
+            ok = migrate_partition(new_partition_layout.data)
+            if not ok then
+                error(
+                    "Failed to migrate data partition.\n" ..
+                    "Without data partition system will boot into maintenance shell.\n" ..
+                    "Make sure you can mount /data before rebooting."
+                )
+            end
+            code = execute_trace("mkfs.ext4 -L data " .. new_partition_layout.data.device .. " 2>&1")
+            if code ~= 0 then
+                error(
+                    "Failed to recreate data partition (rc= " .. code .. ").\n" ..
+                    "System will boot into maintenance mode until data partition is recreated."
+                )
+            end
+        end
+        return migrate_partition(new_partition_layout.B), image
+
+    -- We are on partitioner B, trying to update partition A
+    elseif current_partition.device == new_partition_layout.B.device then
+        -- if partition A is already migrated, then continue update normally
+        if partition_migrated(new_partition_layout.A) then
+            swupdate.trace("Partition already migrated")
+            return true, image
+        end
+        -- if partition A cannot be migrated then fail
+        if not can_migrate_partition(new_partition_layout.A) then
+            swupdate.warn(
+                "Migrating to new partition layout is done in 2 updates.\n" ..
+                "First update has to migrate partition B.\n" ..
+                "Repeat this update from slot A (use rollback or older update first)."
+            )
+            return false, nil
+        end
+
+        return migrate_partition(new_partition_layout.A), image
+    end
+
+    return true, image
+end
+
+--- swupdate.is_dryrun was added in version 2025.05
+local function fallback_is_dryrun()
+    local data = get_cmdline()
+    if not data then
+        swupdate.warn(
+            "Failed to verify if swupdate is running in dry-run mode.\n" ..
+            "Assuming it is."
+        )
+        return true
+    end
+    for arg in data:gmatch("[^%z]+") do
+        if arg == "-n" or arg == "--dry-run" then
+            return true
+        end
+    end
+end
+
+local function is_dryrun()
+    if type(swupdate.is_dryrun) == "function" then
+        return swupdate.is_dryrun()
+    end
+    return fallback_is_dryrun()
+end
+
+--- Preinstall Lua Handler.
+--
+--- @param image img_type
+--- @diagnostic disable-next-line: lowercase-global
+function preinst(image)
+    if is_dryrun() then
+        return true, image
+    end
+    local ok, success, img = pcall(migrate, image)
+    if not ok then
+        swupdate.error("Migration script encountered an error:" .. tostring(success))
+        return false, nil
+    end
+    return success, img
+end
