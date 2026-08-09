@@ -9,4 +9,5 @@ SRC_URI:append = " \
     file://fw_env.config \
     file://boot.cmd \
     file://random-ethaddr.cfg \
+    file://env-size.cfg \
 "

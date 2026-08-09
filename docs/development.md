@@ -85,6 +85,30 @@ SHELL=bash kas-docker --ssh-dir ~/.ssh/ssh-keys shell meta-rte/kas.yml -c 'bitba
 When bash is your default shell, you don't have to set `SHELL=bash` like it was
 shown above.
 
+## Testing in QEMU
+
+Some changes, mostly those related to software, can be tested in QEMU.
+
+- Extract the image.
+
+    ```sh
+    bmaptool copy build/tmp/deploy/images/orange-pi-zero/core-image-minimal-orange-pi-zero.rootfs.wic.gz rte.bin
+    ```
+
+- Resize it, so the image size is a power of 2.
+
+    ```sh
+    qemu-img resize rte.bin 2048M
+    ```
+
+- Run the image in QEMU. Expect it to be quite slow.
+
+    ```sh
+    qemu-system-arm -M orangepi-pc -nographic -m 1G -smp 4 -sd rte.bin
+    ```
+
+After you are done, press CTRL+A and then X to exit.
+
 ## Next steps
 
 Once you are familiar with the `RTE Yocto - Development process description`,

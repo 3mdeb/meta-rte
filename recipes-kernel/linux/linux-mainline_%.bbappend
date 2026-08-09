@@ -23,3 +23,10 @@ SRC_URI += " \
     file://gpio-sysfs.cfg \
     file://debug-fs.cfg \
 "
+
+do_install:append() {
+    # Upgrade compatibility: versions before v0.8.0 try to load zImage
+    ln -sr "${D}/boot/${KERNEL_IMAGETYPE}" "${D}/boot/zImage"
+}
+
+FILES:${KERNEL_PACKAGE_NAME}-image += "/boot/zImage"

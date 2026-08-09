@@ -2,8 +2,7 @@ SUMMARY = "A powerful URL router and dispatcher for golang"
 HOMEPAGE = "http://www.gorillatoolkit.org/pkg/mux"
 SECTION = "net"
 
-LICENSE = "gorilla-mux-license"
-NO_GENERIC_LICENSE[gorilla-mux-license] = "src/github.com/gorilla/mux/LICENSE"
+LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${S}/src/github.com/gorilla/mux/LICENSE;md5=c30eee78985cf2584cded5f89ba3d787"
 
 PV = "1.8.1"
